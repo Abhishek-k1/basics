@@ -186,5 +186,114 @@ int main()
 */
 
 
+/*-------------------- Function Template Overloading --------------
+generic function outside class
+
+void func(int p)
+{
+     cout << "Integer";
+}
+
+void func(double a)
+{
+    cout << "Double";
+}
+ 
+here same function name with different parameters 
+this is called function overloadinng
+
+
+now for template:-
+ template <class T>
+
+ void func(T a)
+ {
+     cout << "Template";
+ }
+     this  is work for any datatype
+
+
+when both exits?
+#include <iostream>
+using namespace std;
+
+void func(int a)
+{
+    cout << "Normal Function" << endl;
+}
+
+template <class T>
+
+void func(T a)
+{
+   cout << "Template  Function" << endl;
+}
+
+int main()
+{
+   func(6);
+   func(4.5);
+}
+
+so for output first call func(6) check is this int function?
+ yes
+ then compiler uses  
+ Normal Function
+
+ second call func(4.5)
+ check is this double function?
+ No
+ then compiler use template
+ Template Function
+
+  COMPILER PRIORITY
+1.Exact normal function
+2. Template function 
+*/
+
+/*------------ Member Function Templates -----------
+  generic function inside class
+
+  class Test
+  {
+      void display()
+      {
+      }
+  };
+
+  now make funnction 
+
+  #include <iostream>
+  using namespace std;
+
+  class Test
+  {
+  public:
+      template <class T>
+
+      void display(T x)
+      {
+      cout <<  x << endl;}
+  }
+};
+
+int main()
+{
+   Test  obj;
+   
+   obj.display(5);
+
+   obj.display(8.7);
+
+   obj.display("Abhishek");
+}
+
+so compiler automatically creates correct function
+
+
+
+
+*/
+
 
 
