@@ -10,9 +10,11 @@ int main() {
     string str1;
     string str2;
 
-    cout << "Enter string1: ";
+    // take first string
+    cout << "Enter string1: ";  
     getline(cin, str1);
 
+    // take second string
     cout << "Enter string2: ";
     getline(cin, str2);
 
