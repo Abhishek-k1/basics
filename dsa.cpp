@@ -7,12 +7,12 @@ staack
 queue
 tree
 graph
-Algorithm-> step by step procedure to solve a problem 
+Algorithm-> step by step procedure to solve a problem
 ex-> finding largesst number in a array
 
 Important of DSA
 makes prograam faster
-uses lesss memory
+uses les memory
 immproves problem solvinng skills
 help for coding interview
 
@@ -43,17 +43,41 @@ Asymptotic Notations
 2.Big Omega(Ω)-> Best case
 3. Big theta(Θ)-> Average/ Tight Bound
 
+Best case, Worst case and Average case
 Example-> Linear Search
 Array:- 10 20 30 40 50
-IF searching 10: found immediately 
+IF searching 10: found immediately
                  Best Case Ω(1)
 IF searching 50: worst case O(n)
                  because check every element
 If searching random element: Average Case Θ(n)
 
 
+RULES for finding time complexity
+Rule 1. single loop
+for(int i = 0; i < n; i++)
+Complexity: O(n)
 
+Rule 2. Nested Loop
+for(int i = 0; i < n; i++)
+{
+for(int j = 0; j < n; j++)
+{
+}
+}
+Complexity: O(n²)
 
+Rule 3. Consecutive loops
+for(int i = 0; i < n; i++)
+{
+}
+for(int i = 0; i < n; i++)
+{
+}
+Complexity = O(n + n)
+           = O(2n)
+           = O(n)
+           
 
 
 
