@@ -78,6 +78,40 @@ Complexity = O(n + n)
            = O(2n)
            = O(n)
            
+ARRAY AND ABSTRACT DATA TYPE
+
+Array is collection of element of same data types stored in contiguous memory locations
+
+Characteristics:-
+stores same type of data
+stored in contiguous memory
+index start from 0
+fixed size
+Advantages:-
+fast access using index
+easy to traverse
+less memory overhead
+
+Disadvantages
+Fixed size
+insertion is costly
+deletion is costly
+memory may be wasted
+
+Abstract Data Type
+ADT defines what operation can be performed on dat but does not specify how those operation are implemented
+ADT tells: what can be done?
+
+Array as an ADT
+1.Traversal-> visit every element of an array one by one
+2.Insertion-> add a new element at a specific position
+3.Deletion-> Remove an element from array
+4.Searching-> Finding an element in array
+5.Updating-> change value of existing element
+
+
+
+
 
 
 
