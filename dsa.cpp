@@ -129,6 +129,17 @@ int length;
 size = total capacity
 Length = current elements 
 
+Array Operations
+The main operations performed on an array are:
+1.Traversal-> means visiti element of the array one by one
+2.Insertion-> adding a new element at a specific position
+3.Deletion-> removing an element from the array
+4.Searching-> Finding an element in an array
+   Linear search-> check elements one by one
+   Binary search-> used only on sorted array
+5.Updating-> change value of an existing element
+
+
 
 
 
