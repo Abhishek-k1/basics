@@ -29,7 +29,7 @@ int main() {
     for(int i = 0; i < str1.length(); i++)
     {
         freq[str1[i]]++;
-    }  
+    }
 
     // decrease frequency using second string
     for(int j = 0; j < str2.length(); j++)
@@ -53,3 +53,56 @@ int main() {
     return 0;
 }
 
+
+/*
+-------------------------------------------------------------- Anagram Program ----------------------------------------------------------
+
+Two string are called anagrams if they contain the same characters with the same frequency with any order
+Example: 
+keyword -> ordwyke (valid)
+hello -> world (not valid)  
+programming -> mproinggram
+
+This program demonstrate 
+1.string handling:- used to store input strings
+2.STL map:- used to store char freq
+3.frequency counting-
+4.loops:- traversing strings, updating map, checking results
+5.conditional statements:- length check, final validation
+6.iterations:- used to traverse map
+
+
+Algorithm:
+
+1. Read two strings.
+2. Compare lengths.
+3. If lengths are different, return "Not Anagram".
+4. Increase frequency of each character in first string.
+5. Decrease freqquency of each character in second string.
+6. Traverse map and check freqiencies.
+7. If all frequencies are zero -> valid anagram.
+8. Otherwise -> not anagram
+
+
+Working Flow:
+
+START
+  ↓
+Input str1, str2
+  ↓
+Check length equal?
+  ↓ NO → Not Anagram → END
+  ↓ YES
+Count frequency of str1 (+1)
+  ↓
+Subtract frequency of str2 (-1)
+  ↓
+Check map values
+  ↓
+All zero? → Valid Anagram
+Else → Not Anagram
+  ↓
+END
+
+
+*/
