@@ -153,8 +153,27 @@ Deletion
   }
 shift left -> Traverse Forward (i++)
 
+Linear search
 
+ for(int i = 0; i < n; i++)
+ {
+    if(arr[i] == key)
+       return i; 
+ }
 
+Binary search
+ while(low <= high)
+ {
+    int mid = (low + high) / 2;
+ 
+    if(arr[mid] == key)
+    return mid;
 
+    else if(key < arr[mid])
+     high = mid - 1;
+
+ else
+     low = mid + 1;
+ }
 
 */
