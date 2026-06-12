@@ -1,22 +1,22 @@
-/*                        DSA
+/*------------------------------------------------------ DSA ---------------------------------------------------------------
 Introduction-> Data structure + algorithms
-Data structure--> waay of storing data like
+Data structure-> way of storing data like
 array
 linkedlist
-staack
+stack
 queue
 tree
 graph
 Algorithm-> step by step procedure to solve a problem
 ex-> finding largesst number in a array
 
-Important of DSA
+Important of DSA:-
 makes program faster
 uses les memory
 immproves problem solvinng skills
 help for coding interview
 
-TIME COMPLEXITY
+TIME COMPLEXITY:-
 time complexity tells how much work an algorithm performs as input size increase
 it does not measure seconds
 it measure number of operation
@@ -29,7 +29,7 @@ Ex->
  Loop runs n times
  Time Complexity = 0(n)
 
-BIG O NOTATION
+BIG O NOTATION:-
 big o represents worst case complexity
 some common complexity->
 O(1)-> Constant Time
@@ -38,7 +38,7 @@ O(n)-> Linear time
 O(n log n)-> Efficient sorting
 O(n2)-> Nested Loops
 
-Asymptotic Notations
+Asymptotic Notations:-
 1.Big O(O)-> Worst Case
 2.Big Omega(Ω)-> Best case
 3.Big theta(Θ)-> Average/Tight Bound
@@ -78,16 +78,16 @@ Complexity = O(n + n)
            = O(2n)
            = O(n)
            
-ARRAY AND ABSTRACT DATA TYPE
-
+ARRAY AND ABSTRACT DATA TYPE:-
 Array is collection of element of same data types stored in contiguous memory locations
 
-Characteristics:-
+Characteristics
 stores same type of data
 stored in contiguous memory
 index start from 0
 fixed size
-Advantages:-
+
+Advantages
 fast access using index
 easy to traverse
 less memory overhead
@@ -98,7 +98,7 @@ insertion is costly
 deletion is costly
 memory may be wasted
 
-Abstract Data Type
+Abstract Data Type:-
 ADT defines what operation can be performed on data but does not specify how those operation are implemented
 ADT tells: what can be done?
 
@@ -129,9 +129,9 @@ int length;
 size = total capacity
 Length = current elements 
 
-Array Operations
+Array Operations:-
 The main operations performed on an array are:
-1.Traversal-> means visiti element of the array one by one
+1.Traversal-> means visit element of the array one by one
 2.Insertion-> adding a new element at a specific position
 3.Deletion-> removing an element from the array
 4.Searching-> Finding an element in an array
@@ -139,9 +139,19 @@ The main operations performed on an array are:
    Binary search-> used only on sorted array
 5.Updating-> change value of an existing element
 
+Insertion
+  for(int i = length; i > index; i--)
+  {
+   arr[i] = arr[i -1];
+  }
+shift right -> Traverse Backward (i--)
 
-
-
+Deletion
+  for(int i = index; i < length - 1; i++)
+  {
+   arr[i] = arr[i + 1];
+  }
+shift left -> Traverse Forward (i++)
 
 
 
