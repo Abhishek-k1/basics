@@ -35,7 +35,7 @@ int main() {
     for(int i = 0; i < n; i++)
     {
         // calculate new rotated index
-        int newIndex = (i - k) % n;
+        int newIndex = (i - k + n) % n;
 
         // place current element in new position
         temp[newIndex] = arr[i];
