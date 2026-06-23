@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -27,8 +28,8 @@ int main()
     return 0;
 }
 
-/*
 
+/*
 #include <iostream>
 #include <string>
 using namespace std;
@@ -45,4 +46,45 @@ int main() {
       return 0;
 
 }
+*/
+
+/*------------------------------------------------------ Count digit in number ----------------------------------------------------------------
+digit is any numerical symbol from 0 to 9
+
+Algorithm:-
+1. Read a number from the user
+2. initialize:
+      Count = 0;
+3. Repeat while n > 0:
+      Increment count
+      Remove the last  digit
+        n = n/10;
+4. When the number becomes 0, stop the loop
+5. print the total digit count
+
+
+Working flow:-
+START
+↓
+Input number
+↓
+count = 0
+↓
+n > 0 ?
+↓
+NO
+Print count
+↓
+END
+↓
+YES
+count++
+↓
+n = n / 10
+↓
+Repeat
+↓
+END
+
+
 */
