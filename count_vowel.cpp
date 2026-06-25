@@ -10,7 +10,7 @@ int main()
     cout << "Enter string: "; // take string input
     cin >> str;
 
-    count = 0; // Initialize vowel count
+    
 
     // loop through every characcter of string
     for (int i = 0; i < str.length(); i++)
@@ -28,3 +28,65 @@ int main()
 
     return 0;
 }
+
+
+/*
+-------------------------------------------------------------- Count vowel in string -----------------------------------------------------------------
+vowel are:
+a,e,i,o,u
+
+This program demonstrate:-
+1.strings
+2.Loops
+3.Conditional statements
+4.logical OR operators(||)
+5.Counters
+6.string Traversal
+
+
+Algorithm:-
+1.Read the input string
+2.Initialize:
+     count = 0
+3.Traverse the string from index 0 to length-1
+4.For each character:
+    If character is 
+       a,e,i,o,u
+5.print the total number of vowels
+
+
+Working flow:-
+START
+↓
+Input string
+↓
+count = 0
+↓
+Traverse string
+↓
+Character is vowel?
+↓ YES
+count++
+↓ NO
+Continue
+↓
+Repeat for all characters
+↓
+Print count
+↓
+END
+
+
+OR TRUTH TABLE:-
+| Condition A | Condition B | A || B |
+| ----------- | ----------- | ------ |
+| False       | False       | False  |
+| False       | True        | True   |
+| True        | False       | True   |
+| True        | True        | True   |
+
+
+
+
+
+*/
