@@ -207,12 +207,10 @@ Structure of a Node:
 
  data-> store value
  next-> store address of next node
- 
 Example
  +------+-------+      +------+-------+      +------+-------+
  | 10   |   •---|----->| 20   |   •---|----->| 30   | NULL  |
  +------+-------+      +------+-------+      +------+-------+
-
  First Node-> first node is called Head node
              Head store address of first node
  Last Node-> The last node points to NULL
@@ -228,6 +226,9 @@ Disadvantages of Linked LIst
  Extra Memory-> Need space for pointer
  No direct Access-> cannot do like array
  Traversal Required-> Must move node by node
+
+Node:- A node is the basic building block of a linked list
+Head Pointer:- The head stores the address of  the first node
 
 Creating Nodes:
  Node* first = new Node();
@@ -245,6 +246,7 @@ Link nodes:
  third->next = NULL;
 
 Traversing Linked List:
+Traversal means visiting each node one by one
  Node* temp = first;
 
  while(temp != NULL)
