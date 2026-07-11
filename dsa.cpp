@@ -1,4 +1,4 @@
-/*------------------------------------------------------ DSA ---------------------------------------------------------------
+/*--------------------------------------------------- DSA ---------------------------------------------------------------
 Introduction-> Data structure + algorithms
 Data structure-> way of storing data like
 array
@@ -77,6 +77,14 @@ for(int i = 0; i < n; i++)
 Complexity = O(n + n)
            = O(2n)
            = O(n)
+
+Rule 4. Ignore Constants
+for(int i = 0; i < n; i++)
+{
+     cout << i;
+}
+Complexity = o(5n)
+           = o(n)
            
 ARRAY AND ABSTRACT DATA TYPE:-
 Array is collection of element of same data types stored in contiguous memory locations
@@ -174,6 +182,75 @@ Binary search
 
  else
      low = mid + 1;
+ }
+
+
+
+LINKED LIST:-
+ A Linked list is a collection of nodes where each node contains:
+ 1.Data
+ 2.Address of the next node
+ linked list elements are not stored in contigous memory
+
+Array Problems:
+ -> Fixed size
+ -> Insertion is costly
+ -> Deletion is costly
+ -> May waste memory
+
+Structure of a Node:
+ struct Node
+ {
+ int data;
+ Node*next;
+ };
+
+ data-> store value
+ next-> store address of next node
+ 
+Example
+ +------+-------+      +------+-------+      +------+-------+
+ | 10   |   •---|----->| 20   |   •---|----->| 30   | NULL  |
+ +------+-------+      +------+-------+      +------+-------+
+
+ First Node-> first node is called Head node
+             Head store address of first node
+ Last Node-> The last node points to NULL
+            This indicates the end of the linked list
+
+Advantages of Linked List
+ Dynamic Size-> can grow and shrink during execution
+ Easy Insertion-> No shifting required
+ Easy Deletion-> no shifting required
+ Better Memory Utilizarion-> meomory allocated when needed
+
+Disadvantages of Linked LIst
+ Extra Memory-> Need space for pointer
+ No direct Access-> cannot do like array
+ Traversal Required-> Must move node by node
+
+Creating Nodes:
+ Node* first = new Node();
+ Node* second = new Node();
+ Node* third = new Node();
+
+Assign values:
+ first->data = 10;
+ second->data = 20;
+ third->data = 30;
+
+Link nodes:
+ first->next = second;
+ second->next = third;
+ third->next = NULL;
+
+Traversing Linked List:
+ Node* temp = first;
+
+ while(temp != NULL)
+ {
+    cout << temp->data << " ";
+    temp = temp->next;
  }
 
 */
