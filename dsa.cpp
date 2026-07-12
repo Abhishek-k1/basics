@@ -190,7 +190,7 @@ LINKED LIST:-
  A Linked list is a collection of nodes where each node contains:
  1.Data
  2.Address of the next node
- linked list elements are not stored in contigous memory
+ linked list elements are not stored in contiguous memory
 
 Array Problems:
  -> Fixed size
@@ -212,7 +212,7 @@ Example
  | 10   |   •---|----->| 20   |   •---|----->| 30   | NULL  |
  +------+-------+      +------+-------+      +------+-------+
  First Node-> first node is called Head node
-             Head store address of first node
+             Head stores the address of  the first node
  Last Node-> The last node points to NULL
             This indicates the end of the linked list
 
@@ -220,9 +220,9 @@ Advantages of Linked List
  Dynamic Size-> can grow and shrink during execution
  Easy Insertion-> No shifting required
  Easy Deletion-> no shifting required
- Better Memory Utilizarion-> meomory allocated when needed
+ Better Memory Utilization-> meomory allocated when needed
 
-Disadvantages of Linked LIst
+Disadvantages of Linked List
  Extra Memory-> Need space for pointer
  No direct Access-> cannot do like array
  Traversal Required-> Must move node by node
@@ -255,23 +255,45 @@ Traversal means visiting each node one by one
     temp = temp->next;
  }
 
+ Time complexity-> O(n)
+
 Insertion:
- Insertion means adding a new mode into a linked list
+ Insertion means adding a new node into a linked list
 
-Tyoe of Insertion:-
+Types of Insertion:-
 
-1.Insertion at Beginninng
+1.Insertion at Beginning
+  
+Algorithm:-
+1.Create a new node
+2.Store the value in the new node
+3.Point newNode-> next to head
+4.Update head = newNode
+ 
+ void insertAtBeginning(Node* &head, int value)
+ {
  Node* newNode =  new Node();
- newNode->data = 5;
+ newNode->data = value;
  newNode->next = head;
  head = newNode;
+ }
 
 Time complexity-> O(1)
 
 2.Insertion at End
+
+Algorithm:-
+1.Create a new node
+2.Store the value
+3.Traverse to the last node
+4.Set last->next = newNode
+5.Set newNode->next = NULL
+
+ void insertAtEnd(Node* head, int value)
+ {
  Node* newNode = new Node();
 
- newNode->data = 40;
+ newNode->data = value;
  newNode->next = NULL;
 
  Node* temp = head;
@@ -282,38 +304,61 @@ Time complexity-> O(1)
  }
 
  temp->next = newNode;
- 
+ }
+
 Time complexity-> O(n)
 
 3.Insertion at a given position
+
+Algorithm:-
+1.Traverse to the node before the given position
+2.Create a new node
+3.Set newNode->next = temp->next
+4.Set temp->next = newNode
+
+ void insertAtIndex(Node* head, int index, int value)
+ {
  Node* newNode = new Node();
 
- newNode->data = 25;
+ newNode->data = value;
 
  Node* temp = head;
 
- for(int i =1; i < position - 1; i++)
+ for(int i =1; i < index - 1; i++)
  {
     temp = temp->next;
  }
 
  newNode->next = temp->next;
- temp->next = newnode;
-
+ temp->next = newNode;
+ }
 Time complexity-> O(n)
 
 4.Insertion after a given node
+
+Algorithm:-
+1.Create a new node
+2.Store the value
+3.Set newNode->next = previous->next
+4.Set previous->next = newNode
+
+ void insertAfterNode(Node* previous, int value)
+ {
  Node* newNode = new Node();
 
- newNode->data = 25;
+ newNode->data = value;
 
- newNode->next = temp->next;
- temp->next = newNode;
+ newNode->next = previous->next;
+ previous->next = newNode;
+ }
 
 Time complexity-> O(1)
 
-**Always connect the new node first, then update the privous node
+**Always connect the new node first, then update the previous node
 correct order:
  newNode->next = temp->next;
  temp->next = newNode;
+
+Note:-Insertion in a linked list is easier than in an array because only pointers are updated.
+No shifting of elements is required
 */
