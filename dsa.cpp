@@ -85,7 +85,7 @@ for(int i = 0; i < n; i++)
 }
 Complexity = o(5n)
            = o(n)
-           
+
 ARRAY AND ABSTRACT DATA TYPE:-
 Array is collection of element of same data types stored in contiguous memory locations
 
@@ -135,7 +135,7 @@ int length;
 };
 
 size = total capacity
-Length = current elements 
+Length = current elements
 
 Array Operations:-
 The main operations performed on an array are:
@@ -166,14 +166,14 @@ Linear search
  for(int i = 0; i < n; i++)
  {
     if(arr[i] == key)
-       return i; 
+       return i;
  }
 
 Binary search
  while(low <= high)
  {
     int mid = (low + high) / 2;
- 
+
     if(arr[mid] == key)
     return mid;
 
@@ -255,4 +255,65 @@ Traversal means visiting each node one by one
     temp = temp->next;
  }
 
+Insertion:
+ Insertion means adding a new mode into a linked list
+
+Tyoe of Insertion:-
+
+1.Insertion at Beginninng
+ Node* newNode =  new Node();
+ newNode->data = 5;
+ newNode->next = head;
+ head = newNode;
+
+Time complexity-> O(1)
+
+2.Insertion at End
+ Node* newNode = new Node();
+
+ newNode->data = 40;
+ newNode->next = NULL;
+
+ Node* temp = head;
+
+ while(temp->next != NULL)
+ {
+    temp = temp->next;
+ }
+
+ temp->next = newNode;
+ 
+Time complexity-> O(n)
+
+3.Insertion at a given position
+ Node* newNode = new Node();
+
+ newNode->data = 25;
+
+ Node* temp = head;
+
+ for(int i =1; i < position - 1; i++)
+ {
+    temp = temp->next;
+ }
+
+ newNode->next = temp->next;
+ temp->next = newnode;
+
+Time complexity-> O(n)
+
+4.Insertion after a given node
+ Node* newNode = new Node();
+
+ newNode->data = 25;
+
+ newNode->next = temp->next;
+ temp->next = newNode;
+
+Time complexity-> O(1)
+
+**Always connect the new node first, then update the privous node
+correct order:
+ newNode->next = temp->next;
+ temp->next = newNode;
 */
