@@ -361,4 +361,94 @@ correct order:
 
 Note:-Insertion in a linked list is easier than in an array because only pointers are updated.
 No shifting of elements is required
+
+Deletion:
+ Deletion means removing a node from a linked list
+
+Types of Deletion:-
+ 
+1.Deletion at beginning
+
+Algorithm:-
+1.Store the head node in a temporary pointer
+2.Move head to the next node
+3.Delete the old first node
+
+ void deleteAtBeginning(Node* &head)
+ { 
+  Node* temp = head;
+  head = head->next;
+  delete temp; 
+ }
+
+Time Complexity-> O(1)
+
+2.Deletion at a Given position
+
+Algorithm:-
+1.Traverse to the node before the position
+2.Store the node to be deleted
+3.Change the links
+4.Delete the removed node
+
+ void deleteAtIndex(Node* &head, int index)
+ {
+   Node* temp = head;
+   
+   for(int i = 1; i < index - 1;  i++)
+   {
+      temp = temp->next; 
+   }
+   Node* del = temp->next;
+   temp->next = del->next;
+   delete del;
+ }
+
+Time Complexity-> O(n)
+
+3.Deletion at End
+ 
+Algorithm:-
+1.Traverse to the second last node
+2.Store the last node
+3.Make second last node point to NULL
+4.Delete the last node
+
+ void deleteAtEnd(Node* &head)
+ {
+   Node* temp = head;
+   while(temp->next->next != NULL)
+   {
+      temp = temp->next;
+   }
+      Node* del = temp->next;
+      temp->next = NULL;
+      delete del;
+
+ }
+   
+Time Complexity-> O(n)
+
+4.Deletion after a given Node
+
+Algorithm:-
+1.Traverse to the previous node
+2.Store the node to be deleted
+3.Change the link
+4.Delete the node
+
+ void deleteAfterNode(Node* previous)
+ {
+  Node* del = previous->next;
+  previous->next = del->next;
+  delete del;
+ }
+
+Time complexity-> O(1)
+
+**Before deleting a node always save its address
+ Correct order:-
+   Node* del = temp->next;
+   temp->next = del->next;
+   delete del;
 */
