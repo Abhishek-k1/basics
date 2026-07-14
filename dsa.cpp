@@ -424,7 +424,6 @@ Algorithm:-
       Node* del = temp->next;
       temp->next = NULL;
       delete del;
-
  }
    
 Time Complexity-> O(n)
@@ -451,4 +450,155 @@ Time complexity-> O(1)
    Node* del = temp->next;
    temp->next = del->next;
    delete del;
+
+Circular Linked List:
+ A circular linked list is a linked list in which the last node points back to the first node instead of NULL
+
+Node structure
+ struct Node
+ {
+ int data;
+ Node* next;
+ };
+
+Singly Linked List:                                     
+ Last node points to NULL                       
+ Traversal ends at NULL     
+ Has one end 
+
+Circular Linked List:
+ Last node points to the first nod
+ Traversal ends when we reach the first node again 
+ No end (forms a circle)                           
+
+Advantages:-
+ can start traversal from any node
+ No NULL pointer at the end
+ Useful for circular processes
+ Efficient for round-robin scheduling
+
+Disadvantages:-
+ Traversal is more difficult
+ Infinite loop may occur if the stopping condition is incorrect
+ slightly more complex than a singly linked list
+
+Creating a circular linked list:-
+
+Create Nodes
+ Node* first = new Node();
+ Node* second = new Node();
+ Node* third = new Node();
+
+Store data
+ first->data = 10;
+ second->data = 20;
+ third->data = 30;
+
+Link Nodes
+ first->next = second;
+ second->next = third;
+ third->next = first;
+
+Traversal:
+ since there is no NULL, we cannot use
+    while(temp != NULL)
+   
+Algorithm:
+1. Start from the first node
+2. Print the current node
+3. Move to the next node
+4. Stop when the first node is reached again
+
+ void display(Node* head)
+ {
+    Node* temp = head;
+
+    do
+    {
+      cout << temp->data << " ";
+      temp = temp->next;
+    }
+      while(temp != head);
+ }
+
+Time complexity-> O(n)
+
+Inserting at Beginning:
+
+Algorithm:
+1.Create a new node
+2.Traverse to the last node
+3.Make the last node point to the new node
+4.Point the new node to the old head
+5.Update the head
+
+ void insertAtBeginning(Node* &head, int value)
+ {
+   Node* newNode = new Node();
+   newNode->data = value;
+   Node* temp = head;
+
+   while(temp->next != head)
+   {
+      temp = temp->next;
+   }
+   newNode->next = head;
+   temp->next = newNode;
+   head = newNode;
+ }
+
+Time complexity-> O(n)
+
+Insertion at End:
+
+Algorithm:
+1.Create a new node.
+2.Traverse to the last node.
+3.Point the last node to the new node.
+4.Point the new node to the head.
+
+ void insertAtEnd(Node* &head, int value)
+ {
+   Node* newNode = new Node();
+   newNode->data = value;
+   Node* temp = head;
+
+   while(temp->next != head)
+   {
+     temp = temp->next;
+   }
+   temp->next = newNode;
+   newNode->next = head;
+ }
+
+Time complexity-> O(n)
+
+Deletion at Beginning:
+ 
+Algorithm:
+1.Traverse to the last node
+2.Store the first node
+3.Move the head to the next node
+4.Point the last node to the new head
+5.Delete the old head
+
+ void deleteAtBeginning(Node* &head)
+ {
+   Node* temp = head;
+   Node* last = head;
+
+   while(last->next != head)
+   {
+     last = last->next;
+   }
+   
+   head = head->next;
+   last->next = head;
+   delete temp;
+ }
+
+Time complexity-> O(n)
+
+Note:
+Traversal in a Circular Linked List uses a do-while loop because the first node must be visited before checking the stopping condition
 */
