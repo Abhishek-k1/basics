@@ -263,13 +263,13 @@ Insertion:
 Types of Insertion:-
 
 1.Insertion at Beginning
-  
+
 Algorithm:-
 1.Create a new node
 2.Store the value in the new node
 3.Point newNode-> next to head
 4.Update head = newNode
- 
+
  void insertAtBeginning(Node* &head, int value)
  {
  Node* newNode =  new Node();
@@ -366,7 +366,7 @@ Deletion:
  Deletion means removing a node from a linked list
 
 Types of Deletion:-
- 
+
 1.Deletion at beginning
 
 Algorithm:-
@@ -375,10 +375,10 @@ Algorithm:-
 3.Delete the old first node
 
  void deleteAtBeginning(Node* &head)
- { 
+ {
   Node* temp = head;
   head = head->next;
-  delete temp; 
+  delete temp;
  }
 
 Time Complexity-> O(1)
@@ -394,10 +394,10 @@ Algorithm:-
  void deleteAtIndex(Node* &head, int index)
  {
    Node* temp = head;
-   
+
    for(int i = 1; i < index - 1;  i++)
    {
-      temp = temp->next; 
+      temp = temp->next;
    }
    Node* del = temp->next;
    temp->next = del->next;
@@ -407,7 +407,7 @@ Algorithm:-
 Time Complexity-> O(n)
 
 3.Deletion at End
- 
+
 Algorithm:-
 1.Traverse to the second last node
 2.Store the last node
@@ -425,7 +425,7 @@ Algorithm:-
       temp->next = NULL;
       delete del;
  }
-   
+
 Time Complexity-> O(n)
 
 4.Deletion after a given Node
@@ -461,15 +461,16 @@ Node structure
  Node* next;
  };
 
-Singly Linked List:                                     
- Last node points to NULL                       
- Traversal ends at NULL     
- Has one end 
+Difference Between Singly Linked List and Circular Linked List:
+ Singly Linked List:
+ Last node points to NULL
+ Traversal ends at NULL
+ Has one end
 
-Circular Linked List:
+ Circular Linked List:
  Last node points to the first nod
- Traversal ends when we reach the first node again 
- No end (forms a circle)                           
+ Traversal ends when we reach the first node again
+ No end (forms a circle)
 
 Advantages:-
  can start traversal from any node
@@ -502,7 +503,7 @@ Link Nodes
 Traversal:
  since there is no NULL, we cannot use
     while(temp != NULL)
-   
+
 Algorithm:
 1. Start from the first node
 2. Print the current node
@@ -574,7 +575,7 @@ Algorithm:
 Time complexity-> O(n)
 
 Deletion at Beginning:
- 
+
 Algorithm:
 1.Traverse to the last node
 2.Store the first node
@@ -591,7 +592,7 @@ Algorithm:
    {
      last = last->next;
    }
-   
+
    head = head->next;
    last->next = head;
    delete temp;
@@ -599,6 +600,148 @@ Algorithm:
 
 Time complexity-> O(n)
 
+Applications:
+
+ Round Robin CPU Scheduling
+ Multiplayer games
+ Music Playlist
+ Circular Queue
+ Turn-based systems
+
 Note:
 Traversal in a Circular Linked List uses a do-while loop because the first node must be visited before checking the stopping condition
+
+DOUBLY LINKED LIST:
+
+A Doubly Linked List is a linked list in which each node contains:
+1.Data
+2.Address of the next node
+3.Address of the previous node
+
+Node Structure:
+
+  struct Node
+  {
+     int data;
+     Node* prev;
+     Node* next;
+  };
+
+  data -> stores the value
+  prev -> stores the address of the previous node
+  next -> stores the address of the next node
+
+ Example:
+
+ NULL <- [10] <-> [20] <-> [30] -> NULL
+
+ First Node:
+ The previous pointer of the first node is NULL
+
+ Last Node:
+ The next pointer of the last node is NULL
+
+Difference Between Singly and Doubly Linked List:
+
+Singly Linked List:
+ One pointer
+ can traverse only forward
+ used less memory
+ Insertion/Deletion requires previous node
+
+Doubly Linked List:
+ Two pointers (prev and next)
+ Can traverse forward and backward
+ uses more memory
+ Easier insertion and deletion
+
+Advantages:
+ Bidirectional traversal
+ Easy insertion
+ Easy Deletion
+ Can move forward and backward
+
+Disadvantages:
+ Extra memory required for prev pointer
+ More pointer manipulation
+ Slightly more complex than singly Linked List
+
+Creating Nodes:
+
+ Node* first = new Node();
+ Node* second = new Node();
+ Node* third = new Node();
+
+Assign Data:
+
+ first->data = 10;
+ second->data = 20;
+ third->data = 30;
+
+Link Nodes:
+
+ first->prev = NULL;
+ first->next = second;
+
+ second->prev = first;
+ second->next = third;
+
+ third->prev = second;
+ third->next = NULL;
+
+Traversal (Forward):-
+
+Algorithm:
+ 1. Start from the first node.
+ 2. Print the current node.
+ 3. Move to the next node.
+ 4. Repeat until NULL.
+
+ void display(Node* head)
+ {
+    Node* temp = head;
+
+    while(temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+ }
+
+Time Complexity -> O(n)
+
+Traversal (Backward):-
+
+Algorithm:
+ 1. Go to the last node.
+ 2. Print the current node.
+ 3. Move to the previous node.
+ 4. Repeat until NULL.
+
+ void displayReverse(Node* head)
+ {
+    Node* temp = head;
+
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    while(temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->prev;
+    }
+ }
+
+Time Complexity -> O(n)
+
+Applications:-
+
+ Browser Back and Forward buttons
+ Undo and Redo operations
+ Music Playlist
+ Image Viewer
+ Navigation systems
+
 */
