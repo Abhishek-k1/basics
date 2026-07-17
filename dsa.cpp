@@ -744,4 +744,79 @@ Applications:-
  Image Viewer
  Navigation systems
 
+STACK:-
+Astack is a linear data structure that follows the LIFO (Last In First Out) principle
+
+LIFO:The element inserted last is removed first
+
+Example:
+
+        Top
+         ↓
+      +-----+
+      | 30  |  <-- Pop first
+      +-----+
+      | 20  |
+      +-----+
+      | 10  |
+      +-----+
+
+Basic Operations:-
+
+1.Push
+-> Adds an element to the top of the stack
+Time Complexity-> O(1)
+
+2.Pop
+-> Removws the top element from the stack
+Time Complexity-> O(1)
+
+3.Peek(Top)
+-> Returns the top element without removing it
+Time Complexity-> O(1)
+
+4.isEmpty()
+-> Checks whether the stack is empty
+Time Complexity-> O(1)
+
+5.isFull()
+-> Checks whether the stack is full (Array implementation)
+Time Complexity-> O(1)
+
+Applications of Stack:-
+
+• Function Calls (Call Stack)
+• Undo / Redo Operations
+• Browser Back Button
+• Expression Evaluation
+• Parentheses Matching
+• Backtracking
+• Depth First Search (DFS)
+
+
+Advantages:-
+
+• Easy insertion and deletion
+• Fast access to the top element
+• Useful in recursion
+• Simple implementation
+
+Disadvantages:-
+
+• Access only the top element
+• Fixed size when implemented using arrays
+• Cannot access middle elements directly
+
+Types of Stack:-
+
+1.Stack using Array
+2.Stack using Linked List
+
+Imported terms:
+
+Top: The variable that stores the index of the last inserted element
+Overflow: Occurs when we try to push an element into a full stack
+Underflow: Occurs when we try to pop an element from an empty stack
+
+
 */
