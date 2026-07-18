@@ -953,4 +953,78 @@ Overflow Condition:
   s->top++;
   s->arr[s->top] = value;
 
+Stack Operation:
+
+1.POP Operation
+ pop: pop means removing the top element from the stack
+
+Algorithm:
+1.Check if the stack is empty
+2.If empty, display "stack Underflow"
+3.Store the top element(optional)
+4.Decrement top
+
+Function:
+ int pop(struct* s)
+ {
+    if(s->top == -1)
+    {
+       cout << "Stack Underflow";
+       return -1;
+    }
+    int x = s->arr[s->top];
+    s->top--;
+    return x;
+ }
+
+ Time Complexity-> O(1)
+
+2.PEEK operation
+ peek: Returns the element at a given position from the top without removing it
+
+ Formula: Array Index = top - position + 1
+
+ Function:
+ int peek(stack* s, int position)
+ {
+   int index = s->top - position + 1;
+
+   if(index < 0)
+   {
+      cout << "Invalid Position";
+      return -1;
+   }
+   return s->arr[index];
+ }
+
+ Time Complexity-> O(1)
+
+3.Stack TOP
+ Returns the topmost element
+
+ Function:
+  int stackTop(Stack* s)
+  {
+     if(s->top == -1)
+        return -1;
+
+      return s->arr[s->top];
+  }
+ 
+ Time Complexity-> O(1)
+
+4.Stack Bottom
+ Returns the bottom most element
+
+ Function:
+  int stackBottom(stack* s)
+  {
+     if(s->top == -1)
+          return -1;
+
+     return s->arr[0];
+  }
+
+ Time Complexity -> O(1)
+ 
 */
