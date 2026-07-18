@@ -881,4 +881,76 @@ Applications:
  • Expression Evaluation
  • Parentheses Matching
 
+Push Operation:
+ Push:Push means inserting a new element at the top of the stack
+
+ Before Push
+
+ Top = 2
+
+      30  ← Top
+      20
+      10
+
+ Push(40)
+
+ After Push
+
+ Top = 3
+
+      40  ← Top
+      30
+      20
+      10
+   
+Algorithm:
+ 1.Check if the stack is full
+ 2.If full, display "stack overflow"
+ 3.Increment top
+ 4.Insert the new element at arr[top]
+
+Function Implementation:
+ void push(stack* s, int value)
+ {
+    if(s->top == s->size -1)
+    {
+        cout << "Stack overflow";
+    }
+   else
+   {
+      s->top++;
+      s->arr[s->top] = value;
+   }
+ }
+
+ Time Complexity-> O(1)
+
+Displaying Stack:
+
+ void display(stack* s)
+ {
+    for(int i = s->top; i >= 0; i--)
+    {
+       cout << s->arr[i] << " "; 
+    }
+ }
+
+ Time Complexity-> O(n)
+
+Overflow Condition:
+
+ if(s->top == s->size - 1)
+ stack overflow occurs when we try to push an element into a full stack
+
+
+**
+  • Push always inserts at the top.
+
+  • Increase top first, then insert the value.
+
+  Correct Order:
+
+  s->top++;
+  s->arr[s->top] = value;
+
 */
