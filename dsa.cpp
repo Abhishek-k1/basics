@@ -818,5 +818,67 @@ Top: The variable that stores the index of the last inserted element
 Overflow: Occurs when we try to push an element into a full stack
 Underflow: Occurs when we try to pop an element from an empty stack
 
+Stack Using Array:
+
+ Stack Structure
+  struct stuck
+  {
+     int size;
+     int top;
+     int* arr;
+  };
+  
+  size-> Maximum capacity of the stack
+  top-> Index of the top element
+  arr-> pointer to the array
+
+Creating a stack:
+
+ Stack s;
+ s.size = 5;
+ s.top = -1;
+
+ s.arr = new int[s.size];
+
+ Initially:
+ top = -1
+
+Stack Condition:
+
+ Stack is Empty
+ s.top == -1
+
+ Stack is Full
+ s.top == s.size - 1
+
+ isEmpty()
+ bool isEmpty(Stack s)
+ {
+    if(s.top == -1)
+      return true;
+
+   return false;
+ }
+
+ Time Complexity-> O(1)
+
+ isFull()
+ bool isFull(stack s)
+ {
+    if(s.top == s.size - 1)
+        return true;
+
+    return false;
+ }
+
+ Time Complexity-> O(1)
+
+Applications:
+
+ • Function Calls
+ • Browser History
+ • Undo / Redo
+ • Expression Evaluation
+ • Parentheses Matching
 
 */
