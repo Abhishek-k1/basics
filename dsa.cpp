@@ -1026,5 +1026,44 @@ Function:
   }
 
  Time Complexity -> O(1)
+
+Atack Using Linked List:
+
+ A atack can also be implemented using linked list
+ it follow LIFO principle
+ unlike an array, a linked list does not have a fixed size
+ memory is allocated dynamically when new nodes are created
  
+Node structure:
+
+ struct Node
+ {
+ int data;
+ Node* next;
+ };
+
+ data -> stores the value
+ next -> stores the address of the next node
+
+Top Pointer:
+
+ Node* top = NULL;
+ The top pointer always points to the first node of the linked list
+ if top == NULL, the stack is empty
+
+Representation:
+
+ Top
+  ↓
+ +------+-------+
+ | 30   |   •---|----+
+ +------+-------+    |
+                    ↓
+              +------+-------+
+              | 20   |   •---|----+
+              +------+-------+    |
+                                  ↓
+                            +------+-------+
+                            | 10   | NULL  |
+                            +------+-------+
 */
