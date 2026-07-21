@@ -1027,7 +1027,7 @@ Function:
 
  Time Complexity -> O(1)
 
-Atack Using Linked List:
+Stack Using Linked List:
 
  A atack can also be implemented using linked list
  it follow LIFO principle
@@ -1066,4 +1066,83 @@ Representation:
                             +------+-------+
                             | 10   | NULL  |
                             +------+-------+
+
+Push Operation:
+ Push means inserting a new node at the behinning of the linked list
+
+Algorithm:
+ 1.Create a new node
+ 2.store the value
+ 3.Point newNode->next to top
+ 4.Update top = newNode
+
+Function:
+ void push(int value)
+ {
+   Node* newNode = new Node();
+
+   newNode->data = value;
+   newNode->next = top;
+   top = newNode;
+ }
+
+Time Complexity -> O(1)
+
+Pop Opeartion:
+ Pop  means removing the first node from the linked list
+
+Algorithm:
+ 1.Check if the stack is empty
+ 2.Store the top node
+ 3.Move top to the next node
+ 4.Delete the old top node
+ 5.Return the deleted value
+
+Function:
+ int pop()
+ {
+    if(top == NULL)
+    {
+       cout << "stack Underflow";
+       return -1;
+    }
+    Node* temp = top;
+    int x = temp->data;
+
+    top = top->next;
+    delete temp;
+
+    return x;
+ }
+
+Time complexity -> O(1)
+
+Stack Top (Top Element):
+ Returns the top element without removing it
+
+Function:
+ int stackTop()
+ {
+    if(top == NULL)
+       return -1;
+ 
+    return top->data;
+ }
+
+Time Complexity -> O(1)
+
+isEmpty():
+
+Algorithm:
+ 1.check if top is NULL
+ 2.If NULL, the stack is empty
+
+Function:
+ bool is Empty()
+ {
+    return top == NULL;
+ }
+
+Time Complexity -> O(1)
+
 */
