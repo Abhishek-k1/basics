@@ -1117,6 +1117,32 @@ Function:
 
 Time complexity -> O(1)
 
+Peek Operation
+  Peek returns the value at a given position
+  from the top of the stack
+
+Algorithm:
+ 1.Start from the top node
+ 2.Move to the required position
+ 3.Return the node's data
+
+Function:
+ int peek(int position)
+ {
+    Node* temp = top;
+
+    for(int i = 1; temp != NULL && i < position; i++)
+    {
+       temp = temp->next;
+    }
+    if(temp != NULL)
+      return temp->data;
+
+    return -1;
+ }
+
+Time Complexity -> O(n)
+
 Stack Top (Top Element):
  Returns the top element without removing it
 
@@ -1130,6 +1156,26 @@ Function:
  }
 
 Time Complexity -> O(1)
+
+Stack Bottom:
+ Returns the bottom-most element
+
+Function:
+ int stackBottom()
+ {
+    if(top == NULL)
+      return -1;
+
+   Node* temp = top;
+
+   while(temp->next != NULL)
+   {
+     temp = temp->next;
+   }
+   return temp->data;
+ }
+
+Time Complexity -> O(n)
 
 isEmpty():
 
@@ -1145,4 +1191,27 @@ Function:
 
 Time Complexity -> O(1)
 
+Advantages
+ Dynamic size
+ No fixed capacity
+ No memory wastage
+ push and pop are O(1)
+
+Disadvantages
+ Extra memory is required for pointers
+ No direct accesss like arrays
+ slightly more complex than array implementation
+
+Overflow Condition
+ Overflow occurs only when dynamic memory allocation fails
+
+Underflow Condition
+ Underflow occurs when pop() is called on an empty stack
+
+**
+ • Top always points to the first node.
+ • Push inserts at the beginning.
+ • Pop deletes from the beginning.
+ • No shifting of elements is required.
+ • Linked List implementation does not have a fixed size.
 */
