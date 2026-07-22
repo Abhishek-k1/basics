@@ -821,7 +821,7 @@ Underflow: Occurs when we try to pop an element from an empty stack
 Stack Using Array:
 
  Stack Structure
-  struct stuck
+  struct stack
   {
      int size;
      int top;
@@ -863,7 +863,7 @@ Stack Condition:
  Time Complexity-> O(1)
 
  isFull()
- bool isFull(stack s)
+ bool isFull(Stack s)
  {
     if(s.top == s.size - 1)
         return true;
@@ -910,7 +910,7 @@ Algorithm:
  4.Insert the new element at arr[top]
 
 Function Implementation:
- void push(stack* s, int value)
+ void push(Stack* s, int value)
  {
     if(s->top == s->size -1)
     {
@@ -965,7 +965,7 @@ Algorithm:
 4.Decrement top
 
 Function:
- int pop(struct* s)
+ int pop(Stack* s)
  {
     if(s->top == -1)
     {
@@ -985,7 +985,7 @@ Function:
  Formula: Array Index = top - position + 1
 
  Function:
- int peek(stack* s, int position)
+ int peek(Stack* s, int position)
  {
    int index = s->top - position + 1;
 
@@ -1017,7 +1017,7 @@ Function:
  Returns the bottom most element
 
  Function:
-  int stackBottom(stack* s)
+  int stackBottom(Stack* s)
   {
      if(s->top == -1)
           return -1;
@@ -1184,7 +1184,7 @@ Algorithm:
  2.If NULL, the stack is empty
 
 Function:
- bool is Empty()
+ bool isEmpty()
  {
     return top == NULL;
  }
