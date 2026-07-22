@@ -827,7 +827,7 @@ Stack Using Array:
      int top;
      int* arr;
   };
-  
+
   size-> Maximum capacity of the stack
   top-> Index of the top element
   arr-> pointer to the array
@@ -902,7 +902,7 @@ Push Operation:
       30
       20
       10
-   
+
 Algorithm:
  1.Check if the stack is full
  2.If full, display "stack overflow"
@@ -931,7 +931,7 @@ Displaying Stack:
  {
     for(int i = s->top; i >= 0; i--)
     {
-       cout << s->arr[i] << " "; 
+       cout << s->arr[i] << " ";
     }
  }
 
@@ -1010,7 +1010,7 @@ Function:
 
       return s->arr[s->top];
   }
- 
+
  Time Complexity-> O(1)
 
 4.Stack Bottom
@@ -1033,7 +1033,7 @@ Stack Using Linked List:
  it follow LIFO principle
  unlike an array, a linked list does not have a fixed size
  memory is allocated dynamically when new nodes are created
- 
+
 Node structure:
 
  struct Node
@@ -1151,7 +1151,7 @@ Function:
  {
     if(top == NULL)
        return -1;
- 
+
     return top->data;
  }
 
@@ -1209,9 +1209,70 @@ Underflow Condition
  Underflow occurs when pop() is called on an empty stack
 
 **
- • Top always points to the first node.
- • Push inserts at the beginning.
- • Pop deletes from the beginning.
- • No shifting of elements is required.
- • Linked List implementation does not have a fixed size.
+ • Top always points to the first node
+ • Push inserts at the beginning
+ • Pop deletes from the beginning
+ • No shifting of elements is required
+ • Linked List implementation does not have a fixed size
+
+Parenthesis Matching:
+ Parenthesis matching is the process of checking whether all opening parentheses have their corresponding closing parentheses in the correct order
+
+ Examples:
+
+ Balanced
+ ()
+ (())
+ (()())
+
+ Not Balanced
+ (()
+ ())
+ )(
+
+Why do  we use stack?
+ A stack follows the LIFO Principle
+ The last opening parenthesis '(' must be matched with the first closing parenthesis ')'
+ Hence, stack is the most suitable data structure
+
+Algorithm:
+ 1.Traverse the expression from left to right
+ 2.If the current character is '('
+    push it into the stack
+ 3.If the current character is ')'
+    If stack is empty
+     Expression is NOT balanced
+    Otherwise
+     Pop one element from the stack
+ 4.After traversing the complete expression
+    If stack is empty
+     Expression is Balanced
+    Otherwise
+     Expression is NOT Balanced
+
+Function:
+ bool isBalanced(string exp)
+ {
+    stack<char> s;
+
+    for(int i = 0; i < exp.length(); i++)
+    {
+       if(exp[i] == '(')
+       {
+          s.push('(');
+       }
+       else if(exp[i] == ')')
+       {
+          if(s.empty())
+          return false;
+
+          s.pop();
+       }
+    }
+       return s.empty();
+ }
+
+Time Complexity -> O(n)
+Space Complexity -> O(n)
+
 */
