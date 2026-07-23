@@ -1275,4 +1275,91 @@ Function:
 Time Complexity -> O(n)
 Space Complexity -> O(n)
 
+Multiple Parenthesis Matching:
+ Multiple Parenthesis matching is the process of checking whether all types of parentheses are balanced and properly nested
+
+ Type of Parentheses:
+ ()
+ {}
+ []
+
+ Balanced
+ ()
+ {}
+ []
+ ({[]})
+ [({})]
+ 
+ Not Balanced
+ (]
+ ([)]
+ {[}
+ ((]
+
+Matching Rules:
+
+ '(' matches ')'
+
+ '{' matches '}'
+
+ '[' matches ']'
+
+Algorithm:
+ 1.Traverse the expression from left to right
+ 2.If thecurrent character is an opening bracket
+    ('(', '{', '[')
+    push it into the stack
+ 3.If the current character is a closing bracket
+    (')', '}', ']')
+
+   -> If the stack is empty
+      Expression is NOT Balanced
+   -> Otherwise,
+      Compare the top element with the current closing bracket
+   -> If they do not match,
+      Expression is NOT Balanced
+   -> Otherwise
+      Pop the stack
+ 4.After traversing the complete expression
+   -> If the stack is empty
+      Expression is Balanced
+   -> Otherwise
+      Expression is NOT Balanced
+      
+Function:
+ bool isBalanced(string exp)
+ {
+    stack<char> s;
+
+    for(char ch : exp)
+    {
+       if(ch == '(' || ch == '{' || ch == '[')
+       {
+           s.push(ch);
+       }
+       else if(ch == ')' || ch == '}' || ch == ']')
+       {
+           if(s.empty())
+               return false;
+
+          char top = s.top();
+
+          if((top == '(' && ch == ')') ||
+             (top == '{' && ch == '}') ||
+             (top == '[' && ch == ']'))
+            {
+              s.pop(); 
+            }
+          else
+          {
+             return false;
+          }
+       }
+    }
+       return s.empty();
+ } 
+
+Time Complexity -> O(n)
+
+Space Complexity -> O(n)
 */
