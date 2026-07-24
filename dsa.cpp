@@ -1289,7 +1289,7 @@ Multiple Parenthesis Matching:
  []
  ({[]})
  [({})]
- 
+
  Not Balanced
  (]
  ([)]
@@ -1348,7 +1348,7 @@ Function:
              (top == '{' && ch == '}') ||
              (top == '[' && ch == ']'))
             {
-              s.pop(); 
+              s.pop();
             }
           else
           {
@@ -1357,7 +1357,7 @@ Function:
        }
     }
        return s.empty();
- } 
+ }
 
 Time Complexity -> O(n)
 
@@ -1386,7 +1386,7 @@ Examples:
  +, -, *, /, %
 
 Types of Expressions:
- 
+
  Infix   -> A + B
  The operator is written between the operands
 
@@ -1407,4 +1407,134 @@ Applications
  • Prefix and Postfix do not require parentheses.
  • Prefix and Postfix are evaluated using Stack.
 
+Infix to Postfix:
+ Infix to prefix is the process of converting an infix expression into an equivalent postfix expression using a stack
+
+Example:
+ Infix   : A+B
+ Postfix : AB+
+
+ Infix   : (A+B)*C
+ Postfix : AB+C*
+
+Why convert Infix to Postfix?
+
+ • Postfix expressions do not require parentheses
+ • Easy for computers to evaluate
+ • Eliminates ambiguity due to operator precedence
+ • Used in compiler design and expression evaluation
+
+Operator Precedence
+
+ Highest
+
+ ()          Parentheses
+
+ *  /        Multiplication, Division
+
+ +  -        Addition, Subtraction
+
+ Lowest
+
+Algorithm:
+
+ 1.Traverse the infix expression from left to right
+ 2.If the current character is an operand,
+   add it directly to the postfix expression.
+ 3.If the current character is an opening
+   parenthesis '(',
+   push it into the stack.
+ 4.If the current character is a closing
+   parenthesis ')',
+   pop operators until '(' is found.
+ 5.If the current character is an operator,
+   pop operators from the stack while they
+   have higher or equal precedence.
+   Then push the current operator.
+ 6.After traversal,
+   pop all remaining operators from the stack.
+
+Function:
+ int precedence(char op)
+ {
+    if(op == '*' || op == '/')
+      return 2;
+
+    if(op == '+' || op == '-')
+   return 1;
+
+   return 0;
+ }
+
+Conversion Function:
+ string infixToPostfix(string exp)
+ {
+   stack<char> s;
+   string postfix = "";
+
+   for(char ch : exp)
+   {
+      if(isalnum(ch))
+      {
+         postfix += ch;
+      }
+      else if(ch == '(')
+      {
+        s.push(ch);
+      }
+      else if(ch == ')')
+      {
+         while(!s.empty() && s.top() != '(')
+         {
+            postfix += s.top();
+            s.pop();
+         }
+            s.pop();
+         }
+         else
+            {
+          while(!s.empty() && precedence(s.top()) >= precedence(ch))
+          {
+            postfix += s.top();
+            s.pop();
+          }
+            s.push(ch);
+            }
+         }
+      while(!s.empty())
+      {
+
+         postfix += s.top();
+         s.pop();
+      }
+
+      return postfix;
+   }
+   
+Example
+
+ Infix
+
+ A+B*C
+
+ Process
+
+ A  -> Output
+
+ +  -> Push
+
+ B  -> Output
+
+ *  -> Push
+
+ C  -> Output
+
+ Pop *
+
+ Pop +
+
+ Postfix
+
+ ABC*+
+Time complexity -> O(n)
 */
