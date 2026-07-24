@@ -1325,7 +1325,7 @@ Algorithm:
       Expression is Balanced
    -> Otherwise
       Expression is NOT Balanced
-      
+
 Function:
  bool isBalanced(string exp)
  {
@@ -1362,4 +1362,49 @@ Function:
 Time Complexity -> O(n)
 
 Space Complexity -> O(n)
+
+INFIX, PREFIX AND POSTFIX:
+
+Expression:
+ An expression is a combination of operands and operators that represent a computation
+ Example:
+
+ A + B
+ 5 * 3
+ (A + B) * C
+
+Operand:
+ The value on which operations are performed
+
+ Examples:
+ A, B, 5, 10
+
+Operator:
+ A symbol that performs an operatopn
+
+Examples:
+ +, -, *, /, %
+
+Types of Expressions:
+ 
+ Infix   -> A + B
+ The operator is written between the operands
+
+ Prefix  -> +AB
+ The operator is written before the operands
+
+ Postfix -> AB+
+ The operator is written after the operands
+
+Applications
+ • Compiler Design
+ • Expression Evaluation
+ • Stack Implementation
+ • Calculator Software
+
+**
+ • Infix is human-readable.
+ • Prefix and Postfix do not require parentheses.
+ • Prefix and Postfix are evaluated using Stack.
+
 */
