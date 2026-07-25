@@ -1537,4 +1537,66 @@ Example
 
  ABC*+
 Time complexity -> O(n)
+
+Queue:
+
+ A Queue is a linear data structure that follows the FIFO (First In First Out) principlee
+
+ The element inserted first is removed first
+
+Examples:
+ • Queue at a ticket counter
+ • Queue in a bank
+ • Printer queue
+
+FIFO Principle:
+
+ Insertion  --->  [10] [20] [30]  --->  Deletion
+
+ First inserted = First removed
+
+Basic OPerations:
+ 1.Enqueue
+   Insert an element at the rear of the queue
+
+ 2.Dequeue
+   Remove an element from the front of the queue
+
+ 3.Peek (Front)
+   Returns the front element without removing it
+
+ 4.isEmpty()
+   Checks whether the queue is empty
+
+ 5.isFull()
+   Checks whether the queue is full
+   (only in array implementation)
+
+Queue Repersentation:
+ Front ---> [10] [20] [30] <--- Rear
+
+ Insertion takes place at the Rear
+
+ Deletion takes place from the Front
+
+Advantages:
+  Follows FIFO order
+  Easy insertion and deletion
+  Useful for scheduling tasks
+  Efficient for buffering operations
+
+Disadvantages:
+ No direct access to middle elements
+ Array implementation has fixed size
+ Simple array implementation may waste space after deletions
+
+Applications
+ CPU Scheduling
+ Printer Queue
+ Keyboard Buffer
+ Breadth First Search (BFS)
+ Network Packet Scheduling
+ Call Center Systems
+
+
 */
