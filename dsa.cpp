@@ -1598,5 +1598,60 @@ Applications
  Network Packet Scheduling
  Call Center Systems
 
+Queue Implementation using array:
+
+ A queue can be implemented using array
+
+ It requires
+ Array
+ Front
+ Rear
+ Size
+
+Structure:
+ struct Queue
+ {
+   int size;
+   int front;
+   int rear;
+   int* arr;
+ };
+
+Initialization
+ 
+ Queue q;
+
+ q.size = 5;
+ q.front = -1;
+ q.rear = -1;
+ q.arr =  new int[q.size];
+
+Intially
+ Front = -1
+ Rear = -1
+
+Why Front and Rear:
+ Front:- Points to thefirst element of the queue
+
+ Rear:- Points to the last inserted element
+
+Overflow Condition:
+ Queue is full when
+ rear == size - 1
+
+Underflow Condition:
+ Queue is Empty when
+ front == rear
+ (Initially both are -1)
+
+Advantages:
+ Simple implementation
+ Fast insertion and deletion
+ Direct access using array index
+
+Disadvantages:
+ Fixed size
+ Memory may be wasted after deletion
+ Cannot reuse free space in a simple array queue
 
 */
