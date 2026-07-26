@@ -745,7 +745,7 @@ Applications:-
  Navigation systems
 
 STACK:-
-Astack is a linear data structure that follows the LIFO (Last In First Out) principle
+A stack is a linear data structure that follows the LIFO (Last In First Out) principle
 
 LIFO:The element inserted last is removed first
 
@@ -820,7 +820,7 @@ Underflow: Occurs when we try to pop an element from an empty stack
 
 Stack Using Array:
 
- Stack Structure
+ Stack Structure:
   struct stack
   {
      int size;
@@ -1653,5 +1653,120 @@ Disadvantages:
  Fixed size
  Memory may be wasted after deletion
  Cannot reuse free space in a simple array queue
+
+Queue Operations:
+ The basic operations performed on a queue are:
+ 
+ 1.Enqueue
+ 2.Dequeue
+ 3.Peek(Front)
+ 4.isEmpty()
+ 5.isFull()
+
+1.Enqueue
+ Enqueue means inserting a new element at the rear of the queue
+
+Algorithm:
+ 1.Check whether the queue is full
+ 2.If full, Queue overflow
+ 3.Otherwise,
+     Increment Rear
+ 4.Insert the new element
+
+Function:
+ void enqueue(Queue &q, int value)
+ {
+    if(q.rear == q.size - 1)
+    {
+       cout << "Queue Overflow";
+       return;
+    }
+
+    if(q.front == -1)
+       q.front = 0;
+
+    q.rear++
+    q.arr[q.rear] = value;
+ }
+
+Time Complexity -> O(1)
+
+2.Dequeue
+ Dequeue means removing the front element from the queue
+
+Algorithm:
+ 1.Check whether the queue is empty
+ 2.If empty, queue underflow
+ 3.Store the front element
+ 4.Move front one position ahead
+ 5.Return the deleted element
+
+Function:
+
+ int dequeue(Queue &q)
+ {
+   if(q.front == -1 || q.front > q.rear)
+   {
+       cout << "Queue Underflow";
+       return -1;
+   }
+
+   int value = q.arr[q.front];
+   q.front++;
+
+   return value;
+ }
+
+Time complexity -> O(1)
+
+3.Peek (Front)
+ Peek returns the front element without removing it
+
+Function:
+ int peek(Queue &q)
+ {
+    if(q.front == -1 || q.front > q.rear)
+    {
+       cout << "Queue is Empty";
+       return -1;
+    }
+
+    return q.arr[q.front];
+ }
+
+Time Complexity -> O(1)
+
+4.isEmpty()
+ A queue is empty when
+ front == -1 || front > rear
+
+Function:
+ bool isEmpty(Queue &q)
+ {
+    return (q.front == -1 || q.front > q.rear);
+ }
+
+Time Complexity -> O(1)
+
+5.isFull()
+ A queue is full when
+ rear == size - 1
+
+Function:
+ bool isFull(Queue &q)
+ {
+    return (q.rear == q.size - 1);
+ }
+
+Time complexity -> O(1)
+
+**
+ Insertion always takes place at Rear.
+ Deletion always takes place from Front.
+ Queue follows FIFO.
+ Overflow occurs when Rear reaches the last index.
+ Underflow occurs when the queue is empty.
+
+
 
 */
