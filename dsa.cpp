@@ -1767,6 +1767,66 @@ Time complexity -> O(1)
  Overflow occurs when Rear reaches the last index.
  Underflow occurs when the queue is empty.
 
+Circular Queue:
+ A Circular Queue is a linear data structure in which
+ the last position is connected to the first position,
+ forming a circle
 
+ It follows the FIFO (First In First Out) principle
 
-*/
+Why do we need a Circular Queue:
+ In a simple array queue,the space freed after deletion be reused
+
+Solution:
+ A Circular Queue reuse the empty spaces by moving Rear back to the beginning when it reaches the last index
+
+ This is called Wrap Around
+
+Representaion:
+Initial
+ Front = -1
+ Rear = -1
+ 
+After Enqueue:
+ Front ---> [10] [20] [30] <--- Rear
+
+After Dequeue:
+ Front ---> [30] [ ] [ ] <--- Rear
+
+After More Enqueue:
+ Rear moves to the beginning
+ when the end of the array is reached
+
+Front and Rear Movement:
+ Next Position
+ (index + 1) % size
+
+Example:
+ size = 5
+ Rear = 4
+ Next Rear
+ (4 + 1) % 5 = 0
+
+Full Condition:
+ (front == (rear + 1) % size)
+
+Advantages:
+ Efficient memory utilization
+ Reuses deleted spaces
+ No unnecessary space wastage
+ Enqueue and Dequeue are efficient
+
+Disadvantages:
+ Slightly more complex than a simple queue.
+ Requires modular arithmetic
+
+Applications:
+ CPU Scheduling
+ Circular Buffer
+ Keyboard Buffer
+ Printer Queue
+ Network Packet Buffer
+ Multimedia Streaming
+ 
+
+ */
