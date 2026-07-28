@@ -1828,5 +1828,151 @@ Applications:
  Network Packet Buffer
  Multimedia Streaming
  
+Circular Queue Operations:
+ The basic operations of a circular queue are:
+ 1.Enqueue
+ 2.Dequeue
+ 3.Peek(Front)
+ 4.isEmpty()
+ 5.ifFull()
 
+Structure:
+ struct Queue
+ {
+   int size;
+   int front;
+   int rear;
+   int *arrr;
+ };
+
+Initialization:
+ Queue q;
+ q.size = 5;
+ q.front = -1;
+ q.rear = -1;
+ q.arr = new int[q.size];
+
+1.Enqueue:
+ Enqueue means inserting an element at the rear
+
+Algorithm:
+ 1.Check whether the queue is full
+ 2.If full, print Queue Overflow
+ 3.If queue is empty,
+    set front = rear = 0
+ 4.Otherwise,
+    rear = (rear + 1) % size
+ 5.Insert the element
+
+Function:
+ void enqueue(Queue &q, int value)
+ {
+    if((q,rear + 1) % q.size == q.front)
+    {
+      cout << "Queue Overflow";
+      return;
+    }
+
+    if(q.front == -1)
+    {
+       q.front = 0;
+       q.rear = 0;
+    }
+    else
+    {
+    q.rear = (q.rear + 1) % q.size;
+    }
+
+    q.arr[q.rear] = value;
+ }
+
+Time Complexity -> O(1)
+
+2.Dequeue:
+ Dequeue means removing the front element
+
+Algorithm:
+ 1.Check whether thw queue is empty
+ 2.Store the front element
+ 3.If only one element exists,
+    set front = rear = -1
+ 4.Otherwise,
+    move front using
+    (front + 1) % size
+ 5.Return deleted element
+
+Function:
+ int dequeue(Queue &q)
+ {
+    if(q,front == -1)
+    {
+      cout << 'Queue Underflow";
+      return -1;
+    }
+    
+    int value = q.arr[q.front];
+
+    if(q.front == 1.rear)
+    {
+        q.front = -1;
+        q.rear = -1;
+    }
+    else
+    {
+        q.front = (q.front + 1) % q.size;
+    }
+    return value;
+ }
+
+Time complexity -> O(1)
+
+3.Peek
+ Peek returns the front element
+
+Function:
+ int peek(Queue &q)
+ {
+    if(q.front == -1)
+    {
+       cout << "Queue is Empty";
+       return -1;
+    }
+      
+    return q.arr[q.front];
+ }
+
+Time Complexity -> O(1)
+
+4.isEmpty()
+
+Function:
+ bool is Empty(Queue &q)
+ {
+    return (q.front == -1);
+ }
+
+Time Complexity -> O(1)
+
+5.isFull()
+
+Function:
+ bool isFull(Queue &q)
+ {
+   return ((q.rear + 1) % q.size == q.front);
+ }
+
+Time Complexity -> O(1)
+
+***
+Important Formula:
+ Next Index
+ (index + 1) % size
+
+Important points:
+ Circular Queue follows FIFO
+ Rear moves using modulo (%)
+ Empty spaces are reused
+ No memory wastage like a simple queue
+ Overflow occurs when
+   (rear + 1) % size == front
  */
