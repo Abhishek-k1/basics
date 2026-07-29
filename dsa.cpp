@@ -1975,4 +1975,126 @@ Important points:
  No memory wastage like a simple queue
  Overflow occurs when
    (rear + 1) % size == front
+   
+Queue Using Linked List:
+ A Queue can be implemented using a linked list
+ ir follows the FIFO (First In First Out) principle
+ Insertionn is performed at the rear
+ Deletion is performed from the front
+
+Node Structure:
+ struct Node
+ {
+    int data;
+    Node* next; 
+ };
+
+Queue Representation:
+ struct Queue
+ {
+    Node* front;
+    Mode* rear;
+ };
+
+Initially:
+ front = NULL
+ rear = NULL
+
+Enqueue:
+ Enqueue means inserting a new node at the rear
+
+Algorithm:
+ 1.Create a new node
+ 2.Store the value
+ 3.If the queue is empty,
+   set front = rear = newNode
+ 4.Otherwise,
+   rear->next = newNode
+ 5.Update rear = newNode
+
+Function:
+ void enqueue(Queue &q, int value)
+ {
+   Node* newNode = new Node();
+   newNode->data = value;
+   newNode->next = NULL;
+
+   if(q.front == NULL)
+   {
+     q.front = newNode;
+     q.rear = newNode;
+   }
+ }
+
+Time Complexity -> O(1)
+
+Dequeue
+ Dequeue means removing the front node
+
+Algorithm:
+ 1.Check whether the queue is empty
+ 2.Store the front node
+ 3.Move front to the next node
+ 4.Delete the old front node
+ 5.If front becomes NULL,
+    set rear = NULL
+
+Function:
+ void dequeue(Queue &q)
+ {
+   if(q.front == NULL)
+   {
+      cout << "Queue Underflow";
+      return;
+   }
+
+   Node* temp = q.front;
+   q.front = q.front->next;
+
+   if(q.front == NULL)
+   {
+     q.rear = NULL;
+   }
+
+   delete temp;
+ }
+
+Time Complexity -> O(1)
+
+Peek:
+ Peek returns the front element
+
+Function:
+ int peek(Queue &q)
+ {
+   if(qq.front == NULL)
+   {
+      cout << "Queue is Empty";
+      return -1;
+   }
+
+   return q.front->data;
+ }
+
+Time Complexity -> O(1)
+
+isEmpty:
+
+Function:
+ bool isEmpty(Queue &q)
+ {
+    return (q.front == NULL);
+ }
+
+Time Complexity -> O(1)
+
+Advantages:
+ Dynamic size
+ No fixed capacity
+ No memory wastage
+ Enqueue and Dequeue take O(1)
+
+Disadvantages:
+ Extra memory required for pointers
+ No direct access to elements
  */
