@@ -2097,4 +2097,79 @@ Advantages:
 Disadvantages:
  Extra memory required for pointers
  No direct access to elements
+
+Double-Ended Queue (Deque)
+ A Deque is a linear data structure in which inserttion and deletion can be performed in ehich 
+ insertion and deletion can be performed from both and the rear
+
+ Deque follows a flexible insertion and deletion mechanism
+
+Operations:
+ 1.Insert Front
+  Insert an element at the front
+
+ 2.Insert Rear
+  Insert an element at the rear
+
+ 3.Delete Front
+  Remove the rear element
+
+ 4.Delete Rear
+  Remove the rear element
+
+ 5.Peek Front
+  Returns the front element
+
+ 6.Peek Rear
+  Returns the rear element
+
+ 7.isEmpty()
+  Checks whether the deque is empty
+
+ 8.ifFull()
+  Checks whether the deque is full 
+  (only in array implementation)
+
+Types of Deque
+1.Input Restricted Deque
+ Insertion is allowed only at one end
+ Deletion is allowed from both ends
+
+2.Output Restricted Deque
+ Insertion is allowed from both ends
+ Deletion is allowed only from one end
+
+Advantages
+ Insertion from both ends
+ Deletion from both ends
+ More flexible than a Queue
+ Efficient implementation using arrays or linked lists
+
+Disadvantages
+ More complex than a simple Queue
+ Array implementation has fixed size
+ Slightly harder to implement
+
+Applications
+ Browser History
+ Undo / Redo Operations
+ Sliding Window Problems
+ Job Scheduling
+ Palindrome Checking
+ Cache Implementation
+
+Time Complexity:
+ Insert Front -> O(1)
+ 
+ Insert Rear  -> O(1)
+ 
+ Delete Front -> O(1)
+ 
+ Delete Rear  -> O(1)
+ 
+ Peek Front   -> O(1)
+ 
+ Peek Rear    -> O(1)
+ 
+
  */
