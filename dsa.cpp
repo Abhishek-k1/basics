@@ -2,24 +2,24 @@
 Introduction-> Data structure + algorithms
 Data structure-> way of storing data like
 array
-linkedlist
+linked List
 stack
 queue
 tree
 graph
 Algorithm-> step by step procedure to solve a problem
-ex-> finding largesst number in a array
+Ex-> Finding the largest number in an array
 
-Important of DSA:-
-makes program faster
-uses les memory
-immproves problem solvinng skills
-help for coding interview
+Importance of DSA:-
+Makes program faster
+Uses less memory
+Improves problem solvinng skills
+Helps for coding interviews
 
 TIME COMPLEXITY:-
-time complexity tells how much work an algorithm performs as input size increase
-it does not measure seconds
-it measure number of operation
+time complexity tells how much work an algorithm performs as the input size increases
+It does not measure seconds
+It measure number of operations
 Ex->
  for(int i = 0; i < n; i++)
  {
@@ -27,7 +27,7 @@ Ex->
  }
 
  Loop runs n times
- Time Complexity = 0(n)
+ Time Complexity = O(n)
 
 BIG O NOTATION:-
 big o represents worst case complexity
@@ -36,19 +36,19 @@ O(1)-> Constant Time
 O(log n)-> Logarithmic Time
 O(n)-> Linear time
 O(n log n)-> Efficient sorting
-O(n2)-> Nested Loops
+O(n*n)-> Nested Loops
 
 Asymptotic Notations:-
 1.Big O(O)-> Worst Case
 2.Big Omega(Ω)-> Best case
-3.Big theta(Θ)-> Average/Tight Bound
+3.Big theta(Θ)-> Average Case / Tight Bound
 
 Best case, Worst case and Average case
 Example-> Linear Search
 Array:- 10 20 30 40 50
-IF searching 10: found immediately
+IF searching for 10: found immediately
                  Best Case Ω(1)
-IF searching 50: worst case O(n)
+IF searching for 50: worst case O(n)
                  because check every element
 If searching random element: Average Case Θ(n)
 
@@ -83,22 +83,23 @@ for(int i = 0; i < n; i++)
 {
      cout << i;
 }
-Complexity = o(5n)
-           = o(n)
+Complexity = O(5n)
+           = O(n)
 
 ARRAY AND ABSTRACT DATA TYPE:-
 Array is collection of element of same data types stored in contiguous memory locations
 
 Characteristics
-stores same type of data
-stored in contiguous memory
-index start from 0
-fixed size
+Stores elements of the same data type
+Stored in contiguous memory
+Index starts from 0
+Fixed size
 
 Advantages
 fast access using index
 easy to traverse
 less memory overhead
+Arrays provide direct (random) access using an index
 
 Disadvantages
 Fixed size
@@ -107,12 +108,12 @@ deletion is costly
 memory may be wasted
 
 Abstract Data Type:-
-ADT defines what operation can be performed on data but does not specify how those operation are implemented
-ADT tells: what can be done?
+ADT defines what operations can be performed on data but does not specify how those operations are implemented
+ADT tells: what can be done, not how it is implemented
 
 Array as an ADT
 Array ADT-> array ADT is a logical representation of an array that defines
-size of array
+Size of the array
 total number of elements
 operations that can be performed
 1.Traversal-> visit every element of an array one by one
@@ -123,8 +124,8 @@ operations that can be performed
 
 Representation of array ADT
 1.Pointer to array
-2. Total size of array
-3. Number of  used elements
+2.Total size of array
+3.Number of used elements
 
 Array ADT structure
 struct Array
@@ -183,7 +184,20 @@ Binary search
  else
      low = mid + 1;
  }
+-> Binary Search work only on a sorted array
 
+Time Complexity:
+ Traversal      -> O(n)
+
+ Insertion      -> O(n)
+
+ Deletion       -> O(n)
+
+ Linear Search  -> O(n)
+
+ Binary Search  -> O(log n)
+
+ Updating       -> O(1)
 
 
 LINKED LIST:-
