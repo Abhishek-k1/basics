@@ -1043,7 +1043,7 @@ Function:
 
 Stack Using Linked List:
 
- A atack can also be implemented using linked list
+ A stack can also be implemented using linked list
  it follow LIFO principle
  unlike an array, a linked list does not have a fixed size
  memory is allocated dynamically when new nodes are created
@@ -2185,5 +2185,73 @@ Time Complexity:
  
  Peek Rear    -> O(1)
  
+Sorting Algorithms:
+ Sorting is the process of arranging data in a specific order
+
+The two common orders are:
+ Ascending order -> Amall to Large
+ Descending order -> Large to Small
+ 
+Why do we need Sorting?
+ Makes searching faster
+ Origanize data
+ Improves efficiency of algorithms
+ Required in many applications like databases and searching
+
+Types Of Sorting
+1.Internal Sorting
+ All data fits into the main memory (RAM)
+Examples:
+ Bubble sort
+ Selection sort
+ Insertion sort
+ Merge sort
+ Quick sort
+
+2.External Sorting
+ Data is too large to fit into RAM
+ uses secondary storage such as Hard Disk or SSD
+
+Stable Sorting:
+ A sorting algorithm is stable if equal elements remain in the same 
+ relative order after sorting
+
+Example:
+ Before Sorting
+ 30A 20 30B
+
+ After Stable Sorting
+ 20 30A 30B
+
+Unstable Sorting
+ Equal elements may change their relative order
+
+Example:
+ Before Sorting
+ 30A 20 30B
+
+ After Sorting
+ 20 30B 30A
+
+Adaptive Sorting
+ An adaptive sorting algorithm performs faster when the input is already partially sorted
+
+Example:
+ Insertion Sort
+
+Non-Adaptive Sorting
+ The algorithm performs almost the same amount of work regardless of whether the array is sorted or not
+
+Example:
+ Selection Sort
+
+Applications:
+ Searching
+ Database Management
+ Data Analysis
+ Report Generation
+ Compiler Design
+
+
 
  */
