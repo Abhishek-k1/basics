@@ -2189,12 +2189,12 @@ Sorting Algorithms:
  Sorting is the process of arranging data in a specific order
 
 The two common orders are:
- Ascending order -> Amall to Large
+ Ascending order -> small to Large
  Descending order -> Large to Small
  
 Why do we need Sorting?
  Makes searching faster
- Origanize data
+ Organize data
  Improves efficiency of algorithms
  Required in many applications like databases and searching
 
@@ -2251,6 +2251,25 @@ Applications:
  Data Analysis
  Report Generation
  Compiler Design
+ 
+Criteria for analysis of sorting Algorithms
+
+1.Time Complexity
+ Time Complexity tells how much time a sorting algorithm takes to sort the data
+
+ Cases:
+ Best Case
+ Average Case
+ Worst Case
+
+2.Space Complexity
+ Space  Complexity  tells how much extra memory is required by the sorting algorithm
+
+3.Stability
+ A stable sorting algorithm preserves the relative order of equal elements after sorting
+
+4.Adaptiveness
+ An adaptive sorting algorithm performs faster if the array is already sorted or nearly sorted
 
 
 
