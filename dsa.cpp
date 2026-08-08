@@ -2271,6 +2271,44 @@ Criteria for analysis of sorting Algorithms
 4.Adaptiveness
  An adaptive sorting algorithm performs faster if the array is already sorted or nearly sorted
 
+Bubble Sort:
+ Bubble sort is a simple sorting algorithm that repeatedly compares adjacent elements and swaps them if they are in the wrong order
+ After each pass, the largest element moves to the end of the array in ascending order
 
+Algorithm:
+1.Start from the first element
+2.Compare two adjacent elements
+3.If the first element is greater than the second element, swap them
+4.Continue comparing adjacent elements
+5.After one complete pass, the largest element reaches the end
+6.Repeat the process for the remaining elements
+7.Stop when the array is completely sorted
 
+ void bubbleSort(int arr[], int n)
+ {
+   for(int i = 0; i < n - 1; i++)
+   {
+      bool swapped = false;
+
+      for(int j = 0; j < n - i - 1; j++)
+      {
+         if(arr[j] > arr[j + 1])
+         {
+           int temp = arr[j];
+           arr[j] = arr[j + 1];
+           arr[j + 1] = temp;
+
+           swapped = true;
+         }
+      }
+         if(swapped == false)
+         break;
+   }
+ }
+
+Tme Complexity-> Best Case -> O(n)
+              -> Average Case -> O(n*n)
+              -> Wrost Case -> O(n*n)
+
+Space Complexity -> O(1)
  */
