@@ -1141,7 +1141,7 @@ Algorithm:
  3.Return the node's data
 
 Function:
- int peek(int position)
+ // Stores the value of the node int peek(int position)
  {
     Node* temp = top;
 
@@ -2306,9 +2306,73 @@ Algorithm:
    }
  }
 
-Tme Complexity-> Best Case -> O(n)
-              -> Average Case -> O(n*n)
-              -> Wrost Case -> O(n*n)
+Time Complexity-> Best Case -> O(n)
+               -> Average Case -> O(n*n)
+               -> Wrost Case -> O(n*n)
 
 Space Complexity -> O(1)
+
+Properties of Bubble Sort:
+ Stable
+ Adaptive (when optimized using swapped)
+ In-Place
+
+Insertion Sort:
+ Insertion Sort is a sorting algorithm that builds the sorted array one element ata time
+ It Works similar to arranging playing cards in your hand
+
+Algorithm
+1.Start from the second element
+2.Store the current element in key
+3.Compare key wwith elements before it
+4.Shift elements greater than key one position to the right
+5.Insert key at its correct position
+6.Repeat until the entire array is sorted
+
+ Void insertionSort(int arrr[], int n)
+ {
+   for(int i = 1; i < n; i++)
+   {
+      int key = arr[i];
+      int j = i - 1;
+
+      while(j >= 0 && arr[j] > key)
+      {
+          arr[j + 1] = arr[j];
+          j--;
+      }
+          arr[j + 1] = key;
+   }
+ }
+ 
+ int main()
+ {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = 5;
+
+    insertionSort(arr, n);
+
+    cout << "Sorted Array: ";
+
+    for(int i = 0; i < n; i++)
+    {
+       cout << arr[i] << " ";
+    }
+
+    return 0;
+ }
+
+Time Complexity -> Best Case -> O(n)
+                -> Average Case -> O(n*n)
+                -> Worst Case -> O(n*n)
+
+Space Complexity -> O(1)
+
+Properties:
+ Stable
+ Adaptivve
+ In-Place
+
+Bubble Sort ->  swaps adjacent elements
+Insertion Sort -> shifts elements and inserts key at the correct position
  */
