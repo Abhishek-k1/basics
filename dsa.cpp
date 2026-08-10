@@ -1141,7 +1141,8 @@ Algorithm:
  3.Return the node's data
 
 Function:
- // Stores the value of the node int peek(int position)
+ // Stores the value of the node 
+ int peek(int position)
  {
     Node* temp = top;
 
@@ -2317,9 +2318,15 @@ Properties of Bubble Sort:
  Adaptive (when optimized using swapped)
  In-Place
 
+** Swap adjacent elements
 Insertion Sort:
  Insertion Sort is a sorting algorithm that builds the sorted array one element ata time
  It Works similar to arranging playing cards in your hand
+
+Working:
+ The array is divided onto two parts:
+ 1. Sorted part
+ 2.Unsorted part
 
 Algorithm
 1.Start from the second element
@@ -2329,7 +2336,7 @@ Algorithm
 5.Insert key at its correct position
 6.Repeat until the entire array is sorted
 
- Void insertionSort(int arrr[], int n)
+ void insertionSort(int arrr[], int n)
  {
    for(int i = 1; i < n; i++)
    {
@@ -2362,9 +2369,9 @@ Algorithm
     return 0;
  }
 
-Time Complexity -> Best Case -> O(n)
+Time Complexity -> Best Case -> O(n)  when the array is already sorted
                 -> Average Case -> O(n*n)
-                -> Worst Case -> O(n*n)
+                -> Worst Case -> O(n*n)  When the array is sorted in reverse order
 
 Space Complexity -> O(1)
 
@@ -2373,6 +2380,8 @@ Properties:
  Adaptivve
  In-Place
 
-Bubble Sort ->  swaps adjacent elements
-Insertion Sort -> shifts elements and inserts key at the correct position
+** Insertion Sort does not swap elements like Bubble sort 
+   It shifts elements to the right and inserts the key at its correct position
+
+Idea: Take -> Compare -> Shift -> Insert
  */
