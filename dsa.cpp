@@ -2384,4 +2384,65 @@ Properties:
    It shifts elements to the right and inserts the key at its correct position
 
 Idea: Take -> Compare -> Shift -> Insert
+
+Selection Sort
+ Selection Sort is a sorting algorithm that repeatedly selects the smallest element from the unsorted part of the array and
+ places it at the correct position
+
+It divides the array into two parts:
+1.Sorted part
+2.Unsorted part
+
+Algorithm:
+1.Start from the first element
+2.Assume the current position contains the smallest element
+3.Search the remaining unsorted array for a smaller element
+4.If a smaller element is found, update the minimum index
+5.Swap the minimum element with the first element of the unsorted part
+6.Move to the next position
+7.Repeat until the array is sorted
+
+ void selectionSort(int arr[], int n)
+ {
+    for(int i = 0; i < n - 1; i++)
+    {
+      int minIndex = i;
+
+      for(int j = i + 1; j < n; j++)
+      {
+         if(arr[j] < arr[minIndex])
+         {
+            minIndex = j;
+         }
+      }
+         
+      int temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    } 
+ }
+
+ minIndex-> Stores the index of the smallest element
+ i       -> Represents the current position
+ j       -> Used to search the unsorted part
+
+Worlking:
+ Initially, the entire array is Unsorted
+ In every Pass:
+ Find minimum -> swap with first unsorted element
+ After each pass, one element reaches its correct position
+
+Time Complexity:
+ Best case -> O(n*n)
+ Average case -> O(n*n)
+ Worst case -> O(n*n)
+
+Space Complexity -> O(1)
+
+Properties:
+ In-Place -> yes
+ Adaptive -> No
+ Stable -> No
+
+ 
  */
