@@ -1141,7 +1141,7 @@ Algorithm:
  3.Return the node's data
 
 Function:
- // Stores the value of the node 
+ // Stores the value of the node
  int peek(int position)
  {
     Node* temp = top;
@@ -1525,7 +1525,7 @@ Conversion Function:
 
       return postfix;
    }
-   
+
 Example
 
  Infix
@@ -1633,7 +1633,7 @@ Structure:
  };
 
 Initialization
- 
+
  Queue q;
 
  q.size = 5;
@@ -1671,7 +1671,7 @@ Disadvantages:
 
 Queue Operations:
  The basic operations performed on a queue are:
- 
+
  1.Enqueue
  2.Dequeue
  3.Peek(Front)
@@ -1801,7 +1801,7 @@ Representaion:
 Initial
  Front = -1
  Rear = -1
- 
+
 After Enqueue:
  Front ---> [10] [20] [30] <--- Rear
 
@@ -1842,7 +1842,7 @@ Applications:
  Printer Queue
  Network Packet Buffer
  Multimedia Streaming
- 
+
 Circular Queue Operations:
  The basic operations of a circular queue are:
  1.Enqueue
@@ -1924,7 +1924,7 @@ Function:
       cout << 'Queue Underflow";
       return -1;
     }
-    
+
     int value = q.arr[q.front];
 
     if(q.front == 1.rear)
@@ -1952,7 +1952,7 @@ Function:
        cout << "Queue is Empty";
        return -1;
     }
-      
+
     return q.arr[q.front];
  }
 
@@ -1990,7 +1990,7 @@ Important points:
  No memory wastage like a simple queue
  Overflow occurs when
    (rear + 1) % size == front
-   
+
 Queue Using Linked List:
  A Queue can be implemented using a linked list
  ir follows the FIFO (First In First Out) principle
@@ -2001,7 +2001,7 @@ Node Structure:
  struct Node
  {
     int data;
-    Node* next; 
+    Node* next;
  };
 
 Queue Representation:
@@ -2114,7 +2114,7 @@ Disadvantages:
  No direct access to elements
 
 Double-Ended Queue (Deque)
- A Deque is a linear data structure in which inserttion and deletion can be performed in ehich 
+ A Deque is a linear data structure in which inserttion and deletion can be performed in ehich
  insertion and deletion can be performed from both and the rear
 
  Deque follows a flexible insertion and deletion mechanism
@@ -2142,7 +2142,7 @@ Operations:
   Checks whether the deque is empty
 
  8.ifFull()
-  Checks whether the deque is full 
+  Checks whether the deque is full
   (only in array implementation)
 
 Types of Deque
@@ -2175,24 +2175,24 @@ Applications
 
 Time Complexity:
  Insert Front -> O(1)
- 
+
  Insert Rear  -> O(1)
- 
+
  Delete Front -> O(1)
- 
+
  Delete Rear  -> O(1)
- 
+
  Peek Front   -> O(1)
- 
+
  Peek Rear    -> O(1)
- 
+
 Sorting Algorithms:
  Sorting is the process of arranging data in a specific order
 
 The two common orders are:
  Ascending order -> small to Large
  Descending order -> Large to Small
- 
+
 Why do we need Sorting?
  Makes searching faster
  Organize data
@@ -2214,7 +2214,7 @@ Examples:
  uses secondary storage such as Hard Disk or SSD
 
 Stable Sorting:
- A sorting algorithm is stable if equal elements remain in the same 
+ A sorting algorithm is stable if equal elements remain in the same
  relative order after sorting
 
 Example:
@@ -2252,7 +2252,7 @@ Applications:
  Data Analysis
  Report Generation
  Compiler Design
- 
+
 Criteria for analysis of sorting Algorithms
 
 1.Time Complexity
@@ -2351,7 +2351,7 @@ Algorithm
           arr[j + 1] = key;
    }
  }
- 
+
  int main()
  {
     int arr[] = {5, 3, 8, 4, 2};
@@ -2380,7 +2380,7 @@ Properties:
  Adaptivve
  In-Place
 
-** Insertion Sort does not swap elements like Bubble sort 
+** Insertion Sort does not swap elements like Bubble sort
    It shifts elements to the right and inserts the key at its correct position
 
 Idea: Take -> Compare -> Shift -> Insert
@@ -2415,18 +2415,18 @@ Algorithm:
             minIndex = j;
          }
       }
-         
+
       int temp = arr[i];
       arr[i] = arr[minIndex];
       arr[minIndex] = temp;
-    } 
+    }
  }
 
  minIndex-> Stores the index of the smallest element
  i       -> Represents the current position
  j       -> Used to search the unsorted part
 
-Worlking:
+Working:
  Initially, the entire array is Unsorted
  In every Pass:
  Find minimum -> swap with first unsorted element
@@ -2444,5 +2444,110 @@ Properties:
  Adaptive -> No
  Stable -> No
 
- 
- */
+ **Selection Sort finds the minimum element from the unsorted part and swaps it with the first element of the unsorted part
+
+Idea-> Find Minimum → Swap → Repeat
+
+Quick Sort:
+ Quick Sort is a divide and conquer sorting algorithm that selects a pivot
+ element and partions  the array around the pivot
+
+After Partitioning:
+ Elements smaller than the pivot are placed on the left
+ Elements greater than the pivot are placed on the right
+ The pivot reaches its correct position
+ The same process is recursively applied to the left and right parts
+
+Algorithm:
+1.Select a pivot element
+2.Partition the array arounnd the pivot
+3.Place smaller elements on the left of the pivot
+4.Place greater elements on the right of the pivot
+5.The pivot reaches its correct position
+6.Recursively apply Quick Sort to the left part
+7.Recursively apply Quick Sort to the right part
+8.Stop when low >= high
+
+Partition:
+ Partitioning rearranges the elements around the pivot
+ Smallest elements | Pivot | Greater elements
+ After  partitioning, the pivot is placed at its correct position
+
+Function : int partition(int arr[], int low, int high)
+{
+   int pivot = arr[low];
+   int i = low + 1;
+   int j = high;
+
+   do
+   {
+      while (i <= high && arr[i] <= pivot)
+      {
+         i++;
+      }
+
+      while (arr[j] > pivot)
+      {
+         j--;
+      }
+
+      if (i < j)
+      {
+         int temp = arr[i];
+         arr[i] = arr[j];
+         arr[j] = temp;
+      }
+   } while (i < j);
+   int temp = arr[low];
+   arr[low] = arr[j];
+   arr[j] = temp;
+
+   retrurn j;
+}
+
+Quick Sort Function:
+ void quickSort(int arr[], int low, int high)
+ {
+   if(low < high)
+  {
+     int partitionIndex = partition(arr, low, high);
+
+     QuickSort(arr, low, partitionIndex - 1);
+     QuickSort(arr, partitionIndex + 1,  high);
+   }
+ }
+
+Main Function:
+ int main()
+ {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = 6;
+
+    quickSort(arr, 0, n - 1);
+
+    cout << "Sorted Array: ";
+
+    for(int i = 0; i < n; i++)
+    {
+       cout << arr[i] << " ";
+    }
+
+    retrun 0;
+ }
+
+Time Complexity:
+ Best Case -> O(n log n)
+ Average Case -> O(n log n)
+ Worst Case -> O(n*n)
+
+Space Complexity:
+ Average Case -> O(log n)
+ Worst Case -> O(n)
+
+Space is used by the recursion call stack
+
+Properties:
+ in-Place -> yes
+ Stable -> No
+ Adaptive -> No
+*/
