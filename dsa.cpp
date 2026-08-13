@@ -2550,4 +2550,135 @@ Properties:
  in-Place -> yes
  Stable -> No
  Adaptive -> No
+
+Merge Sort:
+ Merge Sort is a divide and conquer sorting algorithm that divides the array into smaller subarrays, sorts them and themn merges them to form a sorted array
+
+Divide and Conquer:
+ Merge Sort works in three main steps:
+1.Divide -> Divide the array into teo halves
+2.Conquer -> Recursively sort both halves
+3.Combine -> Merge the two sorted halves
+
+Algorithm:
+1.If the array contains one or zero elements, it is already sorted
+2.Find the middle position
+3.Divide the array into two halves
+4.Recursively apply Merge Sort to the left half
+5.Recursively apply Merge Sort to the right half
+6.Merge the two sorted halves
+7.Continue until the complete array is sorted
+
+Merge Function:
+ The merge function combines two already sorted parts into one sorted part
+
+ void merge(int arr[], int low, int mid, int high)
+ {
+   int i = low;
+   int j = mid + 1;
+   int k = low;
+
+   int b[10];
+
+   while(i <= mid && j <= high)
+   {
+     if(arr[i] < arr[j])
+     {
+       b[k] = arr[i];
+       i++
+     }
+     else
+     {
+       b[k] = arr[j];
+       j++;
+     }
+
+     k++;
+   }
+     while(i <= mid)
+     {
+       b[k] = arr[i];
+       i++;
+       k++;
+     }
+
+     while(j <= high)
+     {
+        b[k] = arr[j];
+        j++;
+        k++:
+     }
+
+     for(int i = low; i <= high; i++)
+     {
+        arr[i] = b[i];
+     }
+ }
+
+Merge Sort Function:
+ void mergeSort(int arr[], int low, int high)
+ {
+    if(low < high)
+    {
+       int mid = (low + high) / 2;
+
+       mergeSort(arr, low, mid);
+       mergeSort(arr, mid + 1, high);
+
+       merge(arr, low, mid, high);
+    }
+ }
+
+Main Function:
+ int main()
+ {
+    int arr[] = {38, 27, 76. 6, 9, 10, 24}
+    int n= 7;
+
+    mergeSort(arr, 0, n - 1);
+
+    cout << "Sorted Array: ";
+
+    for(int i = 0; i < n; i++)
+    {
+       cout << arr[i] << " ";
+    }
+       return 0;
+ }
+
+Working:
+ Merge Sort first divides the array until individual elements remain
+ Then it starts merging the elements in sorted order
+
+Time Complexity:
+ Best Case -> O(n log n)
+ Average Case -> O(n log n)
+ Worst Case -> O(n log n)
+
+Merge Sort always divides the array into approximately two halves and performs
+merging in O(n) time
+
+Space Complexity -> O(n)
+
+Properties:
+ Stable -> yes
+ Adaptive -> No
+ In-Place -> No
+ Divide and Conquer -> yes
+
+Comparison:
+Bubble Sort
+-> Swaps adjacent elements
+
+Insertion Sort
+-> Shifts elements and inserts the key
+
+Selection Sort
+-> Finds minimum and swaps
+
+Quick Sort
+-> Selects pivot and partitions
+
+Merge Sort
+-> Divides array and merges sorted parts
 */
