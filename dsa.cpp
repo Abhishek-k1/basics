@@ -2666,6 +2666,71 @@ Properties:
  In-Place -> No
  Divide and Conquer -> yes
 
+Count Sort:
+ Count Sort is a non-Comparison based sorting algorithm that sorts elements by counting the   umber of occurrences of each element
+ It works well when the number of occurences of each element
+
+Algorithm:
+1.Find the maximum element in the array
+2.Create a count array
+3.Count the frequency of each element
+4.Use the count  array to reconstruct the sorted array
+
+ void countSort(innt arr[], int n)
+ {
+    int max = arr[0];
+
+    for(int i = 1; i < n; i++)
+    {
+       if(arr[i] >  max)
+       {
+         max = arr[i];
+       }
+    }
+
+    int* count = new int[max + 1]{0};
+
+    for(int i = 0; i < n; i++)
+    {
+       counnt[arr[i]]++; 
+    }
+
+    int i = 0;
+    int j = 0;
+
+    while(i <= max)
+    {
+       if(count[i] > 0)
+       {
+          arr[j] = 1;
+          count[i]--;
+          j++;
+       }
+          else
+          {
+             i++;
+          }
+    }
+          delete[] count;
+    }
+
+Time Complexity: O(n + K)
+Space Complexity -> O(K)
+
+Properties:
+ Stable -> no
+ In-place -> no
+ Adaptive -> no
+
+Advantages:
+ Faster than comparison-based sorting when the range is small
+ Simple counting-based approach
+
+Disadvantages:
+ Not suitable when the range of values is very large
+ Requires extra memory for the count array
+ Basic Count Sort works with non-negative integers
+
 Comparison:
 Bubble Sort
 -> Swaps adjacent elements
@@ -2681,4 +2746,8 @@ Quick Sort
 
 Merge Sort
 -> Divides array and merges sorted parts
+
+Count Sort
+-> Count frequency
+
 */
