@@ -2930,4 +2930,56 @@ Example:
          /
         30
  Height of tree = 2
+
+Properties  of a Tree:
+ A tree is a non linear structure
+ A tree has a root node
+ Every node except the root has exactly one parent
+ A tree does not contain cycles
+ There is exactly one path between any two nodes
+ If a tree has n nodes, it has n - 1 edges
+
+Number of edges = Number of nodes - 1
+
+Tree vs Linear Data Structure:
+
+Linear Data Structure:
+ Data is arranged sequentially
+Example:
+ Array
+ Linked List
+ Stack
+ Queue
+
+Non-Linear Data Structure:
+ Data is arranged hierarchically or as a network
+Example:
+ Tree
+ Graph
+
+Basic Tree Representation:
+ A tree node can be represented using a structure
+
+ struct Node
+ {
+    int data;
+    Node* left;
+    Node* right;
+ };
+
+ Here:
+ data -> stores the value
+ left -> points to left child
+ right -> points to right child
+This structure is commonly used for a Binary Tree
+
+Simple way:
+   Root
+    ↓ 
+   Parent 
+    ↓
+   Child 
+    ↓
+   Leaf
+
  */
