@@ -2750,4 +2750,184 @@ Merge Sort
 Count Sort
 -> Count frequency
 
-*/
+TREES:
+ A Tree is a non-linear data structure that represents data in a hierarchical form
+ A tree consists of nodes connected by edges
+
+Example:
+                 10
+                / \
+               20  30
+              / \   \
+             40 50   60
+
+Here: 10, 20, 30, 40, 50, 60 ->Nodes
+      Lines connecting nodes -> Edges
+      10 -> Root
+
+Why do we use Trees?
+ Trees are used data has a hierarchical relationship
+
+Applications:
+ File and Folder Systems
+ Database indexing
+ HTML DOM
+ Organization hierarchy
+ Searching
+ Artificial Intelligence
+ Compiler design
+ Network routing
+
+Important Terminology:
+1.Node
+ A node is an individual element of a tree that contains data
+
+Example: 
+ 10
+ 10 is a node
+
+2.Root
+ The topmost node of a tree is called the root
+
+Example:
+            10
+            / \
+          20   30
+   
+ 10 is the rootnode
+ A tree has only one root
+
+Edge:
+ An edge is the connection between two nodes
+
+Example:
+ 10
+ |
+ 20
+ The line between 10 and 20 is an edge
+
+4.Parent:
+ A node that has one or more children is called a parent
+
+Example:
+           10
+           / \
+          20  30
+ 10 is the parent of 20 and 30
+
+5.Child:
+ A node directly connected below another node is called its child
+
+Example:
+          10
+         /  \
+        20  30
+ 20 and 30 are children of 10
+
+6.Sibling
+ Nodes having the same parent are called siblings
+
+Example:
+          10
+         /  \
+        20  30
+ 20 and 30 are siblings
+
+7.Leaf Node
+ A node that has no children is called a leaf node
+
+Example:  
+          10
+         /  \
+        20  30
+       /  \
+      40  50 
+ 30, 40 and 50 are Leaf Node
+
+8.Internal Node
+ A node that has at least one child is called an internal node
+
+Example:
+          10
+         /  \
+        20  30
+       /  \
+      40  50 
+ 10 and 20 are internal nodes
+
+9.Degree of a Node
+ The degree of a node is the number of children it has
+
+Example:
+           10
+         / | \
+        20 30 40
+ Degree of 10 = 3
+
+10.Degree of a Tree
+ The degree of a tree is the maximum degree of any node in the tree
+
+Example:
+          10
+         / | \
+        20 30 40
+           |
+          50
+ Maximum number of children of a node = 3
+ Therefore:
+ Degree of tree = 3
+
+11.Path:
+ A path is a sequence of nodes connected by edges
+
+Example:
+        10 -> 20 -> 40
+   This is a path from 10 to 40
+
+12.Ancestor
+ An ancestor is a node that comes before another node on the path from the root
+
+Example: 
+         10
+         |
+         20
+         |
+         40
+ Ancestors of 40: 20, 10
+
+13.Descendant
+ A descendant is a node that comes below another node
+Example:            
+         10
+         |
+         20
+         |
+         40
+ 40 is a descendant of 10 and 20
+
+14.Level
+ The level represents the position of a node in the tree
+ Using root at level 0:
+            10       -> Level 0 
+           /  \
+          20   30    -> Level 1
+         / \
+        40 50        -> Level 2
+
+15.Depth
+ Depth of a node is the number of edges from the root to that node
+Example:
+ 10 -> 20 -> 40
+ Depth of 40 = 2
+
+16.Height
+ Height of a node is the number of edge on  the longest path from that node to a leaf
+ The height of a tree is the height of its root
+Example:
+          10
+          /
+         20
+         /
+        30
+ Height of tree = 2
+ */
