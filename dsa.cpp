@@ -1395,7 +1395,7 @@ Operand:
  A, B, 5, 10
 
 Operator:
- A symbol that performs an operatopn
+ A symbol that performs an operation
 
 Examples:
  +, -, *, /, %
@@ -2981,5 +2981,72 @@ Simple way:
    Child 
     ↓
    Leaf
+
+Binary Tree:
+ A Binary Tree is a non-linear data structure in which each node can have at most two children
+
+The two children are called
+1.Left child
+2.Right child
+Example:
+
+          10
+         /  \
+        20   30
+       / \
+      40  50
+
+Here:
+
+ 10 → Root
+ 20 → Left child of 10
+ 30 → Right child of 10
+ 40 and 50 → Children of 20
+
+Why is it called Binary Tree?
+ The word Binary means two
+ Therefore, every node in a Binary Tree can have:
+ 0 children
+ 1 child
+ 2 children
+ But never more than 2 children
+
+Structure of a Binary Tree Node
+ A Binary Tree node contains:
+ 1.Data
+ 2.Pointer to left child
+ 3.Pointer to  right  child
+
+ struct Node
+ {
+   int data;
+   Node* left;
+   Node* right;
+ };
+
+ data -> stores the value
+ left -> points to left child
+ right -> points to right child
+
+Properties:
+1.Maximum Children
+ Each node can have at most 2 children
+
+2.Maximum Nodes at a Level
+ If the root is at level 0, then:
+
+ Level 0 → 1 node
+ Level 1 → 2 nodes
+ Level 2 → 4 nodes
+ Level 3 → 8 nodes
+
+3.Maximum Nodes in a Binary Tree
+ For height h (when root is at height 0)
+ Maximum nodes = 2^(h+1) - 1
+
+**            Node
+             /    \
+   Left Child    Right Child
+
 
  */
