@@ -3049,4 +3049,114 @@ Properties:
    Left Child    Right Child
 
 
+Types of Binary Trees
+ A Binary tREE Can be classified into different types based on how its nodes and levels are arranged
+ 
+1.Full Binary Tree
+ A Full Binary Tree is a binary tree in which every node has either:
+ 0 chiildren or 
+ 2 children
+
+Example:
+
+          10
+         /  \
+        20   30
+       / \
+      40  50
+
+Here:
+ 10 → 2 children
+ 20 → 2 children
+ 30, 40, 50 → 0 children
+
+Therefore, it is a Full Binary Tree.
+
+2.Complete Binary Tree
+ A complete Binary Tree is a binary tree in which:
+ All levels are completely filled except possibly the last level
+ The last level is filled from left to right
+
+Example:
+
+          10
+        /    \
+       20     30
+      / \    /
+     40 50  60
+
+3.Perfect Binary Tree
+ A perfect Binary Tree is a binary tree in which
+ Every internal node has exactly 2 Children
+ All leaf nodes are at the same level
+
+Example:
+
+          10
+        /    \
+       20     30
+      / \    / \
+     40 50  60 70
+
+ All levels are completely filled
+ For a perfect biinary tree:
+ Maximum nodes = 2^(h+1) - 1
+ where h is the height of the tree
+
+4.Balanced Binary Tree
+ A Balanaced Binary Tree is a tree in which the heights  of the left and right subtrees are kept approximately balanced
+ This prevents the tree from becomming too tall
+
+Example:
+
+          10
+        /    \
+       20     30
+      / \      \
+     40 50      60
+
+A balanced tree generally provides efficient operations
+
+5.Degenerate Binary Tree
+ A Degenerate Binary Tree is a Tree in which every parent node has only one child
+
+Example:
+
+    10
+     \
+      20
+        \
+         30
+           \
+            40
+
+ it looks similar to a linked list
+ A degenerate tree can be:
+ Left-skewed
+ Right-skewed
+
+Right-Skewed
+
+   10
+      \
+      20
+         \
+         30
+
+Left-Skewed
+
+         10
+         /
+      20
+      /
+      30
+
+**
+ Full → 0 or 2 children 
+ Complete → Left to right 
+ Perfect → Completely filled 
+ Balanced → Height balanced 
+ Degenerate→ One child
+
+ 
  */
