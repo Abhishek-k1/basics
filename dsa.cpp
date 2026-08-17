@@ -3158,5 +3158,103 @@ Left-Skewed
  Balanced → Height balanced 
  Degenerate→ One child
 
+Representation of a Binary Tree:
+ A Binary Tree can be represented in memory mainly using:
+ 1.Array Representation
+ 2.Linked Representation
+
+1.Array Representation
+ In this method, the nodes of a binary tree are sorted inside an array
+
+Example:
+          10
+          / \
+         20  30
+         / \
+        40  50
+
+ The elements can be stored as:
+ Index: 0  1  2  3  4
+ Value: 10 20 30 40 50
+ Array representation is especially useful for commplete binary trees
+
+Index Formulas:
+ If the root is stored at index 0: -> 10
+
+Left Child= 2 * i + 1 -> 40
+
+Right  Child = 2 * i + 2 -> 50
+
+Parent = (i - 1) / 2
+where i is the index of the current node
+
+2.Linked Representation
+ In linked representation, every node contains:
+ 1.Data
+ 2.Pointer to left chlld
+ 3.Pointer to right child
+
+Structure:
+ struct Node
+ {
+   int data;
+   Node* left;
+   Node* right;
+ }
+
+Repressentation:
+ For this tree:
+          10
+         /  \
+        20   30
+
+ The structure is conceptually:
+        +----------------+
+ 10  →  | data = 10      |
+        | left  → 20     |
+        | right → 30     |
+        +----------------+
+
+ Node 20 and node 30 are also stored separately in memory
+
+Creating a Node:
+ We can dynamically create a node using new
  
+ Node* root = new Node;
+
+ root->data = 10;
+ root->left = nullptr;
+ root->right = nullptr;
+
+ Here:
+ root -> points to the root node
+ data -> stores the value
+ left -> points to left child
+ right -> points to right child
+
+Creating a Binary Tree:
+Example:
+  Node*root = new Node;
+
+  root->data = 10;
+
+  root->left = new Node;
+  root->left->data = 20;
+
+  root->left = new Node;
+  root->right->data = 30;
+
+  The tree becomes:
+        10
+        / \
+       20  30
+
+Array vs Linked Representation:
+ Array Representation                               Linked Representation
+ Uses an array	                                     Uses nodes and pointers
+ Easy to access                                     using index	Uses pointers to connect nodes
+ Efficient for complete trees	                      Suitable for different tree shapes
+ Can waste space for sparse trees	                Uses memory for pointers
+ Child positions can be calculatedusing formulas	 Child nodes are accessed through pointers
+
  */
