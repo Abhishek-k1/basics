@@ -1504,11 +1504,14 @@ Conversion Function:
             postfix += s.top();
             s.pop();
          }
+            if(!s.empty());
             s.pop();
          }
          else
             {
-          while(!s.empty() && precedence(s.top()) >= precedence(ch))
+          while(!s.empty() && 
+          s.top() != '(' &&
+          precedence(s.top()) >= precedence(ch))
           {
             postfix += s.top();
             s.pop();
@@ -3188,8 +3191,10 @@ Right  Child = 2 * i + 2 -> 50
 Parent = (i - 1) / 2
 where i is the index of the current node
 
-2.Linked Representation
- In linked representation, every node contains:
+2.Linked Representation of Binary Tree
+ In linked representation, a Binary Tree is represented using dynamically allocated nodes connected through pointers
+
+ Each node contains:
  1.Data
  2.Pointer to left chlld
  3.Pointer to right child
@@ -3241,7 +3246,7 @@ Example:
   root->left = new Node;
   root->left->data = 20;
 
-  root->left = new Node;
+  root->right = new Node;
   root->right->data = 30;
 
   The tree becomes:
@@ -3249,12 +3254,141 @@ Example:
         / \
        20  30
 
+Advantages:
+ Dynamic memory allocation
+ No fixed size
+ Suitable for different tree structures
+ Memory is allocated when nodes are created
+
+Disadvantages:
+ Extra memory required for pointers
+ Accessing nodes requires following pointers
+ More complex than array representation
+
+**
+ root stores the address of the root node
+ left points to the left child
+ right points to the right child
+ nullptr means no child
+ new is used for dynamic memory allocation
+ -> is used to access members through a pointer
+
 Array vs Linked Representation:
  Array Representation                               Linked Representation
  Uses an array	                                     Uses nodes and pointers
  Easy to access                                     using index	Uses pointers to connect nodes
  Efficient for complete trees	                      Suitable for different tree shapes
  Can waste space for sparse trees	                Uses memory for pointers
- Child positions can be calculatedusing formulas	 Child nodes are accessed through pointers
+ Child positions can be calculated formulas	       Child nodes are accessed through pointers
+
+Binary Tree Traversal
+ Tree Traversal means visitinng every node of a tree exactly once in a particular order
+ The three important Depth First Traversal methods are:
+ 1.Inorder Traversal
+ 2.Preorder Traversal
+ 3.Postorder Traversal
+
+Example Binary Tree:
+ We will use this tree for all three traversals:
+           1 
+          / \ 
+         2   3 
+        / \ 
+       4   5
+
+1.Inorder Traversal
+ In order, we follow
+ Left -> Root -> Right
+
+Steps:
+ 1.Traverse the left subtree
+ 2.Visit the root
+ 3.Traverse the right  subtree
+
+For the above tree:
+ 4 -> 2 -> 5 -> 1 -> 3
+
+ void inorder(Node* root)
+ {
+   if(root != nullptr)
+   {
+     inorder(root->left);
+     cout << root->data << " ";
+     inorder(root->right);
+   }
+ }
+
+2.Preorder Traversal
+ In Preorder, we follow:
+ Root -> Left -> Right
+
+Steps:
+ 1.Visit the root
+ 2.Traverse the left subtree
+ 3.Traverse the right subtree
+
+For the above tree:
+ 1 -> 2 -> 4 -> 5 -> 3
+
+ void preorder(Node* root)
+ {
+   if(root != nullptr)
+   {
+     cout << root->data << " ";
+     preorder(root->left);
+     preorder(root->right);
+   }
+ }
+
+3.Postorder Traversal
+ In postorder, we follow:
+ Left -> Right -> Root
+
+Steps:
+ 1.Traverse the left subtree
+ 2.Traverse the right subtree
+ 3.Visit the root
+
+For the above tree:
+ 4 -> 5 -> 2 -> 3 -> 1
+
+ void postorder(Node* root)
+ {
+   if(root != nullptr)
+   {
+     postorder(root->left);
+     postorder(root->right);
+     cout << root->data << " ";
+   }
+ }
+
+Base Condition:
+ Every traversal contains:
+ if(root != nullptr)
+ This is the base condition
+ When root == nullptr, there is no node to visit, so the function stops
+
+Time Condition:
+ Inorder -> O(n)
+ Preorder -> O(n)
+ Postorder -> O(n)
+ Because every node is visited exactly once
+
+Space Complexity:
+ The recursive traversal uses the recursion call stack
+ Space Complexity -> O(h)
+ where h is the height of the tree
+ For a balanaced tree: O(log n)
+ For a skewed tree: O(n)
+
+Application
+ Inorder-> Copying a tree
+           Creating a tree structure
+           Prefix expression
+
+ Postorder-> Deleting/freezing a tree
+             Evaluating postfix expressions
+             Processing child nodes before the parent
+             
 
  */
