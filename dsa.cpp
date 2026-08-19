@@ -3389,6 +3389,34 @@ Application
  Postorder-> Deleting/freezing a tree
              Evaluating postfix expressions
              Processing child nodes before the parent
-             
 
- */
+Trick to Find Preorder, Inorder and Postorder
+ For every node, imagine three positions:
+        Left Node Right 
+         ↓     ↓    ↓ 
+         L     N    R
+ The three traversals are determined by where the Node is visited
+
+Preorder = Root -> Left -> Right
+ Node comes first
+ N -> L -> R
+
+Inorder = Left -> Root -> Right
+ Npdes comes in the middle
+ L -> N -> R
+
+Postorder = Left -> right -> Root
+ Node comes last
+ L -> R -> N
+
+Example:
+        1
+       / \
+      2   3
+     / \
+    4   5
+
+Preorder -> 1 2 4 5 3
+Inorder -> 4 2 5 1 3
+Postorder -> 4 5 2 3 1
+*/
