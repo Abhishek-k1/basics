@@ -3419,4 +3419,97 @@ Example:
 Preorder -> 1 2 4 5 3
 Inorder -> 4 2 5 1 3
 Postorder -> 4 5 2 3 1
+
+Binary Search Tree(BST)
+ A Binary Search Tree (BST) is a binary tree in which each node follows a specific ordering rule
+
+For every  node:
+ All elements in the left subtree are smaller than the node
+ All elements in the right subtree are greater than the node
+
+BST Property:
+ For every node: Left Subtree < Root < Subtree
+ This property muist be maintained for every node in the tree
+
+Example:
+         50
+        /  \
+       30  70
+
+Important Properties of BST:
+1.Left Subtree Contains Smaller Values
+ For a node, values in its subtree are smaller than the node
+       50
+      /
+    30
+
+2.Right Subtree Contains Greater Values
+ For a node, values in its right subtree are greater than the node
+       50
+         \
+          70
+
+3.Popperty Applies Recursively
+ The BST rule is not for the root
+ It must be true for every node
+
+Example:
+          50 
+         / \ 
+       30  70 
+     /  \ /  \ 
+    20 40 60 80
+
+4.Inorder Traversal of BST
+ One of the most important properties:
+ Inorder traversal of a BST gives elemnts in sorted order
+
+Inorder:
+ Left -> Root -> Right
+ 
+           50
+          /  \
+        30    70
+       /  \  /  \
+     20  40 60  80
+
+Inorder Traversal: 20 -> 30 -> 40 -> 50 -> 60 -> 70 -> 80
+
+5.Searching is Efficient
+ BST can make searching faster because at every node we decide whether to go:
+
+Example
+ Searching of 60:
+         50
+        /  \
+       30   70
+            /
+           60
+
+6.BST Does Not Have to Be Complete
+ A BST can have different shapes
+
+Balanced BST:
+           50 
+          /  \ 
+         30   70 
+        /  \ /  \ 
+      20  40 60 80
+
+ It can also become skewed:
+   10
+     \
+      20
+        \
+         30
+           \
+            40
+ The second tree is still a BST 
+
+Time Complexity of Searching:
+Balanced BST: Search can take-> O(log n)
+
+Worst Case: Search can become-> O(n)
+Thiis happens when the BST behaves like a linked list
+
 */
