@@ -3590,7 +3590,66 @@ Time Complexity:
 
 ** Inorder traversal of a BST must always be in sorted ascending order
 
+Searching in a Binary Search Tree:
+ Searching means finding whether a given key/value exists in the Binary Search Tree
+
+BST follow:
+ Left < Root < Right
+
+ So while searching:
+ If key == root->data -> Element found
+ If key < root->data -> Search in the left subtree
+ If key > root->data -> Search in the right subtree
+
+Searching Algorithm:
+1.Start from the root
+2.Compare the key with the root
+3.If key equals root -> element found
+4. If key is smaller -> move to the left child
+5.If key is greater ->  move to the right child
+6.Repeat until the element is found or the pointer becomess NULL
+
+Recursive Search:
+ bool search(Node* root, int key)
+ {
+
+   if(root == nullptr)
+   return false;                      // the element was not found
+
+   if(root->data == key)
+   return true;                      // The element was found
+
+   if(key < root->data)           
+   return search(root->left, key)    // Smaller value -> go left
+
+   else
+   return search(root->right, key)   // Gra=eater value -> go right
+ }
         
+Iterative Search:
+ Searching can also be done without reecursion
+ bool search(Node* root, int key)
+ {
+   while(root != nullptr)
+   {
+      if(root->data == key)
+      return true;
 
+      else if(key < root->data)
+      root = root->left;
 
+      else
+      root = root->right;
+   }
+      return false;
+ }
+
+Time Complexity:
+Best Case -> Element is found at the root -> O(1)
+Average Case -> For a reasonably balanced BST -> O(log n)
+Worst Case -> If the BST becomes skewed -> O(n)
+
+Space Complexity:
+For recursive search: O(h) h = height of the tree
+For iterative search: O(1) because no recursive call stack is used
 */
