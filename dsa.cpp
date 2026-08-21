@@ -3449,7 +3449,7 @@ Important Properties of BST:
          \
           70
 
-3.Popperty Applies Recursively
+3.Property Applies Recursively
  The BST rule is not for the root
  It must be true for every node
 
@@ -3510,6 +3510,87 @@ Time Complexity of Searching:
 Balanced BST: Search can take-> O(log n)
 
 Worst Case: Search can become-> O(n)
-Thiis happens when the BST behaves like a linked list
+This happens when the BST behaves like a linked list
+
+Checking Whether a Binary Tree is a BST:
+ A binary Tree is a Binary search tree only if
+ All nodes in the left subtree are smaller than the root, and all nodes in the right
+ subtree are greater than the root
+
+Method 1:Using Inorder Traversal
+ An important propertry of a Bst is:
+ Inorder traversal of a BST is always sorted in ascending order
+
+Example of a BST:
+            50
+           /  \
+          30   70
+         /  \ /  \
+        20 40 60  80
+        
+Checking BST using Inorder
+ 1.Perform inorder traversal
+ 2.Keep track of the previous visited value
+ 3.Compare the current node with the previous value
+ 4.If:
+ Previous >= current
+ then the tree is not a BST
+ 5.If every value is greater than the previous value, the tree is a BST
+Important logic
+ if(root == nullptr)
+ return true;
+
+ if(!isBST(root ->left))
+ return false;
+
+ if(prev >= root->data)
+ return false;
+
+ prev = root->data;
+
+ return isBST(root->right);
+
+ Here prev stores the value of the previously visited node during inorder traversal
+
+Why inorder Works:
+ BST: Left -> Root ->Right
+
+ Because: Left < Root < Right
+
+ the inorder traversal automatically produces
+ Small -> Largest -> Largest
+
+ Therefore:
+ If inorder traversal is sorted -> Tree is a BST
+
+Example:
+         10
+        /  \
+       5    20
+           /
+           8
+ At first glace: 5 < 10 < 20 may look correct
+ But 8 is inside the right subtree of 10, so it must be greater than 10
+ But:
+ 8 < 10
+ Therefore, this is NOT a BST
+ Its inorder traversal is:
+ 5 10 8 20
+ This is not sorted
+ Therefore: Not a BST
+
+Time Complexity:
+ Every node is visited once
+ Time complexity -> O(n)
+
+ Space Complexity
+ Because recursion is used:
+ Space complexity -> O(h)
+ where h is the right of the tree
+
+** Inorder traversal of a BST must always be in sorted ascending order
+
+        
+
 
 */
