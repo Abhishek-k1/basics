@@ -1509,7 +1509,7 @@ Conversion Function:
          }
          else
             {
-          while(!s.empty() && 
+          while(!s.empty() &&
           s.top() != '(' &&
           precedence(s.top()) >= precedence(ch))
           {
@@ -2695,7 +2695,7 @@ Algorithm:
 
     for(int i = 0; i < n; i++)
     {
-       counnt[arr[i]]++; 
+       counnt[arr[i]]++;
     }
 
     int i = 0;
@@ -2785,7 +2785,7 @@ Important Terminology:
 1.Node
  A node is an individual element of a tree that contains data
 
-Example: 
+Example:
  10
  10 is a node
 
@@ -2796,7 +2796,7 @@ Example:
             10
             / \
           20   30
-   
+
  10 is the rootnode
  A tree has only one root
 
@@ -2839,12 +2839,12 @@ Example:
 7.Leaf Node
  A node that has no children is called a leaf node
 
-Example:  
+Example:
           10
          /  \
         20  30
        /  \
-      40  50 
+      40  50
  30, 40 and 50 are Leaf Node
 
 8.Internal Node
@@ -2855,7 +2855,7 @@ Example:
          /  \
         20  30
        /  \
-      40  50 
+      40  50
  10 and 20 are internal nodes
 
 9.Degree of a Node
@@ -2890,7 +2890,7 @@ Example:
 12.Ancestor
  An ancestor is a node that comes before another node on the path from the root
 
-Example: 
+Example:
          10
          |
          20
@@ -2900,7 +2900,7 @@ Example:
 
 13.Descendant
  A descendant is a node that comes below another node
-Example:            
+Example:
          10
          |
          20
@@ -2911,7 +2911,7 @@ Example:
 14.Level
  The level represents the position of a node in the tree
  Using root at level 0:
-            10       -> Level 0 
+            10       -> Level 0
            /  \
           20   30    -> Level 1
          / \
@@ -2978,10 +2978,10 @@ This structure is commonly used for a Binary Tree
 
 Simple way:
    Root
-    ↓ 
-   Parent 
     ↓
-   Child 
+   Parent
+    ↓
+   Child
     ↓
    Leaf
 
@@ -3054,10 +3054,10 @@ Properties:
 
 Types of Binary Trees
  A Binary tREE Can be classified into different types based on how its nodes and levels are arranged
- 
+
 1.Full Binary Tree
  A Full Binary Tree is a binary tree in which every node has either:
- 0 chiildren or 
+ 0 chiildren or
  2 children
 
 Example:
@@ -3155,10 +3155,10 @@ Left-Skewed
       30
 
 **
- Full → 0 or 2 children 
- Complete → Left to right 
- Perfect → Completely filled 
- Balanced → Height balanced 
+ Full → 0 or 2 children
+ Complete → Left to right
+ Perfect → Completely filled
+ Balanced → Height balanced
  Degenerate→ One child
 
 Representation of a Binary Tree:
@@ -3224,7 +3224,7 @@ Repressentation:
 
 Creating a Node:
  We can dynamically create a node using new
- 
+
  Node* root = new Node;
 
  root->data = 10;
@@ -3290,10 +3290,10 @@ Binary Tree Traversal
 
 Example Binary Tree:
  We will use this tree for all three traversals:
-           1 
-          / \ 
-         2   3 
-        / \ 
+           1
+          / \
+         2   3
+        / \
        4   5
 
 1.Inorder Traversal
@@ -3392,8 +3392,8 @@ Application
 
 Trick to Find Preorder, Inorder and Postorder
  For every node, imagine three positions:
-        Left Node Right 
-         ↓     ↓    ↓ 
+        Left Node Right
+         ↓     ↓    ↓
          L     N    R
  The three traversals are determined by where the Node is visited
 
@@ -3454,10 +3454,10 @@ Important Properties of BST:
  It must be true for every node
 
 Example:
-          50 
-         / \ 
-       30  70 
-     /  \ /  \ 
+          50
+         / \
+       30  70
+     /  \ /  \
     20 40 60 80
 
 4.Inorder Traversal of BST
@@ -3466,7 +3466,7 @@ Example:
 
 Inorder:
  Left -> Root -> Right
- 
+
            50
           /  \
         30    70
@@ -3490,10 +3490,10 @@ Example
  A BST can have different shapes
 
 Balanced BST:
-           50 
-          /  \ 
-         30   70 
-        /  \ /  \ 
+           50
+          /  \
+         30   70
+        /  \ /  \
       20  40 60 80
 
  It can also become skewed:
@@ -3504,7 +3504,7 @@ Balanced BST:
          30
            \
             40
- The second tree is still a BST 
+ The second tree is still a BST
 
 Time Complexity of Searching:
 Balanced BST: Search can take-> O(log n)
@@ -3527,7 +3527,7 @@ Example of a BST:
           30   70
          /  \ /  \
         20 40 60  80
-        
+
 Checking BST using Inorder
  1.Perform inorder traversal
  2.Keep track of the previous visited value
@@ -3619,13 +3619,13 @@ Recursive Search:
    if(root->data == key)
    return true;                      // The element was found
 
-   if(key < root->data)           
+   if(key < root->data)
    return search(root->left, key)    // Smaller value -> go left
 
    else
    return search(root->right, key)   // Gra=eater value -> go right
  }
-        
+
 Iterative Search:
  Searching can also be done without reecursion
  bool search(Node* root, int key)
@@ -3686,7 +3686,6 @@ Structure:
     {
       root->right = insert(root->right, key);   // The new value belongs in the right subtree
     }
-      
     return root;   // it returns the root of the current subtree and keeps the tree connected after recursive insertion
  }
 
@@ -3697,6 +3696,164 @@ Time Complexity:
 Space Complexity:
  for recursive implementation -> O(h) where h is the height of the tree
  Balanced BST -> O(log n)
- Worst Case -> O(N)
+ Worst Case -> O(n)
 
+Deletion in a Binary Search Tree:
+ Deletion means removing a node from a BST while maintaining the BST property
+
+Cases of BST Deletion
+ There are 3 cases:
+1.Node is a leaf
+2.Node has one child
+3.Node has two children
+
+Case 1:Node is a Leaf
+ A leaf node has no children
+
+Case 2:Node Has one child
+Example:
+           50
+          /
+         30
+        /
+      20
+
+Case 3:Node Has Two Children
+Example:
+         50
+        /  \
+       30   70
+           /  \
+          60   80
+
+ Suppose we delete 70
+ We cannot simply remove it because it has two children
+ We replace it with its Inorder Successor
+
+Inorder Successor
+ The inorder successor is the smallest element in the right subtree
+ For 70:
+ Right subtree:
+                70
+               /  \
+              60   80
+ The smallest value is 80
+ so replace 70 with 80
+
+Structure:
+ Node* deleteNode(Node* root, int key)
+ {
+   if(root == nullptr)
+   return nullptr;
+
+   // Search in left subtree
+   if(key < root->data)
+   {
+    root->left = deleteNode(root->left, key);
+   }
+
+   // Search in right subtree
+   else if(key > root->data)
+   {
+    root->right = deleteNode(root->right, key);
+   }
+
+   // Node found
+   else
+   {
+   // Case 1: No child
+   if(root->left == nullptr && root->right == nullptr)
+   {
+    delete root;
+    return nullptr;
+   }
+
+   // Case 2: Only right child
+   else  if(root->left == nullptr)
+   {
+    Node* temp == root->right;
+    delete root;
+    return temp;
+   }
+
+   // Case 2: Only left child
+   else if(root->left == nullptr)
+   {
+    Node* temp = root->right;
+    delete root;
+    return temp;
+   }
+
+   //Case 3: Two children
+   else
+   {
+     Node* temp = root->right;
+     while(temp->left != nullptr)
+     {
+        temp = temp->left;
+     }
+
+     root->data = temp->data;
+
+     root->right = deleteNode(root->right, temp->data);
+   }
+   }
+   return root;
+ }
+
+**
+ BST deletion has 3 cases
+ Leaf node -> simmply delete it
+ One child -> replace the node with its child
+ Two children -> replace with the inorder successor (or predecessor)
+ Inorder successor -> smallest element in thr right subtree
+ After replacement the successor node must also be deleted
+ BST property must remain valid after deletion
+
+                DELETE
+                  | 
+            ┌─────┴─────┐ 
+            ↓           ↓ 
+         0 child    1 child 
+            ↓           ↓ 
+         Delete     Replace 
+                        | 
+                        ↓ 
+                    2 children 
+                        ↓ 
+                    Inorder Successor 
+                        ↓ 
+                    Replace + Delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Time Complecity:
+Best/Average Case
+ For a balanced BST: O(log n)
+Worst Case
+ For a skewed BST: O(n)
+
+Space Complexity:
+ Because the emplementation uses recursion: O(h)
+ where h = height of the tree
+
+Balanced BST: O(log n)
+Worst Case: O(n)
 */
