@@ -3652,4 +3652,51 @@ Worst Case -> If the BST becomes skewed -> O(n)
 Space Complexity:
 For recursive search: O(h) h = height of the tree
 For iterative search: O(1) because no recursive call stack is used
+
+Insertion in a Binary Search Tree:
+ Insertion means adding a new element art its correct position while maintaining the BST Property
+
+Algorithm:
+1.Start from the root
+2.If the tree is empty, create a new node as the root
+3.Compare the new value with the current node
+4.If the value is smaller, move to the left subtree
+5.If the value is greater, move to the right subtrree
+6.Repeat until an empty (nullptr) position is found
+7.Insert the new node at that position
+
+Structure:
+ Node* insert(Node* root, int key)
+ {
+    if(root == nullptr)    // If tree is empty
+    {
+      Node* newNode = new Node;   // There is no node, so create a new node
+      newNode->data = key;
+      newNode->left = nullptr;
+      newNode->right = nullptr;
+
+      return newNode;
+    }
+
+    if(key < root->data)   // Smaller value
+    {
+      root->left = insert(root->left, key);   // The new value belongs in the left subtree
+    }
+    else if(key > root->data)   // Greater value
+    {
+      root->right = insert(root->right, key);   // The new value belongs in the right subtree
+    }
+      
+    return root;   // it returns the root of the current subtree and keeps the tree connected after recursive insertion
+ }
+
+Time Complexity:
+ Best Case -> O(log n)
+ Worst Case -> O(n)
+
+Space Complexity:
+ for recursive implementation -> O(h) where h is the height of the tree
+ Balanced BST -> O(log n)
+ Worst Case -> O(N)
+
 */
