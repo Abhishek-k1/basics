@@ -190,4 +190,111 @@ Comments help to:
  Make code easier to understand
  Improve code readability
  Remenber the purpose of a section of code
+
+Variable Scope & Data Types:
+
+    Variable Scope
+          ↓
+     ┌────┴────┐
+     ↓         ↓
+    Local     Global
+     ↓         ↓
+    Inside    Outside
+    function  all functions
+    Data Types
+        ↓
+     ┌───┼────┬────┬────┐
+     ↓   ↓    ↓    ↓    ↓
+    int float double char bool
+
+Variable Scope
+ Scope means the region of a program where a variable can be accessed or used
+
+ There are two important types:
+ 1.Local Vaiable
+ 2.Global Variable
+
+
+Local Variable
+
+ A variable declared inside a function or block is called a local variable
+
+Example:
+ int main()
+ {
+   int age = 20;
+   cout << age;
+   return 0;
+ }
+Here, age is a local variable because it is declared inside main()
+ Can be accessed only inside the block/function where it is declared
+ Created when the block/function starts executing
+ Destroyed when the vlock/function ends
+
+Global Variable
+ A variable declared outside all functions is called  a global variable
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ int age = 20;
+
+ int main()
+ {
+   cout << age;
+   return 0;
+ }
+
+ Here, age is a global variable
+ Declared outside all functions
+ Can be accessed by multiple functions in the program
+ Exists throughout the execution of the program
+
+Data Types in C++
+ A data type specifies what type of data a variable can store
+Example:
+ int age = 20;
+ Here, int tells the compiler that age stores an integer value
+
+Basic Data Types
+
+int
+ Used to store whole numbers
+ int age = 20;
+ int marks = 90;
+
+float
+ Used to store decimal numbers
+ float price = 99.5;
+
+double
+ Used to store decimal numbers with greater precision than float
+ double pi = 3.141592;
+
+Char
+ Used to sstore a single character
+ char grade = 'A';
+ Character values are written inside single quotes
+
+bool
+ Used to store a Boolean value
+ it can have:
+ true
+ false
+
+Example:
+ bool isPassed = true;
+
+void
+ void represents no value
+ it is commomly used with functions thaqt do not retirn a value
+Example:
+ void display()
+ {
+   cout << "Hello";
+ }
+
+
+
 */
