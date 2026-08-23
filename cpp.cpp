@@ -128,6 +128,66 @@ Multi-line commentt
 */
 
 /*
+What is a Variable?
+ A Variable is a named memory location used to store data
+Example:
+ int age = 20;
+ Here:
+ int -> Data Type
+ age -> Variable name
+ 20 -> value
+ The value stored in a variable can be changed during program execution
 
+Declaring a Variable:
+ Declaration  means telling the compiler the data type and name of aa variable
+Syntax:
+ data_type variable_name;
 
+Example:
+ int age;
+ float marks;
+ char grade;
+
+Initializing a Variable:
+ Initialization means assigning a value to a variable when it is created
+Example:
+int age = 20;
+float marks = 85.5;
+char grade = 'A';
+
+Declaration + Initalization:
+ Both can be done together
+ int age = 20;
+ Or separately:
+ int age;
+ age = 20;
+
+Changing the value of a variable
+ A variable's value can be changed
+ int  age  = 20;
+ age = 21;
+ cout << age;
+Output: 21
+
+Rules for Naming Variables
+A variable name:
+ Can contain letters, digit and underscore_
+ Cannot start with a digit
+ Cannot contain spaces
+ Cannot use C++ keywords
+ Is Case-sensitive
+
+Case Sensitivity:
+ C++ is case-sensitive
+ These are different variables:
+ int age;
+ int Age;
+ int AGE;
+
+Why Use Comments?
+Comments help to:
+ Explain the code
+ Make code easier to understand
+ Improve code readability
+ Remenber the purpose of a section of code
 */
