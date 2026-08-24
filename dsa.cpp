@@ -3825,12 +3825,133 @@ Structure:
                         ↓ 
                     Replace + Delete
 
+AVL Tree:
+ AVL Tree is a self-balancing Binary Search Tree
+ AVL stands for:
+ Adelson-Velsky and Landis
+ It was introduced by Georgy Adelson-Velsky and Evgenii Landis
+Main idea
+ An AVL tree automatically maintains its balance after insertion and deletion
+ This prevent the BST from becoming heavily skewed
 
+Why do we need AVL Trees?
+ A normal BST can become unbalanced
+Example:
+      10
+        \
+         20
+           \
+            30
+              \
+               40
+ This tree behaves almost like a linked list
+ Searching can become: O(n)
+ An AVL tree keeps the tree balanced so that searching remains: O(log n)
 
+Balance Factor
+ The Balance Factor of a node is:
+ Balance Factor = Height of Left subtree - Height of Right Subtree
+ For an AVL tree, the balance factor of every node must be = -1, 0, +1
 
+Possible Values
+ Balance Factor = +1 -> Left heavy
+ Balance Factor = 0 -> Balanced
+ Balance Factor = -1 -> Right heavy
 
+ If the balanced factor becomes: +2 or -2
+ the node is unbalanced and the tree needs rebalancing
 
+Height of a Node:
+ The height of a node is the number of edges on the longest path from that node to a leaf
+Example:
+        10
+       /  \
+      5    20
+ The height of leaf nodes is: 0
+ The height of node 10 is: 1
 
+ Some implementations define the height of a leaf as 1 instead the important thing is to use one convention consistently
+
+Balanced Example:
+ consider:
+          30
+         /  \
+        20   40
+ Left subtree height = 0
+ Right subtree height = 0
+Therefore:
+ Balance Factor = 0 - 0 = 0
+ The node is balanced
+
+When Does an AVL Tree Become Unbalanced?
+ If the balance factor of a node becomes: +2
+ The tree is too heavy on the left
+
+ If it becomes: -2
+ the tree is too heavy on the right
+ The tree must be rebalanced using rotations
+
+Rotations
+ Rotations are used to restore balance in an AVL tree while maintaining the BST property
+
+There are four imbalance cases:
+ 1.LL -> Right Rotation
+ 2.RR -> Left Rotation
+ 3.LR -> Left Rotation + Right Rotation
+ 4.RL -> Right Rotation + Left Rotation
+
+LL Case
+ LL means the new node is inserted into the:
+ Left subtree of the Left child
+Example:
+          30
+         /
+        20
+       /
+     10
+ This is left-heavy
+ Solution: Right Rotation
+
+RR Case
+ RR means the new node is inserted into the
+ Right subtree of the Right child
+Example:
+        10
+          \
+           20
+             \
+              30
+ This is right-heavy
+ solution: Left Rotation
+
+LR Case
+ LR means the new node is inserted into the:
+ Right subtree of the Left child
+Example:
+         30
+        /
+       10
+        \ 
+         20
+solution:
+ Left Rotation on the left child
+ then
+ Right Rotation on the unbalanced node
+
+RL Case
+ RL means the new node is inserted into the:
+ Left subtree of the Right child
+Example:
+        10
+          \ 
+           30
+          /
+         20
+Solution:
+ Right Rotation on the right child
+ then
+ Left Rotation on the unbalanced node
+ 
 
 
 
