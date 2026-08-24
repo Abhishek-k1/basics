@@ -309,4 +309,109 @@ endl -> endl is used to move the cursor to the next line
 
 \n -> \n is another way to move to a new line
 
+Header Files:
+ A header file contains declarations and functionality that can be used in a C++ program
+ Header files are included using the #include directive
+Example:
+ #include <iostream>
+ Here:
+ #include -> Preprocessor directive
+ iostream -> Header file
+
+Common Header Files:
+<iostream> -> used for input and output
+ Provides 
+ cin
+ cout
+
+<cmath> -> Provides mathematical functions
+
+<string> -> Used for working  with strings
+
+Operators:
+ An operator is a symbol used to perform an operation on values or variables
+
+Arithmetic Operators
+ Used to perform mathematical operations
+ +  -> Addition
+ -  -> Subtraction
+ *  -> Multiplication
+ /  -> Division
+ %  -> Modulus(remainder)
+
+Relational Operators
+ Used to compare two values
+ ==  -> Equal to
+ !=  -> Not equal to
+ >   -> Greater than
+ <   -> Less than
+ >=  -> Greater than or equal to
+ <=  -> Less than or equal to
+ The result is generally
+ True represented as 1
+ False repressented as 0
+
+Logical Operators
+ Used to combine or modify conditions
+ &&  -> Logical AND True only when both conditions are true
+ ||  -> Logical OR True when at least one condition is true
+ !   -> Logical NOT Reverse the result
+
+Assignment Operators
+ Used to assign values to variables
+Basic assignment
+ int a = 10;
+ = assigns 10 to a
+Compound Assignment
+ Operator	Example	   Equivalent to
+ +=	      a += 5	   a = a + 5
+ -=	      a -= 5	   a = a - 5
+ *=	      a *= 5	   a = a * 5
+ /=	      a /= 5	   a = a / 5
+ %=	      a %= 5	   a = a % 5
+
+Increment and Decrement Operators
+
+Increment ++
+ Increase a value by 1
+ int a = 5;
+ a++;
+
+Decrement --
+ Decrease a value by 1
+ int a = 5;
+ a--;
+
+Pre-Increment and Post-Increment
+
+Pre-Increment
+ ++a;
+ First increase the value, then uses it
+
+Post-Increment
+ a++;
+ First uses the current value, then increases it
+
+Similarly:
+ --a;  -> Pre-decrement
+ 1--;  -> Post-decrement
+
+Conditional / Ternary Operator:
+ The ternary operator is a short form of if-else
+Syntax:
+ condition ? value if true : value if false;
+Example:
+ int age = 20;
+ string result = (age >= 18) ? "Adult" : "Minor";
+
+sizeof Operator
+ sizeof gives the size of a data type or variable in bytes
+Example:
+ int a;
+ cout << sizeof(a);
+ The exact size of a type can depend on the C++ inplementation
+
+
+
+
 */
