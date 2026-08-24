@@ -411,7 +411,121 @@ Example:
  cout << sizeof(a);
  The exact size of a type can depend on the C++ inplementation
 
+Reference Variable:
+ A reference variable is another name(alias) for an existing variable
+ It does not create a separate variable
+Syntax:
+ data_type &reference_name = original_variable;
 
+Example:
+ int a = 10;
+ int &ref = a;
+
+ cout << a << endl;
+ cout << ref << endl;
+Output:
+ 10
+ 10
+Here:
+ a -> Original variable
+ ref -> Reference (another name of a)
+
+Changing Value Through Reference
+ A reference and the  original variable refer to the same variable
+Example:
+ int a = 10;
+ int &ref = a;
+ ref = 20;
+ cout << a;
+Output:
+ 20
+ Because ref is another name for a
+
+Important Points About Reference Variables
+ A reference is an alias for an existing variable
+ It must be initialized when declared
+ It cannot normally be made to refer to a different variable after initialization
+ Changing the reference changes the original variable
+ Both refer to the same underlying object
+Example:
+ int a = 10;
+ int b = 20;
+
+ int &ref = a;
+ ref = b;
+ This does not make ref refer to b
+ Instead, it assigns the value of b to a
+ After this:
+ a = 20
+ b = 20
+ ref -> a
+
+Typecasting:
+ Typecasting means converting a value from one data type to another data type
+Example:
+ int a = 10;
+ float b = (float)a;
+ Here,the int value is converted to float
+
+Types of Typecasting:
+ There are two basic forms you should remember at this stage
+1.Implicit Typecasting
+2. Explicit Typecasting
+
+Implicit Typecasting
+ Implicit typecasting happens automatically by the compiler
+Example:
+ int a = 10;
+ float b = a;
+Here:
+ int -> float
+ The compiler automatically converts the integer value into a floating-point value
+
+Explicit Typecasting
+ Explicit typecasting is performed manually by the programmer
+Example:
+ float a = 10.5;
+ int b = (int)a;
+Now:
+ a = 10.5
+ b = 10
+ The decimal part is discarded when converting to int
+
+C-style Typecasting:
+Syntax:
+ (type) value;
+
+Example:
+ float x = 10.5;
+ int y = (int)x;
+
+Output:
+ 10
+
+Another example:
+ int a = 5;
+ int b = 2;
+
+ float result = (float)a / b;
+ cout << result;
+Output: 2.5
+
+Why (float) is important here
+ without conversion: 5 / 2
+ both operands are integers, so integer division gives: 2
+
+ with:
+ (float)5 / 2
+ the calculation is performed using floating-point arithmetic: 2.5
+
+Static cast:
+ Modern C++ provides a clearer way to perform explicit conversions:
+ static_cast<new_type>(value)
+Example:
+ float x = 10.5;
+ int y = static_cast<int>(x);
+Here:
+ float -> int
 
 
 */
