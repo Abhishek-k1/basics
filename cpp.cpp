@@ -259,26 +259,21 @@ Example:
 
 Basic Data Types
 
-int
- Used to store whole numbers
+int -> Used to store whole numbers
  int age = 20;
  int marks = 90;
 
-float
- Used to store decimal numbers
+float -> Used to store decimal numbers
  float price = 99.5;
 
-double
- Used to store decimal numbers with greater precision than float
+double -> Used to store decimal numbers with greater precision than float
  double pi = 3.141592;
 
-Char
- Used to sstore a single character
+Char -> Used to sstore a single character
  char grade = 'A';
  Character values are written inside single quotes
 
-bool
- Used to store a Boolean value
+bool -> Used to store a Boolean value
  it can have:
  true
  false
@@ -286,8 +281,7 @@ bool
 Example:
  bool isPassed = true;
 
-void
- void represents no value
+void -> void represents no value
  it is commomly used with functions thaqt do not retirn a value
 Example:
  void display()
@@ -295,6 +289,24 @@ Example:
    cout << "Hello";
  }
 
+Basic Input/Output
+ cout is used to display output on the screen
+Syntax:
+ cout << value;
 
+Insertion Operator(<<)
+ The << operator is called the insertion operator
+ It is used with cout to send data to the output stream
+Example:
+ cout << "Age: " << age;
+
+Input -> cin is used to take input from the user
+Syntax:
+ cin >> variable;
+ The >> operator is called the extraction operator
+
+endl -> endl is used to move the cursor to the next line
+
+\n -> \n is another way to move to a new line
 
 */
