@@ -602,7 +602,128 @@ Associativity
  10 + 5 * 2 = 20
  (10 + 5) * 2 = 30
 
+Control Structure:
+ Control structures control the flow/order in which statements are executed in a program
+Main types:
+
+Control Structures
+       |
+       ├── Sequence
+       ├── Selection
+       └── Iteration
+
+Sequence Structure
+ In a sequence structure, the statements are executed one after another in order
+ Statement 1 
+     ↓ 
+ Statement 2 
+     ↓ 
+ Statement 3 
+     ↓ 
+ Statement 4
+
+Selection Structure
+ Selection allows a program to make decision based on a condition
+ Common selection statements:
+ if
+ if-else
+ else-if
+ switch-case
+
+if Statement
+ The if statement executes a block of code only when the condition is true
+Syntax:
+ if(condition)
+ {
+    // statements
+ }
+
+if-else Statement
+ if-else is used when therre are two possible outcomes
+Syntax:
+ if(condition)
+ {
+   // if condition is true
+ }
+  else
+  {
+   // if condition is false
+  }
+
+else-if Ladder
+ An else-if ladder is used when there are multiple conditions
+Syntax:
+ if(condition1)
+ {
+  // statements
+ }
+ else if(condition2)
+ {
+  // statements
+ }
+ else-if(conditionn3)
+ {
+  // statements
+ }
+ else
+ {
+  // default statements
+ }
+  Once  a true condition is found, its block executes and the remaining else-if condition are skipped
+
+Nested if
+ An if statement can be placed inside another if statement
+ This is called a nested if
+Syntax:
+ if()
+ {
+  if()
+ }
+
+Switch-Case
+ switch-case is used when we want to choose one option from multiple fixed choices based on the value of an expression
+Syntax:
+ switch(expresssion)
+ {
+    case value1:
+      // statements
+      break;
+
+    case value2;
+      // statements
+      break;
+
+    default:
+      // statements
+ }
+
+break
+ break is used to exit the switch statement
+Example:
+ case 1:
+   cout << "One";
+   break;
+After executing the case, break prevents execution from continuing into the next cases
+If break is omitted, execution can continue
+
+default
+ default executes when none of the casess match
+
+Ternary Operator
+ The ternary operator is anoother way to write a simple if-else
+Syntax:
+ condition ? value is true : value is false;
+
+Iteration Structure
+ Iteration means repeating a block of code
+ Loops are used for iteration
  
+Main loops:
+ for loop
+ while loop
+ do-while loop
+ 
+
 
 
 
