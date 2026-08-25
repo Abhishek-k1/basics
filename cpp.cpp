@@ -527,5 +527,101 @@ Example:
 Here:
  float -> int
 
+Constants:
+ A constant is a value that cannot be changed after it has been initialized
+ the constant keyword is used to create a constant
+Syntax:
+ const data_type variable_name = value;
+Example:
+ const int x = 10;
+ cout << x;
+ Once x is declared as const, its value cannot be changed
+ const int x = 10;
+ x = 20; // Error
+ Use const when a value  should remain unchanged throughout the program
+Example:
+ const float PI = 3.14159;
+
+Manipulators
+ Manipulators are used to control the formatting of input and output
+ Common manipulators include:
+ endl;
+ setw
+ setprecision
+ fixed
+ The <iomanip> header is used for manipulators such as setw  and setprecision
+ #include <iomanip>
+
+endl -> endl moves the cursor to the next line
+
+setprecision()
+ setprecision() controls the number of digit shown in floating-poinnt output
+ it is available through <iomanip>
+Example:
+ #include <iomanip>
+ double pi = 3.14159265;
+ cout << setprecision(4) << pi;
+
+Fixed
+ Fixed is used with setprecision() to specify the number of digit after the decimal point
+
+setprecision(2)
+ without fixed -> controls significant digits in the formatted output
+
+fixed << setprecision(2)
+ shows 2 digits after the decimal point
+
+Operator Precedence
+ Operator precedence determines the order in which operators are evaluated in an expression
+ Multiplication has higher precedence than addition
+
+Parentheses()
+ Parentheses can be used to change the normal order of evaluation
+Example:
+ int result = (10 + 5) * 2;
+ first add  then multiply
+
+Basic Operator precedence
+  Highest 
+    ↓ 
+  ( )        Parentheses 
+  ++ --      Increment / Decrement 
+  * / %      Multiplication / Division / Modulus 
+  + -        Addition / Subtraction 
+  < > <= >=  Relational 
+  == !=      Equality 
+  &&         Logical AND 
+  ||         Logical OR 
+  = += -= ... Assignment 
+    ↓ 
+  Lowest
+
+Associativity
+ When operators have the same precedence, associativity determines the direction in which they  are evaluated
+
+ 10 + 5 * 2 = 20
+ (10 + 5) * 2 = 30
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 */
