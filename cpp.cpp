@@ -718,31 +718,118 @@ Iteration Structure
  Iteration means repeating a block of code
  Loops are used for iteration
  
-Main loops:
+Loops:
+ A loop is used to execute a block of code repeatedly as long as a given condition is satisfied
+ Loops help avoid writing the same code multiple times
+
+Types of Loops 
  for loop
  while loop
  do-while loop
+
+for Loop
+ A for loop is generally used when we know how many times we want to execute a block of code
+Syntax:
+ for(initialization; condition; update)
+ {
+  // statements
+ }
+
+Working:
+  Initialization
+        ↓
+     Condition
+        ↓
+     Statements
+        ↓
+       Update
+        ↓
+     Condition
+        ↓
+      Repeat
+
+while Loop
+ A while loop executes a block of code as long as the condition is true
+Syntax:
+ while(condition)
+ {
+  // statements
+ }
+
+ The condition is checked before executing the loop body
+ Therefore, while is called an entry-controlled loop
+
+do-while Loop
+ A do-while loop executes the loop body at least once, even if the condition is false
+Syntax:
+ do
+ {
+  // statements
+ }
+  while(condition);
+
+  The condition is checked after executing the loop body
+  Therefore, do-while is called an exit-controlled loop
+
+Difference Between for, while and do-while
+
+ Feature	           for	                       while	                            do-while
+
+Condition            Before	                   Before	                               After
+checked	
+
+Minimum               0	                           0	                                 1
+executions	
+
+Best used when 	   Number of iterations      Number of iterations                 Code must execute 
+                   is known		               is uncertain                          at least once
+
+Type	             Entry-controlled	        Entry-controlled	                   Exit-controlled
+
+Infinite Loop
+ An infinite loop is a loop that never ends because its condition always remains true
+
+break Statement
+ break is used to immediately terminate a loop
+Example:
+ for(int i = 1; i <= 10; i++)
+ {
+   if(i == 5)
+   {
+    break;
+   }
+    cout << i << " ";
+ }
+ when i becomes 5, the loop stops
+
+continue Statement
+ continue skips the current iteration and moves to the next iteration
+Example:
+ for(int i = 0; i <= 5; i++)
+ {
+  if(i == 3)
+  {
+   continue;
+  }
+   cout << i << " ";
+ }
+  when i == 3, that iteration is skipped
+
+Nested Loops
+ A loop inside another loop is called a nested loop
+Example:
+ for(int i = 1; i <= 3; i++)
+ {
+  for(int j = 1; j <= 2; j++)
+  {
+   cout << i << " " << j << endl;
+  }
+ }
+ The inner loop executes completely for every iteration of the outer loop
+ Nested loops are commonly used for:
+ Patterns
+ 2D arrays
+ Matrices
+ Some searching/sorting problems
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
