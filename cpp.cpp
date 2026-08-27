@@ -1228,4 +1228,166 @@ Why Use Enum?
  we can write:
  Day day = Tuesday;
  The second version is more meaningful and readable
+
+Functions
+ A function is a block of code that performs a specific task
+
+Functions helps us:
+ Avoid repeating code
+ Make programs easier to understand
+ Make code reusable
+ Divide a large program into smaller parts
+
+Syntax:
+ return_type function_name(parameters)
+ {
+   // function body
+ }
+
+Example:
+ int add(int a, int b)
+ {
+  return a + b;
+ }
+Here:
+ int -> return type
+ add -> function name
+ a, b -> parameters
+ return a + b -> value returned by function
+
+Function Call
+ A function is executed when we call it
+Example:
+ int result =  add(10, 20);
+ cout << result;
+
+Parameter
+ A variable written in the function definition is called a parameter
+ int add(int a, int b)
+ Here a and b are parameters
+
+Argument
+ The actual value passed when calling the function are called argument
+ add(10, 20)
+ Here 10 and 20 are arguments
+
+ Function definition -> parameter
+ Function call -> argument
+
+Return Statement
+ The return statement sends a value back to the place where the function was called
+Example:
+ int square(int n)
+ {
+  return n * n;
+ }
+Function call:
+ cout << square(6)
+
+void Function
+ A function with void as its return type does not return a value
+Example:
+ void greet()
+ {
+  cout << "Good morning";
+ }
+Calling:
+ greet();
+
+Function with No Parameters
+ A function can have no parameters
+Example:
+ void message()
+ {
+  cout << "Hello World";
+ }
+Call:
+ message();
+
+Function with Parameters
+ A function can accept values through parameters
+Example:
+ void greet(string name)
+ {
+  cout << "Hello" << name;
+ }
+Call:
+ greet("shyam");
+
+Function with Parameter and Return Value
+Example:
+ int multiply(int a, int b)
+ {
+  return a * b;
+ }
+Call:
+ int result = multiply(5, 6);
+ cout << result;
+
+Function Prototype
+ A function prototype tells the compiler about a function before the function is actually defined
+ it specifies:
+ Return type
+ Function name
+ Parameter types
+Syntax:
+ return_type function_name(parameter_types);
+Example:
+ int add(int, int);
+ This is the function prototype
+
+Why Do We Need a Function Prototype?
+ Normally, needs to know about a function before it is called
+Example:
+ #include <iostream>
+ using namespace std;
+ int add(int, int);    // Finction prototype
+ int main()
+ {
+  cout << add(10, 20);
+ }
+
+ int add(int a, int b)
+ {
+  rteurn a  + b;
+ }
+Here, the prototype tells the compiler
+ There is a function named add that takes two int values and return as int
+ Therefore, main() can call it before its full definition appears
+
+Function Declaration / Prototype
+ int add(int, int);
+ it tells the compiler about the function
+
+Function Definition
+ int add(int a, int b)
+ {
+  return a + b;
+ }
+ it contains the actual implementation of the function
+
+Passing Values to a function
+ By default, ordinary parameters are passed by value
+Example:
+ void change(int x)
+ {
+  x = 100;
+ }
+
+ int main()
+ {
+   int a = 10;
+  change(a);
+  cout << a;
+ }
+Output:
+ 10
+ The function receives a copy of a, so changing x does not change the original a
+
+Advantages of Functions
+ Code Resuability -> Same function can be called multiple times
+ Reduces code repetition -> Write the logic once
+ Easy Debugging -> Problems can be isolated inside functions
+ Better Organization -> Large programs can be divided into smaller tasks
+ Esy Maintenance -> Changes can be made in one place
 */
