@@ -1482,4 +1482,84 @@ Call by refernce is useful when:
  We want to avoid making unnecessary copies of large objects
  We need to return/change multiple values through parameters
  
-*/
+Inline Function
+ An inline function is a function where the compiler may replace the function call with the actual function code to reduce function-call overhead
+Syntax:
+ inline return_type function_name(parameters)
+ {
+   // function body
+ }
+
+ Use the inline keyword before the function
+ It is mainly useful for small and frequently called functions
+ inline is a request to the compiler; the compiler may ignore it
+ It is not a gurantee that the function will be expanded inline
+
+Inline -> useful for small functions
+
+Default Arguments
+ A default argument is a value automatically used by a function when the caller does not provide that argument
+Example:
+ int sum(int a, int b = 10)
+ {
+    return a + b;
+ }
+Now:
+ cout << sum(5);
+Output:
+ 15
+ Because b was not provided, its default value 10 is used
+ If we provide both arguments:
+ cout << sum(5, 20);
+Output:
+ 25
+Here, the provided value 20 replaces the default value
+
+Default arguments should generally be specified from Right to Left
+Correct:
+ int sum(int a, int b = 10, int c = 20);
+
+Incorrect:
+ int sum(int a = 10, int b);
+ 
+ Because a non-default parameter cannot follow a default parameter in the same parameter list
+
+Constant Arguments
+ A constant argument can be passed using the const keyword so that the function modify that parameter
+Example:
+ void display(const int x)
+ {
+  cout << x;
+ }
+
+ x = 20;  Inside the function, this is not allowed
+ because x is constant
+
+Example with const Reference
+ A common and useful form is:
+ void display(const int &x)
+ {
+  cout << x;
+ }
+Here:
+ & -> reference
+ const -> cannot modify the original value through x
+Example:
+  int a = 10;
+  display(a);
+  The function can read a, but cannot modify it through x
+
+Normal Parameter
+ void change(int x)
+ {
+  x = 20;
+ }
+ The parameter can be changed inside the function
+
+Constant Parameter
+ void change(const int x)
+ {
+  x = 20; // Error
+ }
+ The parameter cannot be modified inside the functionxxxx
+ */
