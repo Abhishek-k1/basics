@@ -1389,5 +1389,97 @@ Advantages of Functions
  Reduces code repetition -> Write the logic once
  Easy Debugging -> Problems can be isolated inside functions
  Better Organization -> Large programs can be divided into smaller tasks
- Esy Maintenance -> Changes can be made in one place
+ Easy Maintenance -> Changes can be made in one place
+
+Call by Value
+ In call by value, a copy of the actual value is passed to the function
+ Any changes made to the parameter do not affect the original variable
+Example:
+ void change(int x)
+ {
+  x = 100;
+ }
+
+ int main()
+ {
+   int a =  10;
+   change(a);
+   cout << a;
+ }
+Output:
+ 10
+Here:
+ a = 10 
+  ↓ 
+ copy of a is passed to x 
+  ↓ 
+ x = 100 
+  ↓ 
+ original a remains 10
+
+Call by Reference
+ In call bu reference, the function parameter becomes a reference (alias) to the original variable
+ Therefore, changes made inside the function affect the original variable
+Example:
+ void change(int &x)
+ {
+   x = 100;
+ }
+
+ int main()
+ {
+   int a = 10;
+   change(a);
+   cout << a;
+ }
+Output:
+ 100
+Here:
+ a = 10 
+  ↓ 
+ x refers to a 
+  ↓ 
+ x = 100 
+  ↓ 
+ a also becomes 100
+
+Swapping Two Numbers
+Call by Value
+ void swap(int a, int b)
+ {
+   int temp = a;
+   a = b;
+   b = temp;
+ }
+
+ The original values are not swapped because the function works on copies
+
+Call by Reference
+ void swap(int &a, int &b)
+ {
+   int temp = a;
+   a = b;
+   b = temp;
+ }
+
+Here original value are swap
+
+Call by Reference and Reference Variables
+ The & in a function parameter creates a reference to the original variable
+Example:
+ void change(int &x)
+ {
+   x = 50;
+ }
+
+ Here x is a reference variable
+ So:
+ x -> another name(alias) of the original variable
+
+WHen to Use Call by  Reference
+Call by refernce is useful when:
+ We want a functionn to modify the original variable
+ We want to avoid making unnecessary copies of large objects
+ We need to return/change multiple values through parameters
+ 
 */
