@@ -1075,4 +1075,157 @@ Example:
  cout << p2 - p1;
 Output:
  3
+
+Structure
+ A structure (struct) is a user-defined data type thatallows us to group different types pf data under one frame
+Syntax:
+ struct structureName
+ {
+  data_type member1;  
+  data_type member2;  
+  data_type member3;  
+ };
+
+Creating Structure Variables
+ struct student
+ {
+  string name;
+  int age;
+  float marks;
+ };
+
+ int main()
+ {
+  student s1;
+  s1.name = " ";
+  s1.age = ;
+  s1.marks =  ;
+
+  cout << s1.name << endl;  
+  cout << s1.age << endl;  
+  cout << s1.marks << endl;  
+ }
+
+Accessing Members
+ The dot (.) operator is used to access structure members
+ s1.name
+ s1.age
+ s1.marks
+
+Structure Initialization
+ A sttructure can also be initialized while creating the variable
+ student s1 = {"name", age, marks};
+ The values are assigned according to the order of members in the structure
+
+Array of Structures
+ We can create an array containing multiple structure objects
+Example:
+ struct student
+ {
+  string name;
+  int age;
+ };
+
+ student students[3];
+ Now students can store information about 3 students
+
+Structure with Pointer
+ A pointer can also point to a structure
+Example:
+ Student s1;
+ Student* ptr = &s1;
+ Members can be accessed using:
+ ptr->name
+ ptr->age
+ The -> operator is used when accessing structure members through a pointer
+
+ Normal structure object -> .
+ Structure pointer -> ->
+
+Example:
+ s1.age 
+ ptr->age
+
+Union
+ A union is similar to a structure, but all mmembers share the same memory location
+Syntax:
+ union Data
+ {
+  int i;
+  float f;
+  char c;
+ };
+
+Structure -> seperate memory
+Union -> shared memory
+
+Enum
+ enum stands for enumeration
+ An enum is a user-defined type that consists of a set of named integral constants
+Syntax:
+ enum Day
+ {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday
+ };
+ Enums make code more readable by giving meaningful names to related values
+
+Default Values inEnum
+ By default enum values start from 0
+Example:
+ enum Day
+ {
+  Monday,
+  Tuesday,
+  Wednesday
+ };
+Conceptually
+ Monday -> 0
+ Tuesday -> 1
+ Wednesday -> 2
+
+Assigning Custom Values to Enum
+ We can also assign our own values
+Example:
+ enum Status
+ {
+  Success = 1,
+  Failed = 0
+ };
+
+Here:
+ Success -> 1
+ Failed -> 0
+
+Why Use Structures?
+ Structures are useful when we need to store different types of information belongingto one entity
+Example:
+ A student has:
+ Name
+ Age
+ Marks
+ Roll Number
+Instead of creating unrelated variables, we can group them
+ struct Student
+ {
+  string name;
+  int age;
+  float marks;
+  int rollNo;
+ };
+
+Why Use Union?
+ Union is useful when different members share the same memory and we need only one of those values at a time
+ This can help save memory in appropiate situations
+
+Why Use Enum?
+ Enums make program easier to read
+ Instead of:
+ int day = 2;
+ we can write:
+ Day day = Tuesday;
+ The second version is more meaningful and readable
 */
