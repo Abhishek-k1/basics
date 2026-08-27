@@ -948,7 +948,7 @@ Example:
  cout << *ptr;
  because ptr does not point to a valid integer
 
-Pointerr with Arrays
+Pointer with Arrays
  The name of an array can act like a pointer to its first element in many expressions
 Example:
  int arr[] = {10, 20, 30};
@@ -985,6 +985,94 @@ Why Do We Use Pointers?
  Dynamic data structures
  Direct memory access
  Pointers are especially important in DSA because structure such as linked lists and trees use pointers to connect nodes
- 
 
+Relation Between Array and Pointer
+ The name of an array represents the address of its  first element in most expressions
+Examplr=e:
+ int arr[] = {10, 20. 30, 40};
+ int* ptr = arr;
+Here:
+ arr -> address of arr[0]
+ ptr -> address of arr[0]
+ *ptr -> value of arr[0]
+
+Accessing Array Elements Using Pointer
+ int arr[] ={10, 20, 30};
+ int* ptr = arr;
+
+ cout << *ptr << endl;
+ cout << *(ptr + 1) << endl;
+ cout << *(ptr + 2) << endl;
+Here:
+ *ptr -> arr[0]
+ *(ptr + 1) -> arr[1]
+ *(ptr + 2) -> arr[2]
+
+Array Indexing and pointer Arithmetic
+ The following equivalent:
+ arr[i] = *(arr + i)
+Example:
+ int arer[] = (10, 20, 30 ,40);
+ cout << arr[2] << endl;
+ cout << *(arr + 2) << endl;
+Both give:
+ 30
+
+Pointer Increment
+ When a pointer is incremented, it moves tothe next element of the array
+Example:
+ int arr[] = {10, 20, 30};
+ int * ptr = arr;
+ cout << *ptr << endl;
+ ptr++;
+ cout << *ptr << endl;
+Output:
+ 10
+ 20
+
+Pointer Decrement
+ Ptr-- moves the pointer to the previous element
+Example:
+ int arr[] = {10, 20, 30};
+ int* ptr = &arr[2];
+ cout << *ptr << endl;
+ ptr--;
+ cout << *ptr <, endl;
+Output:
+ 30
+ 20
+
+Pointer Arithmetic Operations
+ For a pointer ptr:
+ ptr + 1 -> next element
+ ptr - 1 -> previous element
+ ptr + n -> n element forward
+ ptr - n -> n element backward
+
+Pointer Arithmetic Depends on Data Type
+ The amount by which a pointer moves depend on the data type of the pointer
+Example:
+ int* ptr;
+ ptr++;
+ moves to the next int element
+ The compiler automatically moves the pointer by the size of the data type
+
+Traversing an Array Using Pointer
+Example:
+ int arr[] = {10, 20, 30, 40, 50};
+ int* ptrr = arr;
+ for(int i = 0; i < 5; i++)
+ {
+  cout << *(ptr + i) << " ";
+ }
+
+Pointer Difference
+ Two pointers pointinng to elements of the same array can be subtracted
+Example:
+ int arr[] = {10, 20, 30, 40, 50};
+ int* p1 = &arr[1];
+ int* p2 = &arr[4];
+ cout << p2 - p1;
+Output:
+ 3
 */
