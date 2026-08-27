@@ -802,6 +802,8 @@ Example:
  }
  when i becomes 5, the loop stops
 
+
+
 continue Statement
  continue skips the current iteration and moves to the next iteration
 Example:
@@ -814,6 +816,8 @@ Example:
    cout << i << " ";
  }
   when i == 3, that iteration is skipped
+
+Output: 0 1 2 4 5
 
 Nested Loops
  A loop inside another loop is called a nested loop
@@ -831,5 +835,156 @@ Example:
  2D arrays
  Matrices
  Some searching/sorting problems
+
+ break -> stops the loop
+ continue -> skips one iteration
+
+Pointers:
+ A pointer is a variable that stores the memory address of another variable
+Example:
+ int a = 10;
+ int* ptr = &a;
+Here:
+ a -> normal integer variable
+ &a -> address of variable a
+ ptr -> pointer variable
+ ptr stores the address of a
+
+Pointer Syntax:
+ data_type* pointer_name;
+Example:
+ int* ptr;
+ This means ptr is a pointer that can store the address of an int variable
+
+Address-of Operator &
+ The & operator is used to get the memory address of a variable
+Exammple:
+ int a = 10;
+ cout << &a;
+ This prints the memory address of a
+
+Dereference Operator *
+ The * operator is  used to access the value stored at the address held by a pointer
+Example:
+ int a = 10;
+ int* ptr = &a;
+ cout << *ptr;
+Here:
+ ptr -> address of a
+ *ptr -> value of a
+
+Example of pointer
+ int a = 10;
+ int* ptr = &a;
+
+ cout <<"Value of a:" << a << endl;
+ cout <<"Address of a:" << &a << endl;
+ cout <<"Value stored in ptr:" << ptr << endl;
+ cout <<"Value using ptr:" << *ptr  << endl;
+
+ a -> value
+ &a -> address of a
+ ptr -> address stored in pointer
+ *ptr -> value at that address
+
+Changing Value Using Pointer
+ A pointer can be used to change of the original variable
+Example:
+ int a = 10;
+ int* ptr = &a;
+ *ptr = 20;
+ cout << a;
+Output:
+ 20
+ Because ptr points to a, changing *ptr changesa
+
+Pointer and Memory
+ Conceptually:
+ variable
+
+         a
+    +-------+
+    |  10   |
+    +-------+
+      1000        ← memory address
+    
+    
+Pointer:
+
+       ptr
+    +-------+
+    | 1000  |
+    +-------+
+
+Therefore:
+
+    ptr  → 1000
+    *ptr → 10
+
+Pointer to Pointer
+ A pointer can also store the address of another pointer
+Example:
+ int a = 10;
+ int* ptr = &a;
+ int** pptr = &ptr;
+Here:
+ a -> stores 10
+ ptr -> stores address of a
+ pptr -> stores address of ptr
+
+Accessing the value:
+ cout << *8pptr;
+
+Output:
+ 10
+
+NULL/nullptr Pointer
+ A pointer that does not point to a valid object can be initialized with nullptr
+Example:
+ int* ptr = nullptr;
+ nullptr means the pointer currently points to nothing
+ Always avoid dereferencing a null pointer
+ // Wrong
+ cout << *ptr;
+ because ptr does not point to a valid integer
+
+Pointerr with Arrays
+ The name of an array can act like a pointer to its first element in many expressions
+Example:
+ int arr[] = {10, 20, 30};
+ int* ptr = arr;
+ cout << *ptr;
+Output:
+ 10
+ pointer arithmetic can be used to access array elements
+ cout << *(ptr + 1);
+Output:
+ 20
+
+Pointer Arithmetic
+ Pointers can be incremented or decremented
+Example:
+ int arr[] = {10, 20, 30};
+ int* ptr = arr;
+ cout << *ptr << endl;
+ ptr++;
+ cout << *ptr << endl;
+Output
+ 10
+ 20
+ When ptr++ is performed, the pointer moves to the next element of its type
+
+Why Do We Use Pointers?
+ Pointers are useful for:
+ Dynamic memory allocation
+ Arrays
+ Passing data efficiently
+ Linked lists
+ Trees
+ Graphs
+ Dynamic data structures
+ Direct memory access
+ Pointers are especially important in DSA because structure such as linked lists and trees use pointers to connect nodes
  
+
 */
