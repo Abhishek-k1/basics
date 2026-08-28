@@ -1561,5 +1561,86 @@ Constant Parameter
  {
   x = 20; // Error
  }
- The parameter cannot be modified inside the functionxxxx
+ The parameter cannot be modified inside the function
+
+Recursion
+ Recursion is a technique in ehich a function calls itself to soolve a problem
+ A function that calls itself is called a recursive function
+
+Structure:
+ return_type function_name()
+ {
+  // Base Case
+
+  // Recursive Call
+  function_name();
+ }
+
+Base Case
+ The base case is the conndition that stops the  recursive function 
+ Without a base case, the function would continue calling itself indefinitely
+Example:
+ if(n == 0)
+   return;
+
+ Every recursive function should have a condition that eventually stops the recursion
+
+Recursive Case
+ The recursive case is the part where the function calls itself with a smaller or simpler problem
+Example:
+ countDown(n - 1);
+ Here the problem becomes smaller because n decrease by 1
+
+Base Case -> STOP
+Recursive Case -> CALL AGAIN
+
+Factorial Using Recursion
+ int factorial(int n)
+ {
+  if(n == 0 || n == 1)
+   return 1;
+
+   return n * factorial(n - 1);
+ }
+ cout << factorial(5);
+
+Recursion and Call Stack
+ Every Function call is stored  in the call stack
+ Recursive calls use stack memory
+
+Fibonacci Using Recursion
+ The Fibonacci sequence starts with:
+ 0 1 1 2 3 5 8 13 
+
+ Each number is the sum of the previous two numbers
+Recursive Function:
+ int fibonacci(int n)
+ {
+  if(n == 0)
+   return 0;
+
+  if(n == 1)
+   return 1;
+
+  return fibonacci(n - 1) + fibonacci(n - 2);
+ }
+
+Advantages of Recursion
+ Makes some problems easier to express
+ Useful for problems that naturally break into smaller subproblems
+ Commonly used in:
+ Trees
+ Graphs
+ Divide and conwuer
+ Backtracking
+ Searching and Sorting algorithms
+
+Disadvantages of Recursion
+ Uses additional stack memory
+ Can be slower because of repeated function calls
+ Incorrect or missing base cases can cause infinite recursion
+ Too many recursive calls can cause stack overflow
+
+
+
  */
