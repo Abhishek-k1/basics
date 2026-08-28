@@ -1855,4 +1855,66 @@ Why Use Classes and Objects
  Reuse code
  Represent real-world entities
 
+Access Modifiers
+ Access modifier control the accessibility of members of a class
+ Main access modifiers
+ public
+ private
+ protected
+
+ Public -> can be accessed from outside the class
+ Private -> cannot be accessed directly from outside the class
+
+Default Access in class
+ If no access modifier is specified in a class, the members are private by default
+ class Student
+ {
+     int age;
+ };
+This is the same as:
+ class Student
+{
+ private:
+     int age;
+ };
+
+Class vs Struct
+ There is an important difference in their default access
+ class -> private by default
+ struct -> public by default
+ class A
+ {
+     int x;       // private
+ };
+ struct B
+ {
+     int x;       // public
+ };
+
+Private Member Functions
+ Members function can also be private
+ class Demo
+ {
+ private:
+   void show()
+   {
+     cout << "Hello";
+   }
+ public:
+   void display()
+   {
+    show();
+   }
+ };
+ A private function cannot be called directly from outside the class
+ Demo d;
+ d.show(); // Error 
+ d.display(); // Allowed
+
+Why Use  Private Members?
+ Private members help:
+ Hide data from outside code
+ Protect data from direct modification
+ Provide controlled access through public functions
+ Implement encapsulation
  */
