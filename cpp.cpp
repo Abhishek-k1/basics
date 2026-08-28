@@ -1641,6 +1641,218 @@ Disadvantages of Recursion
  Incorrect or missing base cases can cause infinite recursion
  Too many recursive calls can cause stack overflow
 
+Function Overloading
+ Function overloading means defining multiple function with the same name but with different parameters
+ The compiler decides which funcction to call based on the arguments passed
 
+How Function Overloading Works
+ The compiler identifies an overloaded function using its parameter list
+The parameter list can differ by:
+ Number of parameters
+ Type of parameters
+ Order of parameters
+
+Different Number of Parameters
+ int add(int a, int b)
+ {
+   return a + b;
+ }
+
+ int add(int a, int b, int c)
+ {
+  return a + b + c;
+ }
+
+Different Data Types
+ Functions can have same name but different parameter types
+ innt square(int x)
+ {
+   return x * x;
+ }
+
+ double square(double x)
+ {
+  return x * x;
+ }
+
+Different Order of Parameters
+ The order of parameter types can also be different
+ void display(int x, double y)
+ {
+  cout << "int, double";
+ }
+
+ void display(double x, int y)
+ {
+  cout << "double, int";
+ }
+
+Return Type Alone Cannot Overload a Function
+ int add(int a, int b)
+ {
+  return a + b;
+ }
+
+ double add(int a, int b)
+ {
+  return a + b;
+ }
+
+ Both functions have the same:
+ Function name
+ Parameter types
+ Number of parameters
+ Only the return type is different
+Function overloading cannot be done using return type alone
+
+Function Overloading and Compiler
+ Function Overloadinng is an example of compile-time polymorphism
+ The compiler determines which function should be called during compilation
+Example:
+ add(10, 20);
+Compiler sees:
+ add(int, int)
+ and selects the matching function
+
+Advantages of Function Overloading
+ Same funcion name can be used for similar operations
+ Improves code readability
+ Makes code easier to understand
+ Supports compile-time polymorphism
+ Avoids using many different function names for similar tasks
+
+Object-Oriented Programming
+ OOP is a programming approach based on objects and classes
+ It helps organize programs by combining data and functions into a single unit
+Main Concepts of OOP:
+ Class
+ Object
+ Encapsulation
+ Abstraction
+ Inheritance
+ Polymorphism
+
+Class
+ A class is a user defined data type that acts as a blueprint for creating objects
+ A class can contain:
+ Data members
+ Member functions
+
+Syntax:
+ class className
+ {
+   // Data members
+   // Member functuions
+ };
+
+Object
+ An object is an instance of a class
+ Objects are created from a class and can access the members of that class
+Example:
+ student s1;
+Here:
+ student -> class
+ s1 -> object;
+ We can create multiple objects from the same class
+ student s1;
+ student s2;
+ student s3;
+
+Class and Object Example
+ #include <iostream>
+ using namespace std;
+
+ class student
+ {
+ public:
+  string name;
+  int age;
+
+  void display()
+  {
+   cout << name << " " << age << endl;
+  }
+ };
+
+ int main()
+ {
+  student s1;
+
+  s1.name ="Shyam";
+  s1.age = 20;
+
+  s1.display();
+
+  return 0;
+ }
+
+Accessing Class Members
+ The dot(.) operator is used to access public members of an object
+ s1.name
+ s1.age 
+ are accessed using the . operator
+
+Data Members
+Variables declared inside a class are called data members
+ name -> Data memeber
+ age -> Data member
+
+Member Functions
+ Functions declared inside a class are called member functions 
+ display() is a member function
+
+Public Access Specifier
+ Public members can be accessed from outside the class using an object
+ Used when direct access is required
+ class Student
+ {
+ public:
+     int age;
+ };
+Then:
+ Student s1;
+ s1.age = 20;
+ This is allowed because age is public
+
+Private Access Specifier
+ private members can be accessed only from within the class
+ Used to hide/Protect data
+ class Student
+ {
+ private:
+     int age;
+ };
+ This is not allowed outside the class:
+ Student s1;
+ s1.age = 20;   // Error
+
+Encapsulation
+ Encapsulation means wrapping data and functions together inside a class and controlling access to the data
+ class BankAccount
+ {
+ private:
+     int balance;
+
+ public:
+     void setBalance(int b)
+     {
+         balance = b;
+     }
+ 
+     int getBalance()
+     {
+         return balance;
+     }
+ };
+
+Here the data balance is protected using private, and it is accessed through public functions
+ 
+Why Use Classes and Objects
+ Classes and objects help us:
+ Organize code
+ Combine data and functions
+ Protect data using access control
+ Reuse code
+ Represent real-world entities
 
  */
