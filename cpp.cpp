@@ -1998,10 +1998,112 @@ Why Use Nesting Member Functions?
  Hide internal implementation details
  Make the program easier to maintain
 
+Memory Allocation for Objects
+ When an object of class is created, memory is allocated for its data members
+Example:
+  class student
+  {
+  public:
+    int age;
+    int marks;
+  };
 
+  int main()
+  {
+   student s1;
+  }
+Here s1 is an object of student
 
+Each Object Has Its Own Data
+ If multiple objects are created, each object gets its own copy of the non-static data members
 
+Member Functions and Objects
+ Member functions are associated with the class, while the objects memory mainly stores its data members
+ For each object:
+ Object
+   ↓
+ Data members -> stored separately for each object
+ Member functions -> not a separate copy of the function code for every object
 
+Array as a Data Member
+ An array can be declared inside a class as a data member
+Example:
+ class student
+ {
+ public:
+  int marks[5];
+ };
+ Here marks is an array belonging to each Student object
 
+Array with Multiple Objects
+ Each object gets its own array
 
+Initializing an Array in a class
+ You can assign values to the array using the object
+ student s1;
+ s1.marks[0] = 90;
+ s2.marks[1] = 55;
+ s3.marks[2] = 40;
+
+ Accessing an array element:
+ cout << s1.marks[1];
+
+Array of Objects
+ We can also create an array whose elements are objects
+Example:
+ class student
+ {
+ public:
+    int age;
+ };
+
+ int main()
+ {
+  student students[3];
+  students[0].age = 12;
+  students[1].age = 20;
+  students[2].age = 30;
+ }
+Here:
+   students
+      ↓
+ [Student] [Student] [Student]
+     0         1         2
+
+ Each element is a separate Student object
+
+Accessing Array of Objects
+ Use the index followed by the dot operator
+
+ students[0].age = 20;
+ students[1].age = 21;
+
+ cout << students[0].age;
+Pattern:
+ array[index].member
+
+Example: 
+ students[0].age
+
+**
+ Suppose:
+ class student
+ {
+ public:
+    int age;
+    int marks[3];
+ };
+
+ Then each object contains its own:
+ Student object
+ ├── age
+ ├── marks[0]
+ ├── marks[1]
+ └── marks[2]
+ If we create:
+ Student s1;
+ Student s2;
+ both objects have their own age and marks data
+
+ 
  */
