@@ -1917,4 +1917,91 @@ Why Use  Private Members?
  Protect data from direct modification
  Provide controlled access through public functions
  Implement encapsulation
+
+Nesting of Member Functions
+ When one member function calls another member function of the same class, it is called  nesting of member functions
+Example:
+ class student
+ {
+ private:
+   int age;
+
+   void checkAge()
+   {
+     if(age >= 18)
+      cout << "Adult";
+
+     else
+      cout << "Minor";
+   }
+
+  public:
+      void setAge(int a)
+      {
+        age = a;
+        checkAge();
+      }
+ };
+Here:
+ setAge()
+   ↓
+ checkAge()
+
+ setAge() calls another member function checkAge()
+ This is called nesting of member functions
+
+Example:
+ class Demo
+ {
+   void function1()
+   {
+     function2();
+   }
+
+   void function2()
+   {
+     cout << "Hello";
+   }
+ };
+ Here function1() calls function2()
+ We dont need to use an object to call function2() from inside the same class
+
+Nested Member Function With Public and Private
+ A public member function can call a private member function of the same class
+Example:
+ class Student
+ {
+ Private:
+   void show()
+   {
+     cout << "Private function";
+   }
+
+  public:
+    void dissplay()
+    {
+      show();
+    }
+ };
+
+ student s1;
+ s1.display();   // Allowed
+ s1.show   // Error
+
+ The outside code cannot directly call show() but display() can call it because both functions belong to the same class
+
+Why Use Nesting Member Functions?
+ Nesting helps to:
+ Break a large task into smaller functions
+ Keep helper functions private
+ Improve code organization
+ Hide internal implementation details
+ Make the program easier to maintain
+
+
+
+
+
+
+
  */
