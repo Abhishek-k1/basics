@@ -2105,5 +2105,152 @@ Example:
  Student s2;
  both objects have their own age and marks data
 
+Static Data Member
+ A static data member is a data member that is shared by all objects of a class
+ Unlike a normal data member only one copy of a static data member exists for the entire class
+
+Normal Data Member:
+ Object 1 -> separate copy ─┐ 
+ Object 2 -> separate copy ─┼→One shared variable Object 
+ Object 3 -> separate copy ─┘
+
+Syntax:
+ Inside the class:
+ class student
+ {
+ public:
+    static int count;
+ };
+ The static data member must be defined outside the class
+ int student::count = 0;
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ class student
+ {
+ public:
+     static int count;
+     student()
+     {
+       count++;
+     }
+ };
+
+ int student:: count = 0;
  
+ int main()
+ {
+   student s1;
+   student s2;
+   student s3;
+   cout << student::count;
+   return 0;
+ }
+
+Explanation:
+ When each object is created, the constructor increases count
+ s1 created -> count = 1
+ s2 created -> count = 2
+ s3 created -> count = 3
+ All three objects share the same count
+
+Accessing Static Data Member
+ A static data member can be accessed using the class name and scope resolution operator ::
+Syntax:
+ className::staticMember
+Example:
+ cout << student::count;
+Here:
+ student -> class name
+ ::      -> Scope resolution operator
+ count   -> Static data member
+
+ Normal Data Member              VS          Static Data Member
+ Separate copy for each object	             One shared copy for all objects
+ Belongs to individual object	               Belongs to the class
+ Each object can have a different value	     All objects share the same value
+ Accessed using object	                     Can be accessed using class name
+
+Static Member Function
+ A static member function is a member function that belongs to the class rather than a particular object
+ It can be called using the class name
+Syntax:
+ static return_type functionName()
+ {
+   // code
+ }
+
+Example:
+ class Student
+ {
+ public:
+     static int count;
+ 
+     static void showCount()
+     {
+         cout << count;
+     }
+ };
+
+ int Student::count = 0;
+
+ Calling the function:
+
+ Student::showCount();
+
+ We don't need to create an object to call a static member function
+
+Important rule of Static Member Function
+ A static member function cannot directly access non-static data members
+Example:
+
+class Student
+{
+public:
+    int age;
+    static int count;
+
+    static void display()
+    {
+        cout << count;   // Allowed
+        // cout << age;  // Error
+    }
+};
+
+Why?
+Because age belongs to a particular object, while the static function belongs to the class
+ 
+Static Function Can Access Static Members
+ A static member funnction can directly access static data members
+Example:
+ class student
+ {
+ public:
+   static int count;
+   static void display()
+   {
+    cout << count;
+   }
+ };
+ int student::count = 10;
+Then:
+ student::display();
+Output: 10
+
+Calling Static Function
+ Static members functions can be called using:
+ className::functionName();
+Example:
+ student::showcount();
+ They can also be called through an object, but using the class name is clearer and preferred
+
+Why Use Static Members?
+ Static members are useful when a value or function should be shared among all objects
+Examples:
+ Counting number of objects
+ Maintaining a common value
+ Storing class-level information
+ Utility/helper functions that dont need object data
  */
