@@ -2353,4 +2353,260 @@ Calling:
  student s1 = createStudent();
  Here the function returns a student object
 
+Friend Function
+ A friend function is a function that is not a  member of a class, but it is allowed to access the class's private and protected members
+ It is declared inside the class using the keyword friend
+
+Syntax:
+ class className
+ {
+ private:
+    int data;
+
+ public:
+    friend void functionName(className obj);
+ };
+ The function is declared with the friend keyword inside the class
+
+Example:
+ #include <iostream>
+ using namespace std;
+ class student
+ {
+ private:
+     int age;
+
+ public:
+     student()
+     {
+      age = 20;
+     }
+     friend void display(student s);
+ };
+ void display(student s)
+ {
+  cout << s.age;
+ }
+
+ int main()
+ {
+   student s1;
+   display(s1);
+   return 0;
+ }
+
+ Normally, age is private and cannot be accessed outside the class
+ But display() is declared as a friend, so it can access age
+
+ A friend function is not a member funnction of the class
+Example:
+ friend void display(student s);
+
+ display() is declared inside the class, but it is not a member of studeent
+ Therefore, it is called normally
+ display(s1);
+ s1.display();  // Wrong
+
+Friend Function Can Access Private Data
+Normally:
+ class student
+ {
+ private:
+    int age;
+ };
+ This is not allowed
+ Void display(student s)
+ {
+  cout << s.age;    // Error
+ }
+ But after declaring:
+ friend void display(student s);
+ it becomes allowed
+ void display(student s)
+ {
+  cout << s.age;   // Allowed
+ }
+
+Friend Function with Two Classes
+ A friend function can access private data from more than one class
+Example:
+ class A
+ {
+ private:
+   int x = 10;
+   friend void add(A, B);
+ };
+
+ class B
+ {
+ private:
+   int y = 20;
+   friend void add(A, B);
+ };
+ void add(A a, B b)
+ {
+  cout << a.x + b.y;
+ }
+
+ Here add() can access:
+ A::x -> private
+ B::y -> private
+ because it is declared as a friend in both classes
+
+Friend Function  vs Member Funnction
+ Member Function	                          Friend Function
+ Belongs to the class	                      Does not belong to the class
+ Called using object	                        Called like a normal function
+ Can directly access class members	          Can access private/protected members if declared friend
+ Uses this pointer                         	Does not have a this pointer
+
+ Member function: s1.display();
+ Friend function: display(s1);
+
+Properties
+ Declared usinng the friend keyword
+ Not a member of the class
+ Can access private members
+ Can access protected members
+ Called like a normal function
+ Does not use the . operator  to call it
+ A friend function does not have a this pointer
+
+Why Use Friend Function
+ Friend functions are useful when:
+ A function needs access to private data
+ A function needs to work with private data of multiple classes
+ We want a non-member function to have special access to a class
+
+Friend Class
+ A friend class is a class whose members function can access the private and protected members of another class
+ A class is declared as a friend usinng the friend keyword
+
+Syntax:
+ class A
+ {
+   friend class B;
+ };
+ Here, class B is a friend of class A
+ Therefore, the member functions of B can access the private and PrOtected members of A
+
+Example:
+ class student
+ {
+ private:
+    int age = 20;
+    friend class Teacher;
+ };
+
+ class Teacher
+ {
+ public:
+    void display(student s)
+    {
+     cout << s.age;
+    }
+ };
+
+ int main()
+ {
+  student s1;
+  Teacher t1;
+  t1.display(s1);
+  return 0;
+ }
+ Normally age is private, so it cannot be accessed outside student 
+ But Teacher is declared as a friend class:
+ friend class Teacher;
+ Therefore, Teacher can access student's private data
+
+ Friendship gives special access to another class
+ Student 
+  ↓ 
+ private data
+  ↓ 
+ Teacher is friend
+  ↓ 
+ Teacher can access private data
+
+ Friend Class is Not Mutual
+ If class A is a friend of class B, it does not automatically mean that class B is a friend of class A
+Example:
+ class A
+ {
+  friend class B;
+ };
+This Means
+ B -> can access private members of A
+ A -> cannot automatically access private members of B
+ Friendship must be explicitly declared
+
+Friend Function Vs Friend Class
+Friend Function
+ Only one particular function gets special access
+ friend void display(student s);
+
+Friend Class
+ All member functions of the friend class get special access 
+ friend class Teacher;
+
+Member Friend Function
+ Sometimes we dont want to make an entire class a friend
+ Instead, we can make only one member function of another class a friend
+ This is called a member friend function
+Example:
+ class student;
+ class Teacher
+ {
+ public:
+    void display(student s);
+ };
+ class student
+ {
+ private;
+    int age = 20;
+    friend void Teacher::display(student s);
+ };
+ void Teacher::display(student s)
+ {
+  cout << s.age;
+ }
+
+ int main()
+ {
+  student s1;
+  Teacher t1;
+  t1.display(s1);
+  return 0;
+ }
+Output:
+ 20
+Here only:
+ Teacher::display()
+ is given access to the private members of student
+ Other member functions of Teacher do not automatically get access
+
+Friend Class VS Member Friend Function
+ Friend Class	                                   Member Friend Function
+Entire class gets access	                       Only one member function gets access
+Declared using friend class       	             Declared using friend with function
+More access is given	                           More controlled access
+All member functions can access private data	   Only the specified function can access private data
+
+Why Use Friend Classes?
+ Friend classess can be useful when two classes need to work closely together
+For example:
+ Student ↔ Teacher 
+ BankAccount ↔ Bank
+ Engine ↔ Car
+ Only class may need special access to the private data of another class
+
+Properties
+ Friendship is given using the friend keyword
+ A friend can access private and protected members
+ Friend class is not a member of the other class
+ Friendship is not automatically mutual
+ Friendship is not inherited
+ You can make an entire class a friend
+ You can also make only one member function a friend
+ 
  */
