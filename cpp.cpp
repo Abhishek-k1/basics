@@ -2253,4 +2253,104 @@ Examples:
  Maintaining a common value
  Storing class-level information
  Utility/helper functions that dont need object data
+
+Array of Objects
+ An array of objects is an array in which each element  is an object of the same class
+Syntax:
+className objectArray[size];
+Example:
+ class student
+ {
+ public:
+     string name;
+     int age;
+ };
+ int main()
+ {
+   student students[3];
+ }
+Here:
+ student -> class
+ students -> array of objects
+ 3 -> Number of objects
+
+The array contains:
+ students[0] -> student object
+ students[1] -> student object
+ students[2] -> student object
+
+Accessing Members of an Object Array
+ Use the index operator [] and dot operator .
+Example:
+ students[0].name ="shyam";
+ students[0].age = 30;
+Pattern:
+ array[index].member
+Example:
+ students[0].age
+
+Passing Object as Function Argument
+ An  object can be passed to a function as an argument just like a normal variable
+Example:
+ class Student
+ {
+ public:
+   int age;
+ };
+
+ void display(student s)
+ {
+  cout << s.age;
+ }
+Calling the function:
+ student s1;
+ s1.age = 20;
+ display(s1);
+Here:
+ s1
+  ↓
+ passed to display()
+  ↓
+ parameter s receives the object
+
+Passing an object by Reference
+ An object can also be passed by reference
+Syntax:
+ void display(student &s)
+ {
+  cout << s.age;
+ }
+Calling:
+ display(s1);
+ Here s refers to the original object instead of creating a separate object copy
+ This is useful when we want to avoid unnecessary copying
+
+Array of Objects passed to a function
+ An array of objects can be passed to a function
+Example:
+ void display(student students[], int n)
+ {
+  for(int i = 0; i < n; i++)
+  {
+   cout << students[i].name << endl; 
+  }
+ }
+Calling:
+ student students[3];
+ display(students, 3);
+ The function receives the array of student objects
+
+Object as Function Return Value
+ A function can also return an object
+Example:
+ student createStudent()
+ {
+  student s;
+  s.age = 20;
+  return s;
+ }
+Calling:
+ student s1 = createStudent();
+ Here the function returns a student object
+
  */
