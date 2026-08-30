@@ -2608,5 +2608,126 @@ Properties
  Friendship is not inherited
  You can make an entire class a friend
  You can also make only one member function a friend
- 
+
+Friend Function with Two Classes
+ A friend function can be declared as a friend of multiple classes
+ This allow the same function to access private members of both classes
+Example:
+ class Y;
+ class X    // Forward declaration
+ {
+ private:
+   int data = 10;
+
+ public:
+   friend void add(X, Y);
+ };
+
+ class Y
+ {
+ private:
+   int num = 20;
+
+ public:
+   friend void add(X, Y);
+ };
+ void add(X o1, Y o2)
+ {
+  cout << o1.data + o2.num;
+ }
+Output:
+ 30
+Here:
+ X -> private data = 10
+ Y -> private num = 20
+           ↓
+     add(X,Y)
+         ↓
+ Friend of both classes
+ Therefore, add() can access:
+
+ o1.data
+ o2.num
+
+ even though both are private
+
+Forward Declaration
+ When a class is used before its complete definition, we can declare it beforehand
+Syntax:
+ class Y;
+ This is called a forward declaration
+ It tells the compiler:
+ Class Y exists and its complete definition will be provided later
+Example:
+ class Y;
+ class x
+ {
+   friend void add(X, Y);
+ };
+ class Y
+ {
+  // complete definition
+ }
+Why is it needed?
+ In:
+ friend void add(X, Y);
+ the compiler needs to know that Y is a valid class
+ So we write:
+ class Y;
+ before defining class X
+
+Friend Function Accessinng Multiple Classes
+ If a function is deeclared as a friend in both classes:
+ class X
+ {
+  friend void add(X, Y);
+ };
+ class Y
+ {
+  friend void add(X, Y);
+ };
+then:
+ void add(X o1, Y o2)
+ {
+  cout << o1.data;
+  cout << o2.num;
+ }
+ is allowed
+ Being a friend of X does not automatically make the function a friend of Y
+ It must be declared separately in Y
+ It must be declared separately in Y
+
+Properties of Friend Function
+Friend function is not a member
+ display(s1); Correct
+ s1.display();  Wrong for a friend function
+
+It can access private members
+ cout << s1.age;
+ is allowed if display() is declared as  a friend
+
+It accesses members through objects
+ A friend function is not inside the class, so it uses:
+ object.member
+For Example:
+ o1.data
+ o2.num
+
+It can be a friend of multiple classes
+ class X ──┐ 
+           ├──→ friend function
+ Class Y ──┘
+
+Forward Declaration vs Definition
+Forward Declaration:
+ class Y;
+ Only tells the compiler that the class exists.
+ Class Definition:
+ class Y
+ {
+    int num;
+ };
+ Actually defines the class and its members
+
+
  */
