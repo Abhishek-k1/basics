@@ -2971,7 +2971,7 @@ Important Rules
  Overloaded constructors must have different parameter lists
  The compiler selects the constructor according to the arguments
  Constructor overloading allows objects to be initialized in different ways
- 
+
 Constructor                  VS            Normal Member Function
  Same name as class                   	    Can have any valid name
  No return type	                            Has a return type
@@ -3043,5 +3043,65 @@ Example:
  student s1;
  is executed
 
+Default arguments in Constructor
+ A constructor can have default values for its parameters
+ If a value is not provided while creating the object, the default value is automatically used
+Syntax:
+ class classname
+ {
+ public:
+   classsName(int a = 20)
+   {
+     // code
+   }
+ };
+ Here, 20 is the default argument
 
+Important Rule
+ Default arguments are generally given from right to left
+
+ Correct: Student(int age, int marks = 50)
+
+ correct: Student(int age = 18, int marks = 50)
+
+ Incorrect: Student(int age = 18, int marks)
+
+ Because a parameter with a default value is followed by a parameter without a default value
+
+Default Arguments VS Overloaded Constructor
+Using Default Arguments
+ class student
+ {
+ public:
+    student(int age = 18)
+    {
+    }
+ };
+ One constructor can handle:
+ Student s1;
+ Student s2(20);
+
+Using Constructor Overloading
+ Class Student
+ {
+ public:
+   student()
+   {
+   }
+   Student(int age)
+   {
+   }
+ };
+Here, There are two separate constructors
+
+** Default arguments can reduce the need for multiple overloaded constructors when the behavior is simple
+ Default Argument
+       ↓
+ Parameter already has a value 
+       ↓ 
+ If argument is not given 
+       ↓ 
+ Default value is used
+
+ 
  */
