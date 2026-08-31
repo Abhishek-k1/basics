@@ -2899,8 +2899,15 @@ So:
  s2 created → constructor called
  s3 created → constructor called
 
+Default Constructor           vs         Parameterized Constructor
+ Takes no arguments                       Takes one or more arguments
+ Student s1;                              Student s1(20);
+ Uses predefined/default values           Uses values supplied by the programmer
+ student()                                Student(int age)
+
 Constructor Overloading
- A class can have multiple constructors with different parameter lists
+ Constructor overloading means having multiple constructors in the same class with different parameter lists
+ The compiler selects the appropiate constructor based on the arguments passed while creating an object
  This is called constructor overloading
 Example:
  class student
@@ -2924,7 +2931,48 @@ Example:
  calls the parameterized constructor
  The compiler chooses the constructor based on the arguments
 
- Constructor                  VS            Normal Member Function
+Different way of Overloading Constructors
+ Constructor can differ by:
+ Number of parameters
+ Types of parameters
+ Order of different parameter types
+Example:
+ classs student
+ {
+ public:
+  student()
+  {
+  }
+
+  student(int age)
+  {
+  }
+
+  student(int age, int marks)
+  {
+  }
+
+  student(string name)
+  {
+  }
+ };
+ Each constructor has a different parameter list
+
+Constructor Selection
+ The compiler automatically chooses the constructor that matches the arguments
+ Student s1;           // Studemt()
+ Student s2(20);       // Student(int)
+ Student s3(20, 90);   // Student(int, int)
+
+Important Rules
+ Constructor must have the same name as the class
+ Constructor have no return type
+ Constructor can be overloaded
+ Overloaded constructors must have different parameter lists
+ The compiler selects the constructor according to the arguments
+ Constructor overloading allows objects to be initialized in different ways
+ 
+Constructor                  VS            Normal Member Function
  Same name as class                   	    Can have any valid name
  No return type	                            Has a return type
  Called automatically	                      Usually called explicitly
@@ -2995,5 +3043,5 @@ Example:
  student s1;
  is executed
 
- 
+
  */
