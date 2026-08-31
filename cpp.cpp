@@ -3317,5 +3317,136 @@ Example idea:
  Copy constructor and assignment operator are different
  Shallow copy copies pointer values
  Deep copy creates separate memory for dynamically allocated data
- 
+
+Destructor:
+ A destructor is a special member functionof a class  that  is automatically called when an objecta is destroyed
+ It is mainly used to release resources and perform cleanup
+
+Syntax:
+ class student
+ {
+ public:
+   ~Student()
+   {
+     // cleanup code
+   }
+ };
+
+The destructor name is the same as the class name but it has a ~ (tilde) before it
+Example:
+
+ Student()     // Constructor
+ ~Student()    // Destructor
+
+Properties of Destructor
+ Destructor has the same name as the class
+ It starts with ~
+ It has no return type
+ It takes no parameters
+ It is called automatically
+ A class can have only one destructor
+ It is mainly used for cleanup
+ It cannot be overloaded
+
+When is Destructor Called?
+ For a normal local object, the destructor is automatically called when the object goes out of scope
+Example:
+
+ int main()
+ {
+    Student s1;
+
+    cout << "Inside main" << endl;
+ }
+
+ When main() ends:
+
+ s1 goes out of scope
+        ↓
+ Destructor called
+
+Multiple Objects
+ If multiple objects are created, their destructors are called when they are destroyed
+Example:
+
+ int main()
+ {
+    Student s1;
+    Student s2;
+    Student s3;
+ }
+
+ The objects are generally destroyed in reverse order of creation:
+
+Created:
+ s1 → s2 → s3
+
+Destroyed:
+ s3 → s2 → s1
+
+ This is called LIFO (Last In, First Out) order
+
+Destructor with Dynamic Object
+ When an object is created using new, it is destroyed using delete
+Example:
+
+ Student* s1 = new Student();
+
+ delete s1;
+
+ Here:
+
+ new
+  ↓
+ Object created
+  ↓
+ Constructor called
+
+ delete
+  ↓
+ Object destroyed
+  ↓
+ Destructor called
+
+Constructor                 VS            Destructor
+ Initializes an object           	         Cleans up an object
+ Called when object is created           	 Called when object is destroyed
+ Same name as class	                       Same name as class with ~
+ Can have parameters           	           Cannot have parameters
+ Can be overloaded	                       Cannot be overloaded
+ No return type	                           No return type
+ Student()	                               ~Student()
+
+Destructor and Dynamic Memory
+ Destructors are especially useful when a class manages dynamically allocated memory
+
+Example:
+ class student
+ {
+ private:
+     int* age;
+
+ public:
+     Student()
+     {
+       age = new int(20);
+     }
+
+     ~Student()
+     {
+       delete age;
+     }
+ };
+Here:
+ new int
+   ↓
+ Memory allocated
+
+ Destructor
+   ↓
+ delete
+   ↓
+ Memory released
+
+ This helps prevent memory leaks.
  */
