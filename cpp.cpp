@@ -2729,5 +2729,271 @@ Forward Declaration:
  };
  Actually defines the class and its members
 
+Constructor
+ A constructor is a special member function of a class that is automatically called when an object is created
+ It is mainly used to initialize the data members of an object
+Example:
+ class student
+ {
+ public:
+     student()
+     {
+       cout << "Constructor called;"
+     }
+ };
+ int main()
+ {
+  student s1;
+ }
+  when s1 is created, the constructor is automatically called
+Output:
+ constructor called
 
+Syntax:
+ class cclassName
+ {
+ public:
+   className()
+   {
+     // initialization
+   }
+ };
+ The constructor name must be the same as the class name
+Example:
+ class student
+ {
+ public:
+   student()
+   {
+    cout << "Hello";
+   }
+ };
+Here:
+ student -> class name
+ student() -> constructor
+
+Properties
+ Constructor has the same name as the class
+ It is called automatically when an object is created
+ It has no return type, not even void
+ It is mainly used to initialized objects
+ Constructors can be overloaded
+ A constructor can have parameters
+ Constructors are normally placed in the public section when objects need to create them from outside the class
+
+Constructor Has No Return Type
+Correct:
+ class student
+ {
+ public:
+     student()
+     {
+      cout << "Hello";
+     }
+ };
+Wrong:
+ void student()
+ {
+   // This is not a constructor
+ }
+ A constructor does not have a return type
+
+Default Constructor
+ A constructor that takes no arguments is called a default constructor
+Example:
+ class student
+ {
+ public:
+    student()
+    {
+      cout << "Default constructor";
+    }
+ };
+Creating an object:
+ student s1;
+ The constructor is automatically called
+
+Parameterized Constructor
+ A constructor that takes one or more parameters is called a parameterized constructor
+Example:
+ class student
+ {
+ public:
+      int age;
+      student(int a)
+      {
+       age = a;
+      }
+ };
+ Creating an object:
+ student s1(20);
+Here:
+ 20 -> passed to constructor
+ a -> receives 20
+ age -> becomes 20
+
+Example of Parameterized Constructor
+ #include <iostream>
+ using namespace std;
+ class student
+ {
+ public:
+     string name;
+     int age;
+
+     student(string n, int a)
+     {
+      name = n;
+      age = a;
+     }
+      void display()
+      {
+       cout << name << " " << age;
+      }
+ };
+
+ int main()
+ {
+  student s1("sahil", 30);
+  s1.display();
+  return 0;
+ }
+Output:
+ sahil 20
+
+Constructor Initialize Objects
+Without a constructor: 
+ student s1;
+ s1.name = "Rahul";
+ s1.age = 20;
+
+With a parameterized constructor
+ student s1("Rahul", 20);
+
+ The constructor initializes the object when it is created
+
+Multiple Objects with Constructor
+ A constructor is called separately for every object
+Example:
+ class student
+ {
+ public:
+      student()
+      {
+        cout << "constructor called\n";
+      }
+ };
+ int main()
+ {
+   student s1;
+   student s2;
+   student s3;
+ }
+Output:
+ Constructor called
+ Constructor called
+ Constructor called
+
+So:
+ s1 created → constructor called
+ s2 created → constructor called
+ s3 created → constructor called
+
+Constructor Overloading
+ A class can have multiple constructors with different parameter lists
+ This is called constructor overloading
+Example:
+ class student
+ {
+ public:
+    student()
+    {
+     cout << "Default constructor\n";
+    }
+
+    student(int age)
+    {
+     cout << "Age = " << age;
+    }
+ };
+
+ Now:
+ student s1;
+ calls the default constructor
+ student s2(20);
+ calls the parameterized constructor
+ The compiler chooses the constructor based on the arguments
+
+ Constructor                  VS            Normal Member Function
+ Same name as class                   	    Can have any valid name
+ No return type	                            Has a return type
+ Called automatically	                      Usually called explicitly
+ Used mainly for initialization	            Performs operations
+ Called when object is created	            Called when required
+
+Example:
+ student s1;
+ constructor is automatically called
+But:
+ s1.display();
+ requires an explicit function call
+
+Constructor with this Pointer
+ A constructor can use the this pointer when parameter names are the same as data names
+Example:
+ class student
+ {
+ private:
+     int age;
+
+ public:
+   student(int age)
+   {
+    this->age = age;
+   }
+ };
+Here:
+ this->age -> class data member
+ age -> -> constructor parameter
+
+Constructor Initialization List
+  A constructor can also initialize data members using an initializer list
+Example:
+ class student
+ {
+ private:
+        int age;
+
+ public:
+     student(int a) : age(a)
+     {
+     }
+ };
+Here:
+ student s1(20);
+ initializes age to 20
+ Initializer lists are commonly used in modern C++
+
+Constructor Called Automatically
+Example:
+ class student
+ {
+ public:
+    student()
+    {
+     cout << "object created";
+    } 
+ };
+
+ int main()
+ {
+  student s1;
+ }
+ We do not write:
+ s1.student();
+ The constructor is automatically called when:
+ student s1;
+ is executed
+
+ 
  */
