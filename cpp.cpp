@@ -3180,5 +3180,142 @@ Important points
  Dynamically allocated objects should be released using delete
  A pointer to a dynamically created object uses -> to access members
 
+Copy Constructor
+ A copy constructor is a special constructor used to create a new object by copying the data of an existing object
+Syntax:
+ ClassName(const ClassName &object)
+ {
+   // copy data
+ }
+
+Why Use a Copy Connstructor?
+ A copy constructor is used when we want to:
+ Create a new object from an existing object
+ Copy the data of one object into another object
+ Initialize one object using another object
+
+Important Syntax:
+ student(const Student &s)
+Here:
+ Student -> constructor name
+ const -> Original object should not be modified
+ Student &s -> reference to the existing object
+ s -> existing  object being copied
+
+Copy Constructor Vs Assignment
+ These two are different
+ Used when a new object is created from an existing object
+ student s1(20);
+ student s2 = s1;
+Here:
+ s2 is a new object, so the copy constructor is used
+
+Assignment
+ Both objects already exists
+ student s1(20);
+ student s2(30);
+
+ s2 = s1;
+
+Here:
+ s2 already exists its data is assigned from s1
+
+ New object + existing object 
+        ↓ 
+ Copy Constructor 
+ 
+ Existing object = existing object 
+        ↓ 
+ Assignment
+
+Copy Constructor with Multiple Data Members
+ class Student
+ {
+ public:
+    string name;
+    int age;
+
+    Student(string n, int a)
+    {
+      name = n;
+      age =a;
+    }
+
+    Student(const Student &s)
+    {
+     name = s.name;
+     age = s.age;
+    }
+ };
+Using it:
+ student s1("Rahul", 20);
+ Student s2(s1);
+ cout << s2.name << " " << s2.age;
+Output:
+ Rahul 20
+
+Compilee-Provided Copy Constructor
+ If we do not write our own copy constructor, C++ can provide a default copy constructor
+Example:
+ class student
+ {
+ public:
+     int age;
+ };
+Then:
+ Student s1;
+ s1.age = 20;
+
+ Student s2 = s1;
+ The value of age is copied from s1 to s2
+
+Copy Constructor  is Called Wgen
+ A copy constructor can be called when:
+1.Creating an object from another object
+ student s2(s1);
+
+2.Using copy initialization
+ student s2 = s1;
+
+3.Passing an object by value
+ void display(student s)
+ {
+ }
+ passing an object by value may create a copy
+
+Returning an object by value
+ A function returning an object by value can also involve copying, althrough modern C++ often eliminates unnecessary copies through copy elision
+
+Shallow Copy
+ A shallow copy copies the values directly
+ For ordinary data members such as:
+ int
+ float
+ char
+ this is generally straightforward
+ However, when a class contains a pointer to dynamically allocated memory, a simple copy can cause two objects to point to the same memory
+ This can create problems
+
+Deep Copy
+ Deep copy creates seperate memory for dynamically allocated data and copies the actual data
+Example idea:
+ Shallow Copy:
+ Object 1 ─────→ Memory A 
+ Object 2 ─────→ Memory A 
+ Deep Copy: 
+ Object 1 ─────→ Memory A 
+ Object 2 ─────→ Memory B
+ Deep copying is especially important when a class manages dynamic memory
+
+**
+ Copy constructor creates a new objject by copying an existing object
+ It has the same name as the class
+ It has no  return type
+ It usually takes the source object by reference
+ const is commonly used with the source reference
+ C++ provides a copy constructor automatically if we dont define one
+ Copy constructor and assignment operator are different
+ Shallow copy copies pointer values
+ Deep copy creates separate memory for dynamically allocated data
  
  */
