@@ -3103,5 +3103,82 @@ Here, There are two separate constructors
        ↓ 
  Default value is used
 
+Dynamic Initialization of Objects
+ Dynamic initialization means initializing an object at runtime where the values used to initialize the object are determined during program execution
+ Constructor can be used to initialize objects with values obtained at runtime
+
+Why is it called Dynamic Initialization?
+ Because the value used to initialized the object is not fixed in the program
+Example:
+ int age;
+ cin >> age;
+
+ student s1(age);
+ The value of age is known only when the program is running
+Therefore:
+ Runtime input 
+     ↓ 
+ Constructor 
+     ↓ 
+ Object initialized
+
+Dynamic Initialization Using new
+ Objects can also be created dynamically using the new operator
+Example:
+ student* s1 = new student(20)
+Here:
+ new creates the object dynamically
+ student(20) calls the parameterized constructor
+ s1 stores the address of the dynamicallly created object
+Accessing the object:
+ cout << s1->age;
+ The -> operator is used because s1 is a pointer to an object
+Example:
+ #include <iostream>
+ using namespace std;
+ class Student
+ {
+ public;
+    int age;
+    Student(int a)
+    {
+      age = a;
+    }
+  };
+  int main()
+  {
+   student* s1 = new Student(20);
+   cout << s1->age;
+   delete s1;
+   return 0;
+  }
+
+new and delete
+ When an object is dynamically created using new, its memory should be released using delete when it is no longer needed
+ Student* s1 = new Student(20);
+ delete s1;
+So:
+ new 
+  ↓ 
+ Allocates memory 
+ 
+ delete 
+  ↓ 
+ Releases memory
+
+Static Initialization                VS            Dynamic Initialization
+ Value is generally known at compile time          	Value can be determined at runtime
+ Object can be created normally	                    Object can be initialized using runtime values
+ Student s1(20);	                                  int x; cin >> x; Student s1(x);
+ Simple fixed initialization	                      Useful when values depend on runtime input
+
+Important points
+ Dynamic initialization happens during runtime
+ Constructors can initialize objects using values available at runtime
+ Runtime input can be passed to a constructor
+ Objects can also be dynamically created using new
+ Dynamically allocated objects should be released using delete
+ A pointer to a dynamically created object uses -> to access members
+
  
  */
