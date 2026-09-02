@@ -3919,7 +3919,7 @@ There are four imbalance cases:
  4.RL -> Right Rotation + Left Rotation
 
 LL Case
- LL means the new node is inserted into the:
+ LL means the new node is inserted into the
  Left subtree of the Left child
 Example:
           30
@@ -3949,7 +3949,7 @@ Example:
        10   30
 
 LR Case
- LR means the new node is inserted into the:
+ LR means the new node is inserted into the
  Right subtree of the Left child
 Example:
          30
@@ -3977,7 +3977,7 @@ Step 2: Right Rotation
          10   30
 
 RL Case
- RL means the new node is inserted into the:
+ RL means the new node is inserted into the
  Left subtree of the Right child
 Example:
         10
@@ -4003,7 +4003,7 @@ Step 2: Left Rotation
         20
        /  \ 
       10   30
-      
+
 AVL Tree Properties
  vl Tree is a self-balancing BST
  Left subTree contains smaller values
@@ -4015,7 +4015,202 @@ AVL Tree Properties
  Insertion is O(log n)
  Deletion is O(log n)
 
+Balance Factor Calculation in AVL Tree
+Balance Factor
+ The Balance Factor(BF) of anode tells us whether the node is balanced or unbalanced
 
+Formula
+ Balance Factor = Height of Left Subtree - Height of Right Subtree
+ BF = Height(Left Subtree) - Height(Right Subtree)
+ For an AVL tree, the balance factor of every node should be:
+ -1, 0, +1
+ If the balance factor becomes
+ +2 -> Left heavy
+ -2 -> Right heavy
+ The tree becomes unbalanced and rotation is required
+
+Height of a Node
+ For examples, use
+ Leaf node -> Height = 1
+ Empty subtree -> Height = 0
+Example:
+        20
+       /  \ 
+      10   30
+ Height of left subtree = 1
+ Height ofright subtree = 1
+Therefore:
+ BF(20) = 1 - 1
+        = 0
+ So node 20 is balanced
+
+Example 1 -> Balnced Node
+       20
+      /  \ 
+     10   30
+
+ For node 20:
+ Left height = 1
+ Right height = 1
+
+ BF = 1 - 1
+    = 0
+
+Therefore, node 20 is balanced
+
+Example 2 -> LL Case
+         30
+        / 
+       20
+      /
+     10
+
+ Calculate from bottom to top
+
+For node 10:
+ Left height = 0
+ Right height = 0
+
+ BF = 0 - 0
+    = 0
+
+For node 20:
+ Left height = 1
+ Right height = 0
+
+ BF = 1 - 0
+    = +1
+
+For node 30:
+ Left height = 2
+ Right height = 0
+
+ BF = 2 - 0
+    = +2
+
+ Node 30 is unbalnced
+ The path is:
+ 30 → 20 → 10 
+ L      L
+
+Example 3 -> RR Case
+      10
+        \ 
+         20
+           \ 
+            30
+
+ For node 30:
+ BF = 0 - 0
+    = 0
+
+ For node 20:
+ Left height = 0
+ Right height = 1
+
+ BF = 0 - 1
+    = -1
+
+ For node 10:
+ Left height = 0
+ Right height = 2
+
+ BF = 0 - 2
+    = -2
+
+ Node 10 is unbalnced
+ The path is:
+ 10 -> 20 -> 30
+ R       R
+
+Example 4 -> LR Case
+        30
+       / 
+      10
+       \ 
+        20
+
+ For node 20:
+ BF = 0
+
+ For node 10:
+ Left height = 0
+ Right height = 1
+
+ BF = 0 - 1
+    = -1
+
+ For node 30:
+ Left height = 2
+ Right height = 0
+
+ BF = 2 - 0
+    = +2
+
+ Node 30 is unbalanced
+ 
+ The path is:
+ 30 -> 10 -> 20
+ L       R
+
+Therefore:
+
+ LR Case
+
+ LR requires two rotations:
+
+ Step 1 → Left Rotation
+ Step 2 → Right Rotation
+
+Final tree:
+
+      20
+     /  \
+   10    30
+
+Example 5 -> RL Case
+      10
+        \ 
+         30
+        /
+      20
+
+ For node 20:
+ BF = 0
+
+ For node 30:
+ Left height = 1
+ Right height = 0
+
+ BF = 1 - 0
+    = +1
+
+ For node 10:
+ Left height = 0
+ Right height = 2
+
+ BF = 0 - 2
+    = -2
+
+ The path is:
+
+10 → 30 → 20
+R      L
+
+Therefore:
+
+ RL Case
+
+ RL requires two rotations:
+
+ Step 1 → Right Rotation
+ Step 2 → Left Rotation
+
+Final tree:
+
+      20
+     /  \
+   10    30
 
 
 
