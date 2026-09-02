@@ -4212,6 +4212,158 @@ Final tree:
      /  \
    10    30
 
+AVL Tree Implementation (Innsertion & Rotation)
+AVL Tree Node
+ Each node contains:
+ key -> stores the value
+ left -> pointer to left child
+ right -> pointer to right child
+ height -> height of the node
+
+ class node
+ {
+ public:
+    int key;
+    Node* left;
+    Node* right;
+    int height;
+
+    Node(int key)
+    {
+     this->key = key;
+     left = nullptr;
+     right = nullptr;
+     height = 1;
+    }
+ };
+
+Get Height
+ Returns the height of a node
+ int getHeight(Node* node)
+ {
+   if(node == nullptr)
+   return 0;
+
+   return node->height;
+ }
+
+Get Maximum
+ Used to find the large of two values
+ int max(int a, int b)
+ {
+  return (a > b) ? a : b;
+ }
+
+Get Balance Factor
+ Balance Factor tells whether  a node is balanced
+ int getBalanceFactor(Node* node)
+ {
+   if(node == nullptr)
+   return 0;
+
+   return getHeight(node->left) - hetHeight(node->right);
+ }
+
+Balance Factor
+ BF = Height of Left Subtree - Height of Right Subtree
+
+For an AVL tree
+ -1,, 0, +1 -> Balanced
+ +2 or -2 -> Unbalanced
+
+Right Rotation
+ Used mainly for LL imbalance
+ Node* rightRotate(Node* y)
+ {
+  Node* x = y->left;
+  Node* T2 = x->right;
+
+  x->right = y;
+  y->left = T2;
+
+  y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+
+  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+
+  return x;
+ }
+
+Left Rotation
+ Used mainly for RR imbalance
+ Node* leftRotate(Node* x)
+ {
+  Node* y = x->right;
+  Node* T2 = y->left;
+
+  y->left = x;
+  x->right = T2;
+
+  x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+  
+  y->height = max(getHeight(y->left),getHeight(y->right)) + 1;
+
+  return y;
+ }
+
+AVL Insertion
+ AVL insertion happen in 3 main steps:
+ Perform normal BST insertion
+ Update the height
+ Calculate balance factor and perform rotation if required
+
+ Node* insert(Node* node, int key)
+ {
+  // 1. Normal BST insertion
+  if(node == nullptr)
+  return new Node(key);
+
+  if(key < node->key)
+   node->left = insert(node->left, key);
+
+ else if(key > node->key)
+  node->right = insert(node->right, key);
+
+ else
+  return node;
+
+  // 2. Update height
+  node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+
+  // 3. Get balance Factor
+  int bf = getBalanceFactor(node);
+
+  // LL Case
+   if(bf > 1 && key < node->left->key)
+     return rightRotate(node);
+
+  // RR Case
+   if(bf > 1 && key > node->right->key)
+     return leftRotate(node);
+
+  // LR Case
+   if(bf > 1 && key > node->left->key)
+   {
+    node->left = leftRotate(node->left);
+    return rightRotate(node);l
+   }
+
+  // RL Case
+   if(bf < -1 && key < node->right->key)
+   {
+     node->right = rightRotate(node->right);
+     returnn leftRotate(node);
+   }
+
+   return node;
+ }
+
+Time Complexity
+ Search -> O(log n)
+ Insertion -> O(log n)
+ Rotation -> O(1)
+ Deletion -> O(log n)
+ 
+ AVL tree keeps itself balanced, so its height remains O(log n)
 
 
 
