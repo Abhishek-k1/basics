@@ -3825,6 +3825,19 @@ Structure:
                         ↓ 
                     Replace + Delete
 
+Time Complecity:
+Best/Average Case
+ For a balanced BST: O(log n)
+Worst Case
+ For a skewed BST: O(n)
+
+Space Complexity:
+ Because the emplementation uses recursion: O(h)
+ where h = height of the tree
+
+Balanced BST: O(log n)
+Worst Case: O(n)
+
 AVL Tree:
  AVL Tree is a self-balancing Binary Search Tree
  AVL stands for:
@@ -3894,6 +3907,11 @@ When Does an AVL Tree Become Unbalanced?
 Rotations
  Rotations are used to restore balance in an AVL tree while maintaining the BST property
 
+Why Rotations are Needed
+ An AVL tree must remain balanced after insertion or deletion
+ If the tree becomes unbalnced, rotations are used to restore balance
+ A node is unbalanced when its balance factor becomes +2 or -2
+
 There are four imbalance cases:
  1.LL -> Right Rotation
  2.RR -> Left Rotation
@@ -3911,6 +3929,9 @@ Example:
      10
  This is left-heavy
  Solution: Right Rotation
+        20
+       /  \
+      10   30
 
 RR Case
  RR means the new node is inserted into the
@@ -3923,6 +3944,9 @@ Example:
               30
  This is right-heavy
  solution: Left Rotation
+         20
+        /  \ 
+       10   30
 
 LR Case
  LR means the new node is inserted into the:
@@ -3938,6 +3962,20 @@ solution:
  then
  Right Rotation on the unbalanced node
 
+Step 1: Left Rotation
+ Rotate the left child
+            30
+           /
+          20
+         /
+        10
+        
+Step 2: Right Rotation
+ Apply right rotation to the root
+           20
+          /  \
+         10   30
+
 RL Case
  RL means the new node is inserted into the:
  Left subtree of the Right child
@@ -3951,7 +3989,31 @@ Solution:
  Right Rotation on the right child
  then
  Left Rotation on the unbalanced node
- 
+
+Step 1: Right Rotation
+ Rotate the right child
+        10
+          \ 
+           20
+             \ 
+              30
+
+Step 2: Left Rotation
+ Apply left rotation to the root
+        20
+       /  \ 
+      10   30
+      
+AVL Tree Properties
+ vl Tree is a self-balancing BST
+ Left subTree contains smaller values
+ Right subtree contains larger values
+ Balance factor of evry node must be -1, 0, or +1
+ Rotations are used to maintain balance
+ Height remains O(log n)
+ Searching is O(log n) in the worst case
+ Insertion is O(log n)
+ Deletion is O(log n)
 
 
 
@@ -3965,16 +4027,7 @@ Solution:
 
 
 
-Time Complecity:
-Best/Average Case
- For a balanced BST: O(log n)
-Worst Case
- For a skewed BST: O(n)
 
-Space Complexity:
- Because the emplementation uses recursion: O(h)
- where h = height of the tree
 
-Balanced BST: O(log n)
-Worst Case: O(n)
+
 */
