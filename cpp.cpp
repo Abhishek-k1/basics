@@ -3448,5 +3448,385 @@ Here:
    ↓
  Memory released
 
- This helps prevent memory leaks.
- */
+ This helps prevent memory leaks
+
+Inheritance
+ Inheritance is an OOP feature that allows a new class to acquire the properties and functions of an existing class
+ It helps in code reusability
+ The existing class is called the Base/Parent class
+ The new class is called the Derived/Child class
+
+ Base Class 
+     ↓
+ Inheritance 
+     ↓ 
+ Derived Class
+
+Syntax:
+ class Derived : public Base
+ {
+   // members of derived class
+ };
+
+Example:
+ class Animal
+ {
+ public:
+    void eat()
+    {
+     cout << "Eating";
+    }
+ }
+
+ class Dog : public Animal
+ {
+ };
+
+ Now Dog inherits from Animal
+ int main()
+ {
+  Dog d;
+  d.eat();
+ }
+Outside:
+ Eating
+
+Here:
+ Animal -> Base class
+ Dog -> Derived class
+
+Why Use Inheritance?
+ Inheritance is used for:
+ Code reusability
+ Reducing duplicate code
+ Creating relationships between classes
+ Extending existing classes
+ Supporting polymorphism
+
+Types of Inheritance
+ There are mainly five types of inheritance:
+ Single Inheritance
+ Multilevel Inheritance
+ Multiple Inheritance
+ Hierarchical Inheritance
+ Hybrid Inheritance
+
+Single Inheritance
+ When  one derived class inherits  from one base class, it is called single inheritance
+ A
+ ↓
+ B
+Example:
+ class A
+ {
+ public:
+   void showA()
+   {
+    cout << "Class A";
+   }
+ };
+
+ class B : public A
+ {
+ public:
+     void showB()
+     {
+      cout << "class B";
+     }
+ };
+
+Here:
+ A -> Base class
+ B -> Derived class
+ B can use the accessible members of A
+
+Multilevel Inheritance
+ When a class is derived from another derived class, it is called mmultilevel inheritance
+ A 
+ ↓ 
+ B 
+ ↓ 
+ C
+Example:
+ class A
+ {
+ public:
+     void showA()
+     {
+      cout << "A";
+     }
+ };
+
+ class B : public A
+ {
+ public:
+     void showB()
+     {
+      cout << "B";
+     }
+ };
+
+ class c : public B
+ {
+ public:
+     void showC()
+     {
+      cout << "C";
+     }
+ };
+
+ Now C can access the accessible members inherited from B and A
+
+Multiple Inheritance
+ When one derived class inherits from more than one base class, it is called multiple inheritance
+ A     B
+  \   /
+   \ /
+    C
+Example:
+ class A
+ {
+ public:
+    void showA()
+    {
+     cout << "A";
+    }
+ };
+ 
+ class B
+ {
+ public:
+    void showB()
+    {
+     cout << "B";
+    }
+ };
+
+ class C : public A, public B
+ {
+ };
+ Now class C inherits from both A and B
+
+ C obj;
+
+ obj.showA();
+ obj.showB();
+
+Hierarchical Inheritance
+ When multiple derived classes inherit from the same base class, it is called hierarchical inheritance
+     A
+    /  \ 
+   B    C
+
+Example:
+ class Animal
+ {
+ public:
+    void eat()
+    {
+     cout << "Eating";
+    }
+ };
+
+ class Dog : public Animal
+ {
+ };
+
+ class Cat : public Animal
+ {
+ };
+
+Both Dog and Cat inherit from Animal
+
+Hybrid Inheritance
+ Hybrid inheritance is a combination of two or more types of inheritance
+Example:
+        A
+       / \ 
+      B   C
+       \ /
+        D
+ This can combine hierarchical and multiple inheritance
+Example:
+ class A
+ {
+ };
+
+ class B : public A
+ {
+ };
+
+ class c : public A
+ {
+ };
+
+ class D : public B, public C
+ {
+ };
+ This type of structure can create the diamond problem
+
+Access in Inheritance
+ Inheritance can use different access modes:
+ class B : public A
+ {
+ };
+ The main Inheritance modes are:
+ Public inheritance
+ Protected Inheritance
+ Private Inheritance
+
+Public Inheritance
+ class B : public A
+ {
+ };
+ Public members of the base class remaqin public in the derived class
+ Protected members remain protected
+ Private members of the base class are not directly accessible in the derived class
+
+Protected Members
+ A protected member can be accessed
+ Inside its own class
+ Inside derived classes
+ But it cannot be accessed directly from outside using an object
+Example:
+ class A
+ {
+ protected:
+      int x;
+ };
+
+ class B : public A
+ {
+ public:
+     void show()
+     {
+      x = 10;
+      cout << x;
+     }
+ };
+Here B can access x because x is protected
+
+Base Class and Derived Class
+Example:
+ class Animal
+ {
+ public:
+     void eat()
+     {
+      cout << "Eating";
+     }
+ };
+
+ class Dog : public Animal
+ {
+ public:
+      void bark()
+      {
+       cout << "Barking";
+      }
+ };
+
+Here:
+ Here:
+
+ Animal
+   ↓
+ Base / Parent class
+
+ Dog
+   ↓
+ Derived / Child class
+
+ Dog can use:
+
+ Dog d;
+
+ d.eat();    // inherited from Animal
+ d.bark();   // Dog's own function
+
+Inheritance Syntax
+ class Derived : visibility_mode Base
+ {
+   // members of derived class
+ };
+Example:
+ class Dog : public Animal
+ {
+ };
+ Here, public is the inheritance visibilty mode
+
+Private Inheritance
+Syntax:
+  class B : private A
+  {
+  };
+
+ In private Inheritance:
+ Base Public    -> Private in Derived
+ Base Protected -> Private in Derived
+ Base Private   -> Not directly accessible
+
+Example:
+ class A
+ {
+ public:
+      int x;
+ };
+
+ class B : private A
+ {
+ public:
+    void show()
+    {
+     x = 10;          // Allowed inside B
+     cout << x;
+    }
+ };
+
+ But:
+ B obj;
+ obj.x = 10;     // Not allowed
+
+ because x becomes private in B
+
+Protected Inheritance
+ Syntax:
+ class B : protected A
+ {
+ };
+ In protected inheritance
+
+ Base Public    -> Protected in Derived
+ Base Protected -> Protectted in Derived
+ Base Private   -> Not directly accessible
+
+Visibility Mode Table
+ Base            Public               Protected           Private
+ Member          Inheritance          Inheritance         Inheritance
+ 
+ Public          Public               Protected           Private
+
+ Protected       Protected            Protected           Private
+
+ Private         Not directly         Not directly        Not directly     
+                 accessible           accessible          accessible
+                 
+ Base class private members cannot be directly accessed in the derived class through inheritance
+
+Default Inheritance Mode
+ For a class, if no inheritance mode is written
+
+ class B : A
+ {
+ };
+
+ it is treated as:
+
+ class B : private A
+ {
+ };
+
+ So:
+ Default inheritance mode of a class -> private
+ 
+       */
