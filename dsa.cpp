@@ -4365,10 +4365,111 @@ Time Complexity
  
  AVL tree keeps itself balanced, so its height remains O(log n)
 
+Introduction to Graph
+ A graph  is a non-linear data structure consisting of:
+ Vertices(Nodes)
+ Edges(Connections)
 
+ A graph is used to represent relationships or connections betweeen different objects
+Example:
+     A -------- B 
+     |          | 
+     |          |
+     C -------- D
+ Here:
+  A, B, C, D -> vertices
+  Lines connecting them -> Edges
 
+Graph Representation
+ A graph is generally represented as:
+ G = (V, E)
+ where:
+ V = set of vertices
+ E = set  of edges
 
+Example:
+ V = {A, B, C, D}
+ E = {(A,B), (A,C), (B,D), (C,D)}
 
+Vertex
+ A vertex is an individual node in a graph
+ Vertex is also called a node
+Example:
+ A----B
+ A and B are vertices
+
+Edge
+ An edge is a connection between two vertices
+Example:
+ A -------- B
+ The line between A and B is an edge
+
+Directed Graph
+ In a directed graph, edges have a direction
+ A ----> B
+ This means we can move from A to B
+ But it does not necessarily mean we can move from B to A
+ The edge is represented as:
+ (A, B)
+
+Undirected Graph
+ In an undirected graph, edges do not have a direction
+ A -------- B
+ We can move:
+ A -> B
+ B -> A
+ The relationship is two-way
+
+Weighted Graph
+ A graph in which edges have a value called weight
+ A ----5---- B
+Here:
+ A and B -> vertices
+ 5 -> weight of the edge
+ weights can represent:
+ Distance
+ Cost
+ Time
+ Network bandwidth, etc
+
+Unweighted Graph
+ A graph in which edges do not have any weight
+ A --------- B
+ Only the connection Between vertices is important
+
+Real-Life Applications of Graphs
+ Graphs are used to represent many real-world relationships
+Examples:
+Google Maps
+ cities -> Vertices
+ Roads -> Edges
+ Distance -> weight
+
+Social Networks
+ People -> Vertices
+ Friend Connections -> Edges
+
+Computer Networks
+ computers -> Vertices
+ Network connections -> Edges
+
+Airline Networks
+ Airports -> Vertices
+ Flight -> Edges
+
+Graph vs Tree
+ A Tree is a special type of graph with additional restrictions
+Tree:
+ Connected
+ No cycles
+ Has a root in the usual rooted-tree representation
+ For n vertices, a tree has n - 1 edges
+
+Graph:
+ May have cycles
+ May be directed or undirected
+ Does not necessarily have a root
+ Can have many different connections
 
 
 
