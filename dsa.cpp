@@ -4471,6 +4471,192 @@ Graph:
  Does not necessarily have a root
  Can have many different connections
 
+Graph Representation
+ Graph representation means storing the vertices and edges of a graph memory
+ The main representation are:
+ Adjacency Matrix
+ Adjaceny List
+ Edge List
+
+Adjacency Matrix
+ An adjacency matrix is a 2D array used to represent connections between vertices
+ For V vertices, we create a:
+ V × V
+ matrix
+Example Graph
+     0 -------- 1 
+     |          | 
+     |          | 
+     2 -------- 3
+
+Adjacency Matrix:
+       0 1 2 3 
+      +--------
+   0 | 0 1 1 0 
+   1 | 1 0 0 1 
+   2 | 1 0 0 1 
+   3 | 0 1 1 0 
+  
+ 1 -> Edge exists
+ 0 -> No edge
+
+ int adj[4][4] = {0};
+
+ adj[0][1] = 1;
+ adj[1][0] = 1;
+
+ adj[0][2] = 1;
+ adj[2][0] = 1;
+
+ adj[1][3] = 1;
+ adj[3][1] = 1;
+
+ adj[2][3] = 1;
+ adj[3][2] = 1;
+
+ For an undirected graph, if there is an edge between u and v:
+
+ adj[u][v] = 1;
+ adj[v][u] = 1;
+
+Weighted Adjacency Matrix
+ In a weighted graph, instead of storing 1, we store the weight
+Example:
+ 0 ----5---- 1
+ adj[0][1] = 5;
+ adj[1][0] = 5;
+
+Adjacency List
+ An adjacency list stores the list of neighboring vertices for every vertex
+Example:
+   0 ---- 1 
+   |      | 
+   |      | 
+   2 ---- 3
+Adjacency List:
+ 0 -> 1 -> 2
+ 1 -> 0 -> 3
+ 2 -> 0 -> 3
+ 3 -> 1 -> 2
+
+Using vector
+ vector<int> adj[4];
+
+ adj[0].push_back(1);
+ adj[0].push_back(2);
+
+ adj[1].push_back(0);
+ adj[1].push_back(3);
+
+ adj[2].push_back(0);
+ adj[2].push_back(3);
+
+ adj[3].push_back(1);
+ adj[3].push_back(2);
+
+ For an undirected graph, every edge is stored twice:
+
+ 0 -- 1
+
+ adj[0] → 1
+ adj[1] → 0
+
+Using vector<vector<int>>
+ vector<vector<int>> adj(4);
+
+ adj[0].push_back(1);
+ adj[1].push_back(0);
+ This is commonly used in competitive programming and DSA problems
+
+Edge List
+ In an edge list, we simmply store all edges ass pairs
+Example:
+ 0 -- 1
+ 0 -- 2
+ 1 -- 3
+ 2 -- 3
+
+Edge List:
+ (0,1)
+ (0,2)
+ (1,3)
+ (2,3)
+
+Example
+ vector<pair<int, int>> edges;
+
+ edges.push_back({0, 1});
+ edges.push_back({0, 2});
+ edges.push_back({1, 3});
+ edges.push_back({2, 3});
+
+For a weighted graph:
+ vector<tuple<int, int>> edges;
+
+ edges.push_back({0, 1, 5});
+Here: 
+ {source, distination, weight}
+
+Adjacency Matrix vs Adjacency List
+ Feature           Adjacency Matrix            Adjacency List
+ Storage           2D array                    Array of lists/vector
+ Space             O(V*V)                      O(V + E)
+ check edge        O(1)                        O(degree)
+ Find neighbors    O(V)                        O(degree)
+ Best for          Dense graphs                Sparse graphs
+
+Dense Graph
+ A graph with many edges
+
+Sparse Graph
+ A graph with relatively few edges
+ For most real-world sparse graphs, adjacency lists are generally more space-efficient
+
+Undirected Graphs
+ For an undirected edge:
+ A ---- B
+
+Adjacency Matrix:
+ adj[A][B] = 1;
+ adj[B][A] = 1;
+
+Adjacency List:
+ adj[A].push_back(B);
+ adj[B].push_back(A);
+ So the connection is stored in both directions
+
+Directed Graph Representation
+ For a directed edge
+ A -----> B
+
+ Adjacency Matrix:
+ adj[A][B] = 1;
+
+ We dont need:
+ adj[B][A] = 1;
+
+ because the edge only goes from A to B
+
+ Adjacency List:
+ adj[A].push_back(B);
+
+Which Representation Should We Use?
+Adjacency Matrix
+ Use when:
+ Graph  is dense
+ We frequently need to check whether an edge exists
+ Number of vertices is manageable
+
+Adjacency List
+ Use when:
+ Graph is sparse
+ We need to efficiently traverse neighbors
+ Graph has a large number of vertices
+ In DSA problems, adjacency list is very commonly used
+
+
+
+
 
 
 
