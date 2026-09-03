@@ -4654,11 +4654,137 @@ Adjacency List
  Graph has a large number of vertices
  In DSA problems, adjacency list is very commonly used
 
+Graph Traversal
+ Graph Traversal is the process of visiting the vertices (nodes) of a graph in a systematic way
 
+ It is also called Graph Search
+Traversal is used to:
+ Visit all reachable vertices
+  Search for a particular vertex
+ Explore connections in a graph
+ Solve graph-related problems
 
+Why Do We Need Graph Traversal?
+ Unlike a simple array, agraph does not have a fixed linear order
+ A graph can have:
+ Multiple  paths
+ Cycles
+ Different Connections
+ Disconnected components
+Thereforee, we need a systematic method to visit its vertices
 
+Important Problems:Cycles
+ A graph can contain a cycle
+Example:
+ A -> B-> C
+ ↑        ↓ 
+ └───────┘
+ If we keep following the edges without checking anything, we may visit the same vertices repeatedly
+ Therefore, graph traversal uses a visited array/set
+ vector<bool> visited(V, false);
+ When a vertex is visited:
+ visited[node] = true;
+ This prevents visiting the same vertex repeatedly
 
+Main Graph Traversal Algorithms
+ There are two important graph traversal algorithms:
+1.BFS -> Breadth First Search
+ Visits vertices level by level
+Uses:
+ Queue
 
+2.DFS -> Depth First Search
+ Explores as far as possible along one path before backtrackinng
+Uses:
+ Stack/ Recursion 
+
+BFS
+ Breadth First Search explores the graph level by level
+Example:
+         0
+        /  \
+       1    2
+      / \
+     3   4
+ Starting from 0:
+ 0 -> 1 -> 2 -> 3 -> 4
+ BFS uses a queue
+Basic Steps:
+ Choose a starting vertex
+ Mark it as visited
+ Insert it into the queue
+ Remove a vertex from the queue
+ Visit its unvisited neighbours
+ Mark them visited and insert them into the queue
+ Repeat until the queue becomes empty
+
+DFS
+ Depth First Search explores one path as deeply as possible before backtracking
+Example:
+         0
+        / \ 
+       1   2
+      / \ 
+     3   4
+ One possible DFS traversal:
+ 0 -> 1 -> 3 -> 4 -> 2
+ DFS uses -> Recursion or stack
+Basic Steps:
+ Choose a starting vertex
+ Mark it as visited
+ Visit an unvisited neighbor
+ Continue deeper
+ When no unvisited neighbor remains backtrack
+ Continue until all reachable vertices are visited
+
+BFS VS DFS
+ Feature              BFS                  DFS
+ Full Form      Breadth First Search   Depth First Search
+ Approach       Level by level         Depth first
+ Data Structure Queue                  Stack / Recursion
+ Uses           Shortest path in       Path exploration,  
+                unweighted graphs,     cycle-related problems,
+                level exploration      backtracking
+Traversal       Wider first            Deeper first
+
+Visited Array
+ The visited array keeps track of which vertices have already been visited
+Example:
+ vector<bool> visited(V, false);
+
+Initially:
+ 0 0 0 0 0
+ After visiting vertex 2:
+ 0 0 1 0 0
+ 1 -> visited
+ 0 -> non visited
+ This is especially important when the graph contains cycles
+
+Disconnected Graph
+ A graph may contain multiple disconnected components
+Example:
+ A --- B    C --- D
+ There is no path between {A,B} and {C,D}
+ If we start trsversal from A, we cannot reach C or D
+ Therefore to traverse the entire graph, wemay need to start a traversal from every unvisited vertex
+
+Basic idea:
+ for(int i = 0; i < V; i++)
+ {
+   if(!visited[i])
+   {
+    // Start BFS or DFS from i
+   }
+ }
+
+Time Complexity
+ For an adjaceny-list representation:
+ O(V + E)
+ Where:
+ V = Number of vertices
+ E = Numvber of edges
+ Both BFS and DFS can traverse a graph in O(V + E) time when using an adjacency list
+ 
 
 
 
