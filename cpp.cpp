@@ -4017,7 +4017,72 @@ With virtual inheritance:
   one shared copy of A ✅
  Virtual inheritance is used to solve the diamond problem
 
+Example:
+ #include <iostream>
+ using namespace std;
+
+ class student
+ {
+ protected:
+    int rollNo;
+
+  public:
+       void setRollNo(int r)
+       {
+        rollNo = r;
+       }
+ };
+
+ class Test : virtual public student
+ {
+ protected:
+       float maths;
+
+ public:
+      void setMarks(float m)
+      {
+       maths =  m;
+      }
+ };
+
+ class sports : virtual public Student
+ {
+ protected:
+       float score;
+
+ public:
+     void setScore(float s)
+     {
+      score = s;
+     }
+ };
+
+ class Result : public Test, public Sports
+ {
+ public:
+   void display()
+   {
+    cout << "Roll No: " << rollNo << endl;
+    cout << "Maths: " << maths << endl;
+    cout << "Sports: " << score << endl;
+   }
+ };
+
+Structure
+        student
+       /       \ 
+    Test       Sports
+       \       /
+        Result
+ Test and Sports virtually inherit student
+ Therefore, Result gets only one shared copy of student
+
+ class Test : virtual public Student
+ class sports : virtual public Student
+
+ virtual prevents duplicate copies of the common base class and resolves the diamond problem
  
+
 
 
  */       
