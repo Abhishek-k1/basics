@@ -3540,8 +3540,11 @@ Here:
  B -> Derived class
  B can use the accessible members of A
 
+ A derived class can reuse the accessible members of the base class and add its own members/functions 
+ Inheritance = Reuse + Extend
+
 Multilevel Inheritance
- When a class is derived from another derived class, it is called mmultilevel inheritance
+ When a class is derived from another derived class, it is called multilevel inheritance
  A 
  ↓ 
  B 
@@ -3566,7 +3569,7 @@ Example:
      }
  };
 
- class c : public B
+ class C : public B
  {
  public:
      void showC()
@@ -3576,6 +3579,14 @@ Example:
  };
 
  Now C can access the accessible members inherited from B and A
+
+Practical Example
+ Student -> Base class
+    ↓
+ Exam   -> Derived from student
+    ↓
+ Result -> Derived from Exam
+Result can use accessible members of both Exam and Student
 
 Multiple Inheritance
  When one derived class inherits from more than one base class, it is called multiple inheritance
@@ -3607,10 +3618,23 @@ Example:
  };
  Now class C inherits from both A and B
 
+ A derived class can access the accessible members of all its base classes
+
  C obj;
 
- obj.showA();
- obj.showB();
+ obj.showA();   // From A
+ obj.showB();   // From B
+
+Real-World Example
+
+       Student
+       /     \
+      /       \
+  Sports     Academics
+      \       /
+       \     /
+        Result
+ Result inherits from both Sports and Academics
 
 Hierarchical Inheritance
  When multiple derived classes inherit from the same base class, it is called hierarchical inheritance
@@ -3873,12 +3897,84 @@ Example:
 Public vs Protected vs Private
 
  Access Modifier          Own Class            Derived Class            Outside Class
- 
+
  Public                     ✅                    ✅                        ✅
 
  protected                  ✅                    ✅                        ❌
 
  private                    ✅                    ❌                        ❌              
  
+Ambiguity
+ Ambiguity occurs in multiple inheritance when two base classes have a member function with the same name, and the derived class tries to access it
+Example
+ #include <iostream>
+ using namespace std;
+
+ class 
+ {
+ public:
+     void show()
+     {
+      cout << "Class A";
+     }
+ };
+
+ class B
+ {
+ public:
+     void show()
+     {
+      cout << "Class B";
+     }
+ };
+
+ class C : public A, public B
+ {
+ };
+
+ int main()
+ {
+   C obj;
+
+   // obj.show();    // Error: Ambiguous
+
+   obj.A::show();    // calls A's show()
+   obj.B::show();    // calls B's show()
+
+   return 0;
+ }
+
+Output
+ class A
+ class B
+
+Why Does Ambiguity Occur?
+    
+      A          B 
+      |          | 
+      |          | 
+      └──── C ───┘
  
+ A -> show()
+ B -> show()
+
+When we write:
+ obj.show();
+ C++ does not know whether we mean:
+ A::show()
+ or
+ B::show()
+ Therefore, it gives an ambiguity error
+
+How to Resolve Ambiguity?
+ Use the scope resolution operator ::
+ obj.A::show();
+ obj.B::show();
+
+ Ambiguity = compiler cannot decide which inherited member to use
+ 
+ In multiple inheritance, if two base classes have members with the same name, specify the base class using:
+ object.BaseClass::member();
+
+
  */       
