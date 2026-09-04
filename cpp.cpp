@@ -4081,8 +4081,117 @@ Structure
  class sports : virtual public Student
 
  virtual prevents duplicate copies of the common base class and resolves the diamond problem
+
+Constructor in Derived Class
+Constructor Execution Order
+ When a derived-class object is created:
+ Base class constructor executes first, then derived class constructor
+ Base Constructor
+       ↓
+ Derived Constructor
+
+Calling Base Constructor
+ If the base class has a parameterized constructor, the derived class should call it using initializer list
+ class Base
+ {
+ public:
+    Base(int x)
+    {
+     cout << "Base Constructor";
+    }
+ };
+
+ class Derived : public Base
+ {
+ public:
+     Derived(int x) : Base(x)
+     {
+      cout << "Derived Constructor";
+     }
+ };
+
+ Base constructor executes before derived constructor
+ Derived constructor executes after base constructor
+ Base constructor is called automatically if it has an accessible default constructor
+ For a parameterized base constructor, pass arguments using the initializer list
+ Destructors execute in the reverse order derived first, then base
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ class Base
+ {
+ public:
+    Base(int x)
+    {
+     cout << "Base Constructor:  " << x << endl;
+    }
+ };
+
+ class Derived : public Base
+ {
+ public:
+    Derived(int x, int y) : Base(x)
+    {
+     cout << "Derived Constructor: " << y << endl;
+    }
+ };
  
+ int main()
+ {
+  Derived obj(10, 20);
 
+  return 0;
+ }
+Output:
+ Base Constructor: 10
+ Derived Constructor: 20
+ Base(x) calls the parameterized constructor of the base class
 
+Initialization List in Constructors
+ An initialization list is used to initialize data members of a class before the constructor body executes
 
+Syntax:
+ class Student
+ {
+  int age;
+  int marks;
+
+ public:
+    student(int a, int m) : age(a), marks(m)
+    {
+    }
+ };
+
+Here:
+ : age(a), marks(m)
+ is the initialization list
+
+ Data members are initilaized before the constructor body
+ Useful for initializinng const data members
+ Required for initializing reference members
+ Used to call a base class constructor
+ Usually preferred for direct member initialization
+
+Example with const
+ class Test
+ {
+   const int x;
+
+ public:
+     Test(int a) : x(a)
+     {
+     }
+ };
+
+ A const data member must be initialized using an initialization list
+
+ object creation
+       ↓
+ Initialize Data Members
+       ↓
+ Constructor Body Executes
+
+ Initialization List → initialize members before constructor body
  */       
