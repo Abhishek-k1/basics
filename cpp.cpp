@@ -3828,5 +3828,57 @@ Default Inheritance Mode
 
  So:
  Default inheritance mode of a class -> private
+
+Protected Access Modifier
+ Protected is an access modifier in C++
+ A protected member can be accesed:
+ Inside its own class
+ Inside the derived class
+ Not directly from outside the class using an object
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ class Base
+ {
+ protected:
+        int x;
+ };
+
+ class Derived : public Basse
+ {
+ public:
+     void setData()
+     {
+       x = 10;  // Allowed
+       cout << x;
+     }
+ };
+
+ int maoin()
+ {
+    Derived obj;
+    obj.setData();   // Allowed
+    obj.x = 20      // Not allowed
+
+    return 0;
+ }
  
-       */
+ Peotected members are accessible inside the base class
+ They are also accessible innside derived classes
+ They cannot be accessed directly from outside using an object
+ Protected is especially useful in inheritance because derived classes can access these members
+
+Public vs Protected vs Private
+
+ Access Modifier          Own Class            Derived Class            Outside Class
+ 
+ Public                     ✅                    ✅                        ✅
+
+ protected                  ✅                    ✅                        ❌
+
+ private                    ✅                    ❌                        ❌              
+ 
+ 
+ */       
