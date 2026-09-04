@@ -3976,5 +3976,48 @@ How to Resolve Ambiguity?
  In multiple inheritance, if two base classes have members with the same name, specify the base class using:
  object.BaseClass::member();
 
+Diamonnd Problem
+ The diamond problem occurs in multiple/hybrid inheritance when the same base class is inherited through two different paths
+      A
+     / \ 
+    B   C
+     \ /
+      D
+  Here, D gets A through both B and C, Causing duplicate copies of A and ambiguity
+
+Virtual Base Class
+ A virtual base class ensures that only one shared copy of the common base class exists
+Syntax:
+ class B : virtual public A
+ {
+ };
+
+ class C : virtual public A
+ {
+ }
+
+ class D : public B, pubblic C
+ {
+ };
+
+ Key Point
+
+Without Virtual Inheritance:
+ D -> B -> A
+ D -> C -> A
+           ↓ 
+      Two copies of A ❌
+With virtual inheritance:
+      A
+     / \ 
+    B   C
+     \ /
+      D 
+      ↓
+  one shared copy of A ✅
+ Virtual inheritance is used to solve the diamond problem
+
+ 
+
 
  */       
