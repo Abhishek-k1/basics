@@ -4233,7 +4233,7 @@ Dynamic Object
  delete[] -> Free array
 
 Pointer to Object
- A poinnter can store the address of an object
+ A pointer can store the address of an object
  Student s;
  Student* ptr = &s;
 
@@ -4262,6 +4262,74 @@ Dynamic Object
                  -> accesses object members through pointer
 
  ptr->member = (*ptr).member
- 
 
+Array of Object Pointers
+ An array can store pointers to objects
+ Student* ptr[3];
+ Each element stores the address of a Student Object
+
+Example:
+ Student s1, s2, s3;
+ Student* ptr[3] = {&s1, &s2, &s3};
+
+ ptr[0]->display();
+ ptr[1]->display();
+ ptr[2]->display();
+ 
+Dynamic Array of Object
+ Student* ptr = new Student[3];
+
+ ptr[0]->display();
+ ptr[1]->display();
+ ptr[2]->display();
+ 
+ delete[] ptr;
+
+Important difference
+Student arr[3];
+ Array directly conntains 3 objects
+
+Student* arr[3];
+ Array contains 3 Pointers to objects
+
+**
+ Array of objects: stores objects
+ Array of object pointers: stores addresses of objects
+
+this Pointer
+ this is a poinnter that points to the current object
+Example
+ class Student
+ {
+   innt age;
+
+  public:
+     void setAge(int age)
+     {
+      this->age = age;
+     }
+ };
+Here:
+ this->age
+ refers to the data member of the current object, while:
+ age
+ refers to the function parameter
+
+Points
+ this is available inside non-static member functtion
+ It stores the address of the current object
+ this->member is used to access the current object's member
+ It is useful when a parameter and data member have the same name
+ this cannot be used inside a static member function
+
+**
+ this -> address of current object
+ this->x -> current object's x
+
+Example:
+ Student s1;
+ s1.setAge(20);
+
+ Inside setAge(), this points to s1
+ 
  */       
