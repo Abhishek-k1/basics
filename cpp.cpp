@@ -4432,5 +4432,187 @@ Why Polymorphism?
 
  Polymorphism = One interface -> Many forms/behaviors
 
+Pointer to Derived Object
+ A pointer of a derived class can store tthe address of a derived-class object
 
+ class Base
+ }
+ public:
+     void showBase()
+     {
+      COUT << "Base";
+     }
+ };
+
+ class Derived : public Base
+ {
+ public:
+     void showDerived()
+    {
+     cout << "Derived"; 
+    }
+ };
+
+ int main()
+ {
+  Derived obj;
+  Derived* ptr = &obj;
+
+  ptr->dhowBase();         // Base class function
+  ptr->showDerived();      // Derived class function
+ }
+
+Base Pointer tO Derived Object
+ A base-class pointer can point to a derived-class object
+ Base* ptr = &obj;
+
+ But through the base pointer, only the accessible members of the Base class can be directly accessed
+ Derived object
+      ↑ 
+ Base pointer
+
+Points
+ Derived* can point to a Derived object
+ Base* can point to a Derived object
+ A Base* cannot directly access derived-only members
+ A Derived* can access inherited base members and its own members
+
+**
+ Derived* -> Derived members + inherited members
+ Base* -> Base members only
+
+Virtual Functions
+ A virtual function is a member function declared with the virtual keyword in the base class
+ It allows the derived class versionn of the function to be called through a base-class pointer/reference
+
+ Declared using the virtual keyword in the base class
+ Supports runtime polymorphism
+ Function  call is decided at runtime when using a base pointer/reference
+ Derived class can override the virtual functionn
+ override keyword can  be used to clearly indicate that a function overrides a base-class virtual function
+
+Without virtual
+ Base pointer -> Base function
+
+With virtual
+ Base pointer
+     ↓
+ Derived object
+     ↓
+ Derived function
+
+Rules of Virtual Functions
+ A virtual function cannot be static
+ Virtual functions are generally accessed through base-class poointers or reference
+ A virtual functtion can be declared as a friend function
+ A virtual function defined in the base class does not have to be overridden in the derived class
+ If the derived class does not override it, the base-class version is used
+ Virtual functions support runtime polymorphism
+
+Example:
+ class Base
+ {
+ public:
+    virtual void show()
+    {
+     cout << "Base";
+    }
+ };
+
+ class Derived : public Base
+ {
+ public:
+    void show() override
+    {
+     cout << "Derived";
+    }
+ };
+
+ Base class
+ virtual show()
+       ↓
+ Derived class
+ override show()
+       ↓
+ Runtime decides which show() to call
+
+ Virtual Function → Runtime Polymorphism
+
+Abstract Class
+ An Abstract class is a class that contains at least one pure virtual function
+ An abstract class cannot be used to create objects directly
+
+Example:
+ class Base
+ {
+ public:
+    virtual void show() = 0;
+ };
+Here, Base is an abstract class
+ Base obj;  // ❌ Error
+
+Pure Virtual Function
+ A Pure Viirtual Function is a virtual function that has no implementation in the base class
+Syntax
+ virtual void functionName() = 0;
+
+Example:
+ class Base
+ {
+ public:
+    virtual void show() = 0;
+ };
+
+ The = 0 makes the function pure virtual
+
+Derived Class
+ A derived class must override all pure virtual functions to become a normal/concrete class
+Example:
+ class Base
+ {
+ public:
+   virtual void show() = 0;
+ };
+
+ class Derived : public Base
+ {
+ public:
+    void show() override
+    {
+     cout << "Derived class";
+    }
+ };
+
+Now:
+ Derived obj;
+ obj.show();
+
+Output
+ Derived class
+
+If Pure Virtual Function is Not Overridden
+ If the derived class does not override the pure virtual function, the derived class also becomes abstract
+ 
+ class Derived : public Base
+ {
+  // show() not overridden
+ };
+
+Therefore:
+ Derived obj;   // ❌ Error
+
+Why Use Abstract Classes?
+ Abstract classes are used to provide a common interface for derived classes
+ They tell derived classes:
+ "You must provide your own implementation of this function"
+
+Points
+ Abstract class cannot be instantiated
+ An abstract class contains at least one pure virtual function
+ Pure virtual function Uses:
+  virtual void show() = 0;
+ = 0 makes a virtual function pure virtual
+ Derived class must override all pure virtual function to become a concrete class
+ Abstract classes are mainly used to achieve abstraction and provide a common interface
+ 
  */    
