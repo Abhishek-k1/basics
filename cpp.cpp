@@ -4331,5 +4331,106 @@ Example:
  s1.setAge(20);
 
  Inside setAge(), this points to s1
+
+Polymorphism
+ It allows the same function/operator/interface to behave differently in different situations
  
- */       
+ Poly -> Many
+ Morphism -> Forms
+
+Types of Polymorphism
+ There are mainly two types:
+
+1.Compile-Time Polymorphism
+ The function to execute is decided during compile time
+Examples:
+ Function Overloading
+ Operator Overloading
+
+ void add(int a, int b);
+ void add(double a, double b);
+
+ The compiler chooses the appropiate function based on the arguments
+Example:
+ class calculator
+ {
+ public:
+    int add(int a, int b)
+    {
+     return a + b;
+    }
+
+    int add(int a, int b,  int c)
+    {
+     return a + b + c;
+    }
+ };
+
+ int main()
+ {
+  calculator c;
+
+  cout << c.add(10, 20) << endl;
+  cout << c.add(10, 20, 30) << endl;
+ }
+Output:
+ 30
+ 60
+
+Here, add() has multiple forms, so this is compile-time polymorphism
+
+2.Run-Time Polymorphism
+ The function to execute is decided during runtime
+ It is achieved using inheritance + virtual functions
+
+Example:
+ class Base
+ {
+ public:
+    virtual void show()
+    {
+     cout << "Base";
+    }
+ };
+
+ class Derived : public Base
+ {
+ public:
+    void show() override
+    {
+     coutt << "Derived";
+    }
+ };
+
+ int main()
+ {
+  Base* ptr;
+  Derived obj;
+
+  ptr = &obj;
+  ptr->show();
+ }
+
+Output
+ Derived
+ Because show() is virtual, C++ decides at runtime which version of the function to call.
+
+ Base* → points to Derived object
+           ↓
+      virtual show()
+           ↓
+    Derived::show()
+
+ compile Time -> Function/Operator Overloading
+ Run Time -> Virtual Functions
+
+Why Polymorphism?
+ Provide flexibility
+ Makes code more reusable
+ Allows the same interface to have different behavior
+ Important concept in OOP
+
+ Polymorphism = One interface -> Many forms/behaviors
+
+
+ */    
