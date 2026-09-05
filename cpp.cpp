@@ -4194,4 +4194,74 @@ Example with const
  Constructor Body Executes
 
  Initialization List → initialize members before constructor body
+
+Dynamic Memory Allocation
+ new is used to allocate memory dynamically during  runtime
+ int* p = new int;
+ *p = 10;
+
+ delete is used to release dynamically allocated memory
+ delete p;
+
+Dynamic Array
+ int* arr = new int[5];
+
+ delete[] arr;
+
+ new -> allocates memory
+ delete -> release single object
+ delete[] -> release dynamically allocated array
+
+Dynamic Object
+ Student* s = new Student();
+
+ s->display();
+
+ delete s;
+
+ Dynamic memory is allocated from the heap
+ new returnss the address of the allocated memory
+ Alwaays release memory allocated with new
+ Use delete for a sinngle object and  delete[] for an array
+ After deleting a pointer, it is good practice to set it to  nullptr
+ delete p;
+ p = nullptr;
+
+**
+ new -> Allocate memory
+ delete -> Free single object
+ delete[] -> Free array
+
+Pointer to Object
+ A poinnter can store the address of an object
+ Student s;
+ Student* ptr = &s;
+
+Accessing Members
+Using a normal object:
+ s.display();
+
+Using an object pointer:
+ ptr->display();
+
+ The -> operator is called the arrow operator
+ It is used to access members of an object through a pointer
+
+Eqivalent Forms
+ ptr->age;
+ is equivalent to:
+ (*ptr).age;
+
+Dynamic Object
+ Student* ptr = new Student();
+ ptr->display();
+ delete ptr;
+
+**
+ Objecct Pointer -> Stores address of object
+                 -> accesses object members through pointer
+
+ ptr->member = (*ptr).member
+ 
+
  */       
