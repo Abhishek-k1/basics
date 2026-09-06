@@ -4615,4 +4615,126 @@ Points
  Derived class must override all pure virtual function to become a concrete class
  Abstract classes are mainly used to achieve abstraction and provide a common interface
  
+File I/O 
+ File I/O means reading data from files and writing data to files
+ C++ provides the <fstream> header for file handling
+ #include <fstream>
+
+File Stream Classes
+ Class        Purpose
+ ofstream     Write data to a file
+ ifstream     Read data from a file
+ fstream      Read and write data
+
+Writing to a File
+Use ofstream
+ ofstream file("dara.txt");
+ file << "Hello World";
+ file.close();
+ This creates data.txt and writes the given data into it
+
+Another Way
+ ofstream file;
+ file.open("data.txt");
+ file << "Hello World";
+ file.close();
+
+Reading from a File
+Use ifstream
+ ifstream file("data.txt");
+ string text;
+ file >> text;
+ cout << text;
+ file.close();
+ >> reads data separated by whitespace
+
+Reading a Compile Line
+Use getline()
+ ifstream file("data.txt");
+ string text;
+ getline(file, text);
+ cout << text;
+ file.close();
+
+Check WhetherFile Opened Successfully
+ ifstream file("data.txt");
+
+ if(file.is_open())
+ {
+  cout << "File opened successfully";
+ }
+  else
+  {
+   cout << "File could not be opened";
+  }
+
+File Modes
+ Common file opening modes:
+ Mode                 Meaning
+ ios::in              Open for reading
+ ios::out             Open for writing
+ ios::app             Append data at the end
+ ios::binary          Open in binary mode
+ ios::trunc           Delete existing contents
+
+Writing to a File
+ Use ofstream too write data into a file
+ #include <iostream>
+ #include <fstream>
+ usinng namespace std;
+
+ int main()
+ {
+  ofstream file("data.txt");
+
+  file << "Hello world";
+  file << "\nC++ File Handling";
+
+  file.close();
+
+  return 0;
+ }
+
+ The file data.txt is created if it does not already exist
+
+Reading from a File
+ Use ifstream to read data from a file
+
+ ifstream file("data.txt");
+
+ string text;
+
+ while(getline(file, text))
+ {
+  cout << text << endl;
+ }
+
+ file.close();
+
+ getline() reads the file line by line
+
+Reading and Writing Using fstream
+ fstream can be used for both reading and writing
+
+ fstream file;
+
+ file.open("data.txt", ios::in | ios::out);
+
+ file << "Hello";
+
+ file.close();
+
+File Opening and Closing
+ Instead of opening a file while crreating the stream
+
+ ofstream file("data.txt");
+
+We can use:
+ ofstreaam file;
+
+ file.open("data.txt");
+
+Close it using:
+ file.close();
+
  */    
