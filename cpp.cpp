@@ -5019,6 +5019,147 @@ Syntax:
 
  template <typename T>
  Both are equivalent for this use
- 
+
+Multiple Template Parameters
+ A template can have more than one type parameter
+
+Syntax:
+ template <class T1, class T2>
+ class MyClass
+ {
+   // class body
+ };
+
+Here:
+ T1 -> First type parameter
+ T2 -> Second type Parameter
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ template <class T1, class T2>
+ class MyClass
+ {
+  T1 data1;
+  T2  data2;
+
+ public:
+  MyClass(T1 a, T2 b)
+  {
+   data1 = a;
+   data2 = b;
+  }  
+
+  void display()
+  {
+   cout << data1 << "  " << data2 << endl;
+  }
+ };
+
+ int main()
+ {
+  MyClass<int, char> obj(10,'A');
+  obj.display();
+  return 0;
+ }
+
+Output:
+ 10 A
+
+Different Data Type Combinations
+ The same template can be used  with different combinations of types:
+ MyClass<int, char> obj1(10, 'A');
+ MyClass<float, int> obJ2(12.5, 20);
+ MyClass<string, int> obJ3("Age", 32);
+
+Points
+ Multiple template parameters are separated by a comma:
+ template <class T1, class T2>
+ You can also use typename:
+ template <typename T1, typename T2>
+ class and typename are equivalent here.
+
+Default Template Parameters
+ A default template parameter provides a default data type of a template parameter
+
+Syntax:
+ template <class T1 = int, class T2 = float>
+ class MyClass
+ {
+   // body
+ };
+
+Here:
+ T1 -> default type = int
+ T2 default type = float
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ template <class T1 = int, class T2 = float, class T3 = char>
+ class MyClass
+ {
+  T1 data1;
+  T2 data2;
+  T3 data3;
+  
+ public:
+  MyClass(T1 a, T2 b, T3 c)
+  {
+   data1 = a;
+   data2 = b;
+   data3 = c;
+  }
+
+  void display()
+  {
+   cout << data1 << endl;
+   cout << data2 << endl;
+   cout << data3 << endl;
+  }
+ };
+
+ int main()
+ {
+  MyClass<> obj(10, 5.5, 'A');
+
+  obj.display();
+
+  return 0;
+
+ }
+Output:
+ 10
+ 5.5
+ A
+  
+ Because no template types were specified:
+
+ MyClass<>
+ the compiler uses thedefault types:
+ T1 -> int
+ T2 -> float
+ T3 -> char
+
+ Changing the Default Types
+ You can override the defaults by explicitly providing the types
+ MyClass<double, int, char> obj(10.5, 30, 'A');
+
+Here:
+ T1 -> double
+ T2 -> int
+ T3 -> char
+
+Rule
+ For class templates, once a template parameter has a default argument, the parameters after it generally must also have defaults
+
+Correct:
+ template <class T1 = int, class T2 = float>
+
+Incorrect:
+ template <class T1 = int, class T2>
+
  
  */    
