@@ -5671,5 +5671,301 @@ Important List Functions
  begin()       → Iterator to first element
  end()         → Iterator past last element
 
+Map in STL
+ map is an STL associative container that stores data in thee form of:
+ key -> value
+ Each key is unique in a map
+Example:
+ map<string, int> marks;
+
+ "Rohan" -> 90
+ "Ravi"   -> 80
+ "shyam"  -> 75
+
+ A map keeps its element stored according to the keys
+
+Header File
+ #include <map>
+
+Creating a Map
+Syntax:
+ map<key_type, value_type> map_name;
+
+Example:
+ map<string, int> marks;
+
+Here:
+ string -> key type
+ int    -> value type
+
+Inserting Elements
+ Using[]
+
+ marks["Rohan"] = 90;
+ marks["Ravi"] = 80;
+
+Using insert()
+ marks.insert({"Shyam", 75});
+
+ The map stores:
+ Rohan -> 90
+ Ravi -> 80
+ Shyam -> 75
+
+Accessing Values
+Use the key:
+ cout << marks["Rohan"];
+Output:
+ 90
+ The key is used to access its corresponding value
+
+Updating a Value
+ Asssign a new value to the same key:
+ marks["Rohan"]  = 95;
+Now:
+ Rohan -> 95
+
+Duplicate Keys
+ A normal map does not allow duplicate keys
+ 
+ marks["Rohan"] = 90;
+ marks["Rohan"] = 95;
+
+ There is still only one key:
+ Rohan -> 95
+ The seccond assignment updates the value
+
+size()
+ Returns the number of key-value pairs
+ cout << marks.size();
+
+find()
+ Searches for a key
+ auto it = marks.find("Ravi");
+If the key exists:
+ it != marks.end()
+
+If it does not exist:
+ it == marks.end()
+
+Example:
+ if(marks.find("Ravi") != marks.end())
+ {
+  cout << "Found";
+ }
+
+erase()
+ Removes an element using its key
+ marks.erase("Ravi");
+
+ The key-value pair associated with "Ravi" is removed
+
+count()
+ Checks whether a key exists
+
+ if(marks.count("Rohan"))
+ {
+  cout << "Found";
+ }
+
+ For a normal map:
+ count(key) = 1 -> key exists
+ count(key) = 0 -> key does not exists
+ Because keys are unique
+
+Traversing a Map
+ Use a range-based loop:
+ for(auto p : marks)
+ {
+  cout << p.first << " " << p.second << endl;
+ }
+
+Here:
+ p.first -> key
+ p.second -> value
+
+Map stores Data in Sorted Key Order
+Example:
+ map<int, string> m;
+
+ m[3] = "C";
+ m[1] = "A";
+ m[2] = "B";
+
+When traversed:
+ 1 -> A
+ 2 -> B
+ 3 -> C
+ The keys are automatically maintained in sorted order
+
+Important Map Functions
+ insert() → Insert key-value pair 
+ [] → Access / insert / update 
+ find() → Search for key 
+ erase() → Remove key-value pair 
+ count() → Check whether key exists 
+ size() → Number of pairs 
+ begin() → Iterator to first element 
+ end() → Iterator past last element
+
+Map vs Vector vs List
+ Container	    Stores	         Main Idea
+ vector	        Elements      	Dynamic array
+ list	          Elements    	  Doubly linked list
+ map	          Key + Value	    Sorted key-value pairs
+
+Function Objects in STL
+ A Function Object, also called a Functor, is an object that can be used like a function
+
+ It is created by defining/overloading the function call operator operator() inside a class or struct
+
+Example:
+ class Add
+ {
+ public:
+    int operator()(int a, int b)
+    {
+     return a + b;
+    }
+ };
+
+Now:
+ Add  obj;
+ cout << obj(10, 20);
+
+Output:
+ 30
+
+Here:
+ obj(10, 20)
+       ↓
+ operator()(10, 20)
+     
+ So, the object obj behaves like a function
+
+Why Use Functors?
+ Functors are useful because:
+ An object can behave like a function
+ They can be passed to STL algorithms
+ They can store data/state inside the object
+ They allow customized behavior for algorithms
+ STL algorithms canaccept functors as callable objects
+
+Basic Syntax
+ class Functor
+ {
+ public:
+    return_type operator()(parameters)
+    {
+      // code
+    }
+ };
+
+Example:
+ class Square
+ {
+ public:
+     int operator()(int x)
+     {
+       return x * x;
+     }
+ };
+
+Usage:
+ square s;
+ cout << s(5);
+
+Output:
+ 25
+
+STL Predefined Functors
+ C++ STL provides ready-made function objects in the <functional> header
+
+ #include <functional>
+
+Common Arithmetic Functors
+ Functor                      Operation
+ plus	                        a + b
+ minus	                      a - b
+ multiplies                   a * b
+ divides	                    a / b
+ modulus	                    a % b
+ negate	                      -a
+
+Example:
+ plus<int> add;
+ cout << add(10, 20);
+
+Output:
+ 30
+
+Comparison Functors
+ These are useful for comparing values and are commonly used with STL algorithms
+ Functor	             Operation
+ equal_to	             a == b
+ not_equal_to	         a != b
+ greater	             a > b
+ less             	   a < b
+ greater_equal	       a >= b
+ less_equal	           a <= b
+
+Example:
+ greater<int> g;
+
+ cout << g(20, 10);
+
+Output:
+ 1
+
+Because:
+ 20 > 10 -> true
+
+Functor with sort()
+ One important use of a functor is providing custom behavior to an STL algorithm
+
+ For example, greater<int>() can be passed to sort() to sort in descending order
+
+ #include <iostream>
+ #include <vector>
+ #include <algorithm>
+ #include <functional>
+ using namespace std;
+
+ int main()
+ {
+   vector<int> v = {10, 5, 30, 20};
+
+   sort(v.begin(), v.end(), greater<Int>());
+
+   for(int x : v)
+   {
+    cout << x << " ";
+   }
+
+   return 0;
+ }
+
+Output:
+ 30 20 10 5
+  
+Here:
+ greater<int>()
+       ↓ 
+ Custom comparison 
+       ↓ 
+ sort() 
+       ↓ 
+ Descending order
+
+**
+A normal function:
+ add(10, 20);
+
+A functor object:
+ obj(10, 20);
+
+The functor works because:
+ operator()
+ has been overloaded
  
  */    
