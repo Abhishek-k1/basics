@@ -5581,6 +5581,95 @@ Using range-based loop:
  int arr[5]                                 vector<int> v
  Less flexible                              More flexible
 
- 
+List in STL
+ list is an STL sequence container that is generally imlemented as doubly linked list
+ Unlike a vector, its elemnt are not stored contiguously in memory
 
+ #include <list>
+ list<int> l;
+
+Creating a List
+ list<int> l = {10, 20, 30, 40};
+
+push_back()
+ Adds an element at the end
+ l.push_back(50);
+ 10 20 30 40 50
+
+push_front()
+ Adds an element at the beginning
+ l.push_front(5);
+ 5 10 20 30 40 
+ This is one important advantage over a vector: adding at the front is efficient
+
+pop_back()
+ Removes the last element
+ l.pop_back();
+
+pop_front()
+ Removes the first element
+ l.pop_front();
+
+remove()
+ Remove all occurrences of a specified value
+ l.remove(20);
+ If:
+ 10 20 30 40 50
+ After:
+ l.remove(20);
+Result
+ 10 30 40
+
+sort()
+ Sorts the list in ascending order
+ l.sort();
+Example:
+ 40  10 30 20
+ After:
+ 10 20 30 40
+
+reverse()
+ Reverse the order of elements
+ l.reverse();
+Example:
+ 10 20 30 40
+ becomes:
+ 40 30 20 10
+
+Traversing a List
+ Use an interior or range-based loop
+
+Range-based loop
+ for(int x : l)
+ {
+  cout << x << " ";
+ }
+
+Iterator
+ for(auto it = l.begin(); it !=l.end(); it++)
+ {
+  cout << *it << " ";
+ }
+
+ Vector             vs              List
+ Dynamic array                     Doubly linked list
+ Contiguous memory                 Non-contiguous memory
+ Fast random access                No fast random access
+ v[i] supported                    l[i] not supported
+ Fast insertion/removed at end     Fast insertion/removal at known position
+ push_front() not efficient        push_front() efficient
+
+Important List Functions
+ push_back()   → Add at end
+ push_front()  → Add at beginning
+ pop_back()    → Remove from end
+ pop_front()   → Remove from beginning
+ remove(x)     → Remove all x
+ sort()        → Sort list
+ reverse()     → Reverse list
+ size()        → Number of elements
+ begin()       → Iterator to first element
+ end()         → Iterator past last element
+
+ 
  */    
