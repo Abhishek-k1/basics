@@ -4865,5 +4865,160 @@ open() vs Constructor
  // open()
  ofstream out;
  out.open("data.txt");
+
+Templates
+ A template allows us to write generic code that can work with different data types
+ Instead of writing the same code separately for int, float, char, etc we can write it once using a template
+
+Why Use Templates?
+ Without templates:
+
+ int version
+ float version
+ doubble version
+ char version
+       ↓
+ Repeated code
+
+ With templates:
+
+ One generic template
+        ↓
+ Works with different data types
+
+Main Benefits
+ Code reusability
+ Reduces code repetition
+ Supports generic programming
+ Useful in competitive programming
+ Makes program more flexible
+
+Generic Programming
+ Generic Programming means writing code that can work with different data types without changing the main logic
+ Templates are one of the main features used to achieve generic programming in C++
+
+Basic Template Syntax
+ template <class T>
+Here:
+ template -> Keyword
+ class    -> Specifies a template type parameter
+ T        -> Placeholder for a data type
+
+ T can representdifferent data types such as:
+ int
+ float
+ double
+ char
+
+Idea
+ Suppose we want the same class to work with different data types
+
+Without templates:
+ Integer class
+ Float class
+ Character class
+
+With a template:
+           Template 
+              ↓ 
+        ┌─────┼─────┐ 
+        ↓     ↓     ↓ 
+      int  float  char
+ The same template can be used with different types
+
+Points
+ Template = blueprint for generic code
+ It allows data types to be used as parameters
+ Templates reduce code repetition
+ Templates support generic programming
+ Templates are heavily used in C++ Standard Template Library(STL)
+ Templates are expanded/processed at compile time
+
+Creating a Class Template
+ A class can be made generic using:
+ template <class T>
+
+Example:
+ template <class T>
+ class MyClass
+ {
+ public:
+    T data;
+
+    MyClass(T value)
+    {
+     data = value;
+    }
+
+    void display()
+    {
+     cout << data;
+    }
+ };
+
+Here T acts as aplaceholder for a data type
+
+Creating Objects With Different Data Types
+ The same template can be used with different types
+
+ MyClass<int> obj1(10);
+
+ MyClass<float> obj2(10.5);
+
+ MyClass<char> obj3('A');
+
+So:
+ MyClass<int>  -> T becomes int
+ MyClass<float>  -> T becomes float
+ MyClass<char>  -> T becomes char
+
+Template Class  Example
+ #include <iostream>
+ using namespace std;
+
+ template <class T>
+ class MyClass
+ {
+   T data;
+
+  public:
+    MyClass(T value)
+    {
+     data = value;
+    }
+
+    void display()
+    {
+     cout << data << endl;
+    }
+ };
+
+ int main()
+ {
+  MyClass<int> obj1(10);
+  MyClass<float> obj2(10.5);
+  MyClass<char> obj3('A');
+
+  obj1.display();
+  obj2.display();
+  obj3.display();
+
+  return 0;
+ }
+
+Points
+ T is a template type parameter
+ The actual type is specified while creating the object
+
+Syntax:
+    MyClass<int> obj;
+
+ A class template is a generic class
+ The same template can be instantiated with different data types
+ template <class T> can also be written as:
+
+ template <typename T>
+ Both are equivalent for this use
+ 
  
  */    
