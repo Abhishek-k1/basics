@@ -4737,4 +4737,133 @@ We can use:
 Close it using:
  file.close();
 
+Reading and Writing in the Same Program
+ A program can use different file-stream objects for different operations
+ 
+ #include <iostream>
+ #include <fstream>
+ using namespace std;
+
+ int main()
+ {
+  string st;
+
+  // write to file
+  ofstream out("data.txt");
+  out << "hello C++";
+  out,close();
+
+  // Read from file
+  ifstream in("data.txt");
+  in >> st;
+  cout << st;
+  in.close();
+
+  return 0;
+ }
+
+ The same file can be accessed multiple timmes in the same program by using separate stream connections
+ 
+ ofstream -> write
+    ↓ 
+ close() 
+ 
+ ifstream → Read 
+    ↓ 
+ close()
+
+Closing a File
+ Use:
+ file.close();
+ It closes the connection between the program and the file
+
+Example:
+ ofstream out("data.txt");
+ out << "Hello";
+ out.close();
+
+Why close the file?
+ Finishes the file operation
+ Releases the file resource
+ Ensures the connection is properly closed
+ Good practice after completing file operations
+
+Point
+ A file stream object represents a connection between the C++ program and the file
+
+ C++ Program
+     ↕
+ File Stream
+     ↕
+   File
+
+ Different stream objects can be used for different operations:
+
+ ofstream out;   // writing connection
+ ifstream in;    // reading connection
+
+Quick Revision
+ Write → ofstream → close()
+ Read  → ifstream → close()
+
+open() Function
+ open() is used to open a file after creating the file-stream object
+
+Instead of:
+ ofstream out("data.txt");
+
+We can write:
+ ofstream out;
+ out.open("data.txt");
+
+Example
+ ofstream out;
+ out.open("data.txt");
+ out << "Hello C++";
+ out.close();
+
+Syntax
+ file.open("filename", mode);
+
+Example
+ fstream file;
+ file.open("data.txt", ios::in | ios::out);
+
+eof() Function
+ eof() stands for End Of File
+ It checks whether the end of the file has been reached
+Syntax
+ file.eof()
+
+It returns:
+ true -> End of file reached
+ false -> End of file not reached
+
+Reading a File Until End
+ ifstream in;
+
+ in.open("data.txt");
+
+ string text;
+
+ while(!in.eof())
+ {
+  getline(in, text);
+  cout << text << endl;
+ }
+
+ in.close();
+
+ eof() is used to detect the end of a file while reading
+
+open() vs Constructor
+ Both can open a file:
+
+ // Constructor
+ ofstream out("data.txt");
+
+ // open()
+ ofstream out;
+ out.open("data.txt");
+ 
  */    
