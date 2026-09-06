@@ -5161,5 +5161,426 @@ Correct:
 Incorrect:
  template <class T1 = int, class T2>
 
+Function Templates
+ A function template allows one function to work with different data types
+
+Syntax:
+ template <class T>
+ return_type  functionName(T parameter)
+ {
+  // function body
+ }
+
+Example:
+ #include <iostream>
+ using namespace std;
+
+ template <class T>
+ void display(T value)
+ {
+  cout << value << endl;
+ }
+
+ int main()
+ {
+  display(10);
+  display(11.5);
+  display('Z');
+
+  return 0;
+ }
+
+Output:
+ 10
+ 11.5
+ Z
+Here, the compiler determines the appropriate type from the argument This is called template argument deduction
+
+Function Template with Multiple Parameters
+ A Function template can have multiple type parameters
+
+ template <class T1, class T2>
+ void show(T1 a, T2 b)
+ {
+  cout << a << " " << b << endl;
+ }
+
+Example:
+ show(10, 'A);
+ Show(11.5, 20);
+
+ Here T1 and T2 can be different types
+
+Function Template with Return Type
+ template <class T>
+ T maximim(T a, T b)
+ {
+  return (a > b) ? a : b;
+ }
+
+Example:
+ cout << maximum(10, 20);
+
+Output:
+ 20
+
+ Function templates are useful for creating generic functions that can work with different data types
+
+ Examples of standard-library function templates include:
+ sort()
+ max()
+ min()
+
+Member Function Template
+ A member function template is a template function defined inside as class
+ The class itself does not have to be a template
+
+Example:
+ class Myclass
+ {
+ public:
+    template  <class T>
+    void display(T value)
+    {
+     cout << value << endl;
+    }
+ };
+
+Usage:
+ MyClass obj;
+
+ obj.display(10);
+ obj.display('10.5');
+ obj.display('A');
+ Here the same member function works with different data types
+
+Template Function Overloading
+ A template function can also be overloading
+
+ This means we can have multiple functions with the same name but different parameter lists
+
+Example:
+ template <class T>
+ void show(T a)
+ {
+  cout << "One parameter: " << a << endl;
+ }
+
+ template <class T>
+ void show(T a, T b)
+ {
+  cout << "Two parameters: " << a << " " << b << endl;
+ }
+
+Usage
+ show(10);
+ show(10, 20);
+ The compiler selects the appropiate function based on the arguments
+
+Function Template with Different Parameter Types
+ Templates can also Use different type parameters:
+
+ template <class T1, class T2>
+ void show(T1 a, T2 b)
+ {
+  cout << a << " " << b;
+ }
+
+Example:
+ show(10, 'A');
+
+Here:
+ T1 -> int
+ T2 -> char
+
+Point
+ Member function template -> template function inside a class
+ A function template can be overloaded
+ Overloaded template functions can differ in their number or types of parameters
+ The compiler selects the suitable function based  on the arguments
+ A member function template is different from a class template
+
+STL
+ STL stands for standard Template Library
+ It is a collection of ready-to-use generic classes and functions in C++ that provide commonly used data structures and algorithms
+ STL saves time because we dont need to implement common data structure and algorithm d
+
+Why Use STL?
+Without STL:
+ Need a data structure
+          ↓
+ Implement it yourself
+         ↓
+ Write many lines of code
+         ↓
+ More time + more chances of errors
+
+With STL:
+
+ Need a data structure
+         ↓
+ Use an existing STL container
+         ↓
+ Less code + faster development
+
+ STL is especially useful in competitive programming because it provides ready-to-use and efficient implementations
+
+Main Components of STL
+ STL mainly consists of:
+                STL 
+                 | 
+         ┌───────┼────────┐ 
+         ↓       ↓        ↓ 
+  Containers Algorithms Iterators
+
+Containers
+ Containers are objects/classes used to store and organize data
+Examples:
+ vector
+ List
+ map
+ set
+ stack
+ queue
+
+Algorithms
+ Algorithms are ready-made functions used to perform operations on data
+Examples:
+ sort()
+ find()
+ reverse()
+
+Example:
+ sort(arr, arr + n);
+ This sorts the elements
+
+Iterators
+ An  iterator is an object used to refer to and move through elements of a container
+ It works somewhat like a pointer
+Example:
+ vector<int> v = {10, 20, 30};
+
+ vector<int>::iterator it;
+
+ for(it = v.begin(); it != v.end(); it++)
+ {
+  cout << *it << " ";
+ }
+
+Output:
+ 10 20 30
+
+ begin() -> points to first element
+ end() -> points just after the last element
+
+Relationship
+ Container
+    ↓
+ Stores data
+    ↓
+ Iterator
+    ↓
+ Accesses/traverses data
+    ↓
+ Algorithm
+    ↓
+ Performs operation on data
+
+Example:
+
+ vector
+   ↓
+ iterator
+   ↓
+ sort()
+
+ Container -> store
+ Iterator -> Access
+ Algorithm -> Process
+
+Container
+ A container is an STL class used to store and organize data
+ Containers are mainly dic=vided into three types
+
+                    Containers
+                     |
+          ┌──────────┼──────────┐
+          ↓          ↓          ↓
+      Sequence   Associative  Derived
+      Containers Containers   Containers
+
+Sequence Containers
+ Sequence containers store elements in a linear sequence/order
+Common examples:
+ vector
+ list
+ deque
+
+Examples
+ vector<int> v;
+ list<int> l;
+ deque<int> d;
+ These are useful when elements are stored one after another in a sequence
+
+Associative Containers
+ Associative containers organize data so that elements can be efficiently accessed using keys or ordering
+Common Example:
+ set
+ multiset
+ map
+ multimap
+
+Examples:
+ set<int> s;
+
+ map<int, string> m;
+
+ set -> stores unique values
+ multiset -> can store duplicate values
+ map -> stores key-value pairs with unique keys
+ multimap -> allows multiple values for the same key
+
+Derived Containers
+ Derived containers are built to provide specialized ways of working with data
+
+Common example:
+ stack
+ queue
+ priority_queue
+
+Examples
+ stack<int> st;
+ queue<int> q;
+ priority_queue<int> pq;
+ These are commonly used for specific data-structure operations
+
+ Vector In STL
+ A vector is an STL container that works like a dynamic array
+ Unlike a normal array, a vector can automatically resize itself when elements are added or removed
+ Vector elements are stored in contiguous memory
+
+Header File
+ To use vectors:
+ #include <vector>
+
+Creating a Vector
+Syntax
+ vector<data_type> vector_name;
+
+Example:
+ vector<int> V;
+
+ This creates an empty integer vector
+
+Initializing a Vector
+Direct Initialization
+ vector<int> v = {10, 20, 30, 40};
+
+Fixed size with same value
+ vector<int> v(5, 20);
+
+This creates:
+ 10 10 10 10 10
+
+push_back()
+ Adds an element to the end of the vector
+
+ vector<int> v;
+
+ v.push_back(10);
+ v.push_back(20);
+ v.push_back(30);
+
+Vector:
+ 10 20 30
+
+size()
+ Returns the number of elements currently present in the vector
+ cout << v.size();
+Example:
+ vector: 10 20 30
+ size() -> 3
+
+Accessing Elements
+ Just like arrays, vector use Indexing
+ cout << v[0];
+
+You can also use:
+ cout << v.at(0);
+
+Difference
+ v[i] -> Direct index access
+ v.at(i) -> Access with bounds checking
+
+pop_back()
+ Removes the last element
+ v.pop_back();
+
+Example:
+ Before -> 10 20 30
+ After -> 10 20
+
+insert()
+ Inserts an element at a specified position using an iterator
+
+Syntax:
+ v.insert(iterator, value);
+
+Example:
+ v.insert(v.begin(), 5);
+
+If:
+ 10 20 30
+
+then:
+ 5 10 20 30
+
+ begin() gives an iterator to the first element
+
+erase()
+ Removes an element at a specified position
+
+Syntax
+ v.erase(iterator);
+
+Example:
+ v.erase(v.begin());
+
+Before:
+ 10 20 30
+
+After:
+ 20 30
+
+Traversing a Vector
+Using index:
+ for(int i = 0; i < v.size(); i++)
+ {
+  cout << v[i] << " ";
+ }
+
+Using range-based loop:
+ for(int x : v)
+ {
+  cout << x << " ";
+ }  
+
+ Function	                 Purpose
+ push_back(x)	             Add element at end
+ pop_back()	               Remove last element
+ size()	                   Number of elements
+ insert()	                 Insert at position
+ erase()	                 Remove at position
+ begin()	                 Iterator to first element
+ end()	                   Iterator just after last element
+ at(i)	                   Access element with bounds checking
+
+ Array                   vs                 Vector
+ Fixed size                                 Dynamic size
+ Size cannot normally grow automatically    Automatically resizes
+ int arr[5]                                 vector<int> v
+ Less flexible                              More flexible
+
  
+
  */    
