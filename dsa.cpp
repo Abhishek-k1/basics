@@ -4591,7 +4591,7 @@ Example
  edges.push_back({2, 3});
 
 For a weighted graph:
- vector<tuple<int, int>> edges;
+ vector<tuple<int, int, int>> edges;
 
  edges.push_back({0, 1, 5});
 Here: 
@@ -4840,7 +4840,7 @@ Example graph:
  #include <iostream>
  #include <vector>
  #include <queue>
- using nnamespace std;
+ using namespace std;
 
  void BFS(int start, vector<vector<int>>& adj, int V)
  {
@@ -4857,7 +4857,7 @@ Example graph:
 
     cout << node << " ";
 
-    for(int neighbout : adj[node])
+    for(int neighbour : adj[node])
     {
      if(!visited[neighbour])
      {
@@ -4911,11 +4911,13 @@ BFS for Disconnected Graph
 
  Starting BFS from A will not visit C and D
  To traverse the complete graph:
- for(inr i = 0: i < n; i++)
+
+ vector<bool> visited(V, false);
+ for(int i = 0; i < V; i++)
  {
   if(!visited[i])
   {
-   BFS(i, adj, V);
+   BFS(i, adj, visited);
   }
  }
 
@@ -4940,6 +4942,150 @@ where:
 Space Complexity:
  O(V) for the queue and visited array, excluding the adjacency-list storage
 
+DFS
+ DFS (Depth First Search) is a graph traversal algorithm that explores a graph by going as deep as possible along one path before backtracking
 
+Basic Idea
+ Start
+   ↓
+ Visit a node
+   ↓
+ Go to an unvisited neighbour
+   ↓
+ Continue deeper
+   ↓
+ No unvisited neighbour?
+   ↓
+ Backtrack
+
+DFS Uses
+ DFS can be implemented using:
+ Recursion
+ Stack
+ The recursive approach uses the function call stack internally
+
+Why Do We Need visited[]?
+ Graphs can contain cycles
+ Therefore, we maintain a visited array to make sure a vertex is not processed repeatedly
+
+ vector<bool> visited;
+
+Initially:
+ visited = false
+ When a vertex is visited:
+ visited[node] = true;
+
+DFS Algorithm
+ Start from a source vertex
+ Mark it as visited
+ Process/print the vertex
+ Visit an unvisited adjacent vertex
+ Recursively perform DFS from that vertex
+ Continue until there are no unvisited adjacent vertices
+ Backtrack and explore another path
+
+Implementation
+ #include <iostream>
+ #include <vector>
+ using namespace std;
+
+ void DFS(int node, vector<vector<int>>& graph, vector<bool>& visited)
+ {
+  visited[node] = true;
+
+  cout << node << " ";
+
+  for(int neighbour : graph[node])
+  {
+   if(!visited[neighbour])
+   {
+    DFS(neighbour, graph, visited);
+   }
+  }
+ }
+
+ int main()
+ {
+  int n = 5;
+
+  vector<vector<int>> graph(n);
+
+  graph[0] = {1, 2};
+  graph[1] = {0, 3};
+  graph[2] = {0, 4};
+  graph[3] = {1}; 
+  graph[4] = {2}; 
+ 
+ vector<bool> visited(n, false);
+
+ DFS(0, graph, visited);
+
+ return 0;
+ }
+
+Possible traversal:
+ 0 1 3 2 4
+
+ The exact DFS order can depend on the order in which neighbours are stored/processed
+
+How Recursion Performs DFS
+Suppose:
+          0 
+         / \ 
+         1 2 
+         | 
+         3
+
+Starting from 0:
+ DFS(0)
+  ↓
+ Visit 0
+  ↓
+ DFS(1)
+  ↓
+ Visit 1
+  ↓
+ DFS(3)
+  ↓
+ Visit 3
+  ↓
+ Backtrack
+  ↓
+ DFS(2)
+  ↓
+ Visit 2
+
+Traversal:
+ 0 → 1 → 3 → 2 
+
+DFS Using Adjacency Matrix
+ DFS can also be implemented using an adjacency matrix
+ graph[i][j] = 1;
+ means there is an edge between vertex i and vertex j
+ In an adjacency-matrix implementation, for every vertex we check all possible vertices to findd its neighbours
+ 
+Time Complexity:
+ For an adjacency-list representation:
+ Time Complexity = O(V + E)
+Where:
+ V = Number of vertices
+ E = Number of edges
+ Each vertex and edge is processed at most a constant number of times
+
+Space Complexity:
+ Space Complexity = O(V)
+
+because of:
+ visited[]
+ recursion stack / explixit stack
+
+Points
+ DFS stands for Depth First Search
+ DFS explores as deeply as possible before backtracking
+ DFS can be implemented using recursion or stack
+ visited[] prevents repeated visits and infinite traversal through cycles
+ DFS works with directed and undirected graphs
+ For adjacency lists, time complexity is O(V + E)
+ DFS does not always give the shortest path in an unweighted graph
 
 */
