@@ -4692,13 +4692,6 @@ Main Graph Traversal Algorithms
  Visits vertices level by level
 Uses:
  Queue
-
-2.DFS -> Depth First Search
- Explores as far as possible along one path before backtrackinng
-Uses:
- Stack/ Recursion 
-
-BFS
  Breadth First Search explores the graph level by level
 Example:
          0
@@ -4718,7 +4711,11 @@ Basic Steps:
  Mark them visited and insert them into the queue
  Repeat until the queue becomes empty
 
-DFS
+2.DFS -> Depth First Search
+ Explores as far as possible along one path before backtrackinng
+Uses:
+ Stack/ Recursion 
+
  Depth First Search explores one path as deeply as possible before backtracking
 Example:
          0
@@ -4739,13 +4736,18 @@ Basic Steps:
 
 BFS VS DFS
  Feature              BFS                  DFS
+
  Full Form      Breadth First Search   Depth First Search
+
  Approach       Level by level         Depth first
+
  Data Structure Queue                  Stack / Recursion
+
  Uses           Shortest path in       Path exploration,  
                 unweighted graphs,     cycle-related problems,
                 level exploration      backtracking
-Traversal       Wider first            Deeper first
+
+ Traversal      Wider first            Deeper first
 
 Visited Array
  The visited array keeps track of which vertices have already been visited
@@ -4784,9 +4786,159 @@ Time Complexity
  V = Number of vertices
  E = Numvber of edges
  Both BFS and DFS can traverse a graph in O(V + E) time when using an adjacency list
+
+BFS
+ BFS is a graph traversal algorithm that visits vertices level by level
+ It starts from a selected vertex and first visits all its immediate neighbors before  moving to the  next level
+
+Data Structure Used
+ BFS uses a Queue
+ Queue follows:
+ FIFO -> First In, First Out
+            0
+           / \ 
+          1   2
+         / \ 
+        3   4
+ Starting from 0:
+ BFS: 0 -> 1 -> 2 -> 3 -> 4
  
+Basic BFS Algorithm
+Steps:
+ Select a starting vertex
+ Mark it as visited
+ Insert it into the queue
+ Remove the front vertex from the queue
+ Visit all its unvisited adjacent vertices
+ Mark them visited and  insert them into the queue
+ Repeat until the queue becomes empty
 
+Why Do We Need a Visited Array?
+ Graphs can contain cycles
+ Without keeping track of visited vertices, we may visit the same vertex repeatedly
 
+ vector<bool> visited(V, false);
+
+ When a vertex is visited:
+ visited[node] = true;
+
+BFS Using Adjacency List
+Example graph:
+            0
+           / \ 
+          1   2
+         / \ 
+        3   4
+
+ Adjacency list:
+ 0 -> 1, 2
+ 1 -> 0, 3, 4
+ 2 -> 0
+ 3 -> 1
+ 4 -> 1
+
+ #include <iostream>
+ #include <vector>
+ #include <queue>
+ using nnamespace std;
+
+ void BFS(int start, vector<vector<int>>& adj, int V)
+ {
+   vector<bool> visited(V, false);
+   queue<int> q;
+
+   visited[start] = true;
+   q.push(start);
+
+   while(!q.empty())
+   {
+    int node = q.front();
+    q.pop();
+
+    cout << node << " ";
+
+    for(int neighbout : adj[node])
+    {
+     if(!visited[neighbour])
+     {
+      visited[neighbour] = true;
+      q.push(neighbour);
+     }
+    }
+   }
+ }
+
+Understanding the Queue
+Example: 
+            0
+           / \ 
+          1   2
+         / \ 
+        3   4
+
+ Starting from 0:
+  
+ Queue: [0]
+ visit: 0
+
+ Queue: [1, 2]
+ visit: 1
+
+ Queue: [2, 3, 4]
+ visit: 2
+
+ Queue: [3, 4]
+ visit: 3
+
+ Queue: [4]
+ visit: 4
+
+ Queue: []
+
+Therefore:
+ BFS = 0 1 2 3 4 
+
+ Mark a vertex as visited when you put it into the queue, not when you remove it
+
+ visited[neighbour] = true;
+ q.push(neighbour);
+
+ This prevents the same vertex from being inserted into the queue multiple times
+
+BFS for Disconnected Graph
+ If the graph contains multiple disconnected components:
+ A --- B   C --- D
+
+ Starting BFS from A will not visit C and D
+ To traverse the complete graph:
+ for(inr i = 0: i < n; i++)
+ {
+  if(!visited[i])
+  {
+   BFS(i, adj, V);
+  }
+ }
+
+ The exact implementation can be adjusted so the same visited array is shared across components
+
+BFS and Shorted Path
+ BFS can find the shortest path in terms of number of edge  in an unweighted graph
+Example:
+  A --- B --- C
+   \         /
+    -------
+
+ BFS explores level by level, so the first time it reaches a vertex, it has found a shortest path from the source in an unweighted graph
+
+Time Complexity:
+ For an adjacency-list representation:
+ Time complexity: O(V + E)
+where:
+ V = Number of vertices
+ E = Number of edges
+
+Space Complexity:
+ O(V) for the queue and visited array, excluding the adjacency-list storage
 
 
 
