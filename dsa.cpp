@@ -5088,4 +5088,300 @@ Points
  For adjacency lists, time complexity is O(V + E)
  DFS does not always give the shortest path in an unweighted graph
 
-*/
+Spanning Tree
+ A spanning Tree is a subgraph of a connected graph that:
+
+ Contains all vertices of the original graph
+ Is connected
+ Contains no cycles
+ Has the minimum possible number of edges
+
+Formula
+ For a graph with n Verties:
+ Number of edges in a spanning tree = n - 1
+
+Example:
+ Vertices = 5
+ Edges in spanning tree = 5 - 1
+                        = 4
+
+Example:
+ Suppose the original graph is:
+        A
+       / \ 
+      B---C
+       \ /
+        D
+
+ A spanning tree must contain all four vertices but cannot contain a cycle
+ One possible spanning tree:
+  A
+  |
+  B
+  |
+  C
+  |
+  D
+
+It contains:
+ 4 vertices
+ 3 edgess
+
+Therefore:
+ Edges = V - 1
+       = 4 -1
+       = 3
+
+Properties
+ A spanning tree contains all vertices of the original graph
+ A spanning tree is always connected
+ A spanning tree contains no cycle
+ For n vertices, it always contains exactly:
+ n - 1 edges
+ Removing any edge from a spanning tree makes it disconnected
+ Adding any extra edge to a spanning tree creates a cycle
+
+Spanning Tree of a Complete Graph
+ A complete graph is a graph in which every vertex is connected to every other vertex
+ For a complete graph with n vertices, the maximum possible number of different spanning trees is given by Cayley's Formula:
+ Number of spanning trees = n^(n-2)
+
+Example:
+For 3 Vertices
+ n = 3
+
+Number of spanning trees
+ = 3^(3-2)
+ = 3^1
+ = 3
+
+So a complete graph with 3 verticees has:
+ 3 spanning trees
+
+For 4 Vertices
+ n = 4
+
+Number of spanning trees
+ = 4^(4-2)
+ = 4^2
+ = 16
+
+Therefore:
+ K₄ → 16 spanning trees
+
+For 5 Vertices
+ n = 5
+
+Number of spanning trees
+ = 5^(5-2)
+ = 5^3
+ = 125
+
+Therefore:
+ K₅ → 125 spanning trees
+
+General Formula
+ For a complete graph Kₙ:
+
+T(Kₙ) = n^(n-2)
+
+where:
+
+n = number of vertices Kₙ:
+
+Table
+ Complete Graph         Number of Spanning Trees
+ K₂	                  1
+ K₃	                  3
+ K₄	                  16
+ K₅	                  125
+ K₆	                  1296
+ K₇	                  16807
+
+Important Difference
+Complete Graph
+ A complete graph has the maximum possible number of edges between its vertices
+
+Spanning Tree
+ A spanning tree has the minimum number of edges required to keep all vertices connected
+
+For n vertices:
+ Complete Graph -> n(n-1)/2 edges
+ Spanning Tree -> n-1 edges
+
+Weighted Graph 
+ A weighted graph is a graph in which each edges has a value called a weight
+ The weight can represent:
+ Cost
+ Distance
+ Time
+ Length
+ Network delay
+
+Example:
+
+      5
+  A ------- B
+   \       /
+  2 \     / 3
+     \   /
+       C
+
+Here:
+ A-B → 5
+ A-C → 2
+ B-C → 3
+ These numbers are the edge weights
+
+Cost of a Spanning Tree
+ The cost of a spanning tree is the sum of the weights of all edges in that spanning tree
+Formula
+ Cost of spanning Tree = Sum of weights of all its edges
+
+Example:
+ Suppose a spanning tree contains edges:
+ A-B = 5
+ A-C = 2
+ B-D = 4
+
+Then:
+ Cost = 5 + 2 + 4
+     = 11
+ 
+Minimum Spanning Tree(MST)
+ A Minimum Spanning Tree is a spanning tree of a connected weighted graph 
+ whose total edge weight is minimum among all spanning trees of that graph
+
+In simple words:
+ MST connects all vertices with no cycle while having the minimum possible total cost
+
+Condition of MST 
+An MST must:
+ Include all vertices
+ Be connected
+ Contain no cycle
+ Have exactly V − 1 edges
+ Have the minimum possible total weight
+ V = Number of vertices
+ MST edges = V - 1
+
+Example of MST 
+Consider: 
+            4
+        A ------- B
+        | \       |
+       2|  \5     |1
+        |   \     |
+        C ------- D
+            3
+
+Edges:
+ A-B = 4
+ A-C = 2
+ A-D = 5
+ B-D = 1
+ C-D = 3
+
+Choose edges:
+ B-D = 1
+ A-C = 2
+ C-D = 3
+
+Now all vertices are connected:
+
+       A
+       |
+       2
+       |
+       C
+       |
+       3
+       |
+       D
+       |
+       1
+       |
+       B
+
+Total cost:
+ Cost = 1 + 2 + 3
+      = 6
+Therefore:
+ MST Cost = 6
+
+How to Find MST Manually 
+For a small wrighted graph, we can find an MST by selecting edges with small weights, while making sure that:
+ No cycle is created
+ All vertices eventually vecome connected
+ Exactly v - 1 edges are selected
+
+Basic Process
+ List all weighted edges
+        ↓
+ Consider smaller weights
+        ↓
+ Add an edge if it does not create a cycle
+        ↓
+ Continue until V - 1 edges are selected
+        ↓
+ Calculate total cost
+
+ This describes the selection idea; the formal algorithms for finding an MST are covered separately
+ 
+Minimum Spanning Tree vs Spanning Tree
+ Connects all vertices	    Connects all vertices
+ No cycles           	    No cycles
+ Contains V - 1 edges	    Contains V - 1 edges
+ Can have any valid total   cost	Has minimum possible total cost
+ May not be the cheapest	 Cheapest spanning tree by total edge weight
+
+Important Point 
+ An MST is not necessarily made only from the globally smallest edges
+ An edge should not be selected if selecting it creates a cycle
+Example:
+ A ---- B
+  \    /
+   \  /
+    C
+
+ If two already-connected vertices are joined by another edge, a cycle can be created.
+
+Therefore:
+ Small weight + No cycle
+        ↓
+      Select
+
+MST Cost 
+ If the selected MST edges have weights:
+ w1, w2, w3, ..., w(V-1)
+then:
+ MST Cost = w1 + w2 + w3 + ... + w(V-1)
+
+Example:
+ Selected edges:
+ 2
+ 3
+ 5
+
+Therefore:
+ MST Cost = 2 + 3 + 5
+         = 10
+
+Application of MST:
+ MST can be used in problems involving minimum-cost connection of multiple locationns
+Examples:
+ Connecting cities with roads
+ Designing computer networks
+ Laying communication cables
+ Connecting electrical systems
+ Designing network infrastructure
+
+The main goal is:
+ Connect all required points
+         +
+ Avoid unnecessary cycles
+         +
+ Minimize total cost
+
+ 
+ */
