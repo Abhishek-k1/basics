@@ -5383,5 +5383,336 @@ The main goal is:
          +
  Minimize total cost
 
+Prim's Algorithm 
+ Prim's Algorithm is a greedy algorithm used to find a Minimum Spanning Tree (MST) of a connected, weighted, undirected graph
+ It starts from one vertex and gradually grows the MST by selecting the minimum-weight edge that connects the current MST to an unvisited vertex
  
+Basic Idea 
+ Choose a starting vertex 
+       ↓ 
+ Add it to MST 
+       ↓ 
+ Look at edges connected to MST 
+       ↓ 
+ Choose the minimum-weight edge 
+       ↓ 
+ Add the new vertex to MST 
+       ↓ 
+ Repeat 
+       ↓ 
+ All vertices included 
+       ↓ 
+ MST obtained
+
+Important Rule 
+At every step:
+ Choose the minimum-weight edge that connects a vertex already in the MST to a vertex that is not yet in the MST.
+
+Example:
+ MST vertices: {A, B}
+ Outside vertices: {C, D}
+
+Available edges:
+ A-C = 4
+ B-C = 2
+ B-D = 5
+
+Choose:
+ B-C = 2
+
+ because it is the smallest edge connecting the MST to an outside vertex
+ 
+Step-by-step Example 
+Consider:
+
+       2
+   A ------- B
+   |         |
+  6|         |3
+   |         |
+   C ------- D
+       4
+
+Edges:
+ A-B = 2
+ A-C = 6
+ B-D = 3
+ C-D = 4
+
+Step 1: Start from A
+ MST = {A}
+
+Available edges:
+ A-B = 2
+ A-C = 6
+
+Choose the smallest:
+ A-B = 2
+
+Step 2: Add B
+ MST = {A, B}
+
+Now consider edges going from the MST to an outside vertex:
+ A-C = 6
+ B-D = 3
+
+Choose:
+ B-D = 3
+
+Step 3: Add D
+ MST = {A, B, D}
+
+Remaining vertex:
+ C
+
+Available edge:
+ D-C = 4
+ A-C = 6
+
+Choose:
+ D-C = 4
+ 
+Final MST
+       2
+   A ------- B
+             |
+             | 3
+             |
+             D
+             |
+             | 4
+             |
+             C
+
+Selected edges:
+ A-B = 2
+ B-D = 3
+ D-C = 4
+
+Total cost:
+ MST Cost = 2 + 3 + 4
+          = 9
+ 
+Why is Prim's Algorithm Greedy?
+ Prim's Algorithm is called a greedy algorithm because at every step it chooses the best local option:
+ Choose the smallest valid edge
+ It does not consider all possible spanning trees
+ Instead, it repeatedly makes the cheapest safe choice that expands the current tree
+ 
+visited[] / MST Set 
+ We need to keep track of which vertices are already included in the MST.
+
+Example:
+ vector<bool> visited(n, false);
+
+Initially:
+ visited = false
+
+When a vertex is added:
+ visited[node] = true;
+
+This prevents us from adding the same vertex again
+
+Example
+ A → visited
+ B → visited
+ C → not visited
+ D → not visited
+
+ We only select an edge that connects the current MST to an unvisited vertex
+ 
+Prim's Algorithm Steps
+ Choose any starting vertex
+ Mark it as visited/included in MST
+ Look at all edges connected to the current MST
+ Select the minimum-weight edge that reaches an unvisited vertex
+ Add that vertex to the MST
+ Mark the vertex as visited
+ Repeat until all vertices are included
+ The selected edges form the MST
+
+Important Condition
+ Never select an edge that connects:
+
+ Visited → Visited
+ because it would create a cycle.
+
+We want:
+ Visited → Unvisited
+
+Example:
+ Visited vertices
+       ↓
+    A --- B
+         |
+         | 2
+         ↓
+      Unvisited C
+
+The edge that expands the tree is:
+ B → C
+
+Number of Edges in MST 
+ If the graph contains:
+
+ V = Number of vertices
+
+then an MST contains:
+ V - 1 edges
+
+Example:
+ 5 vertices
+     ↓
+ 4 MST edges
+
+So Prim's algorithm stops after adding enough edges to connect all vertices
+ 
+Prim's Algorithm VS Normal MST Selection 
+ The important difference is how edges are selected
+
+Prim's Algorithm
+Starts with a vertex and grows one connected tree:
+
+ Start vertex
+      ↓
+ Grow MST
+      ↓
+  Add cheapest edge from current MST
+
+Key Point
+ Prim does not simply choose the globally smallest unused edge
+ It chooses the smallest edge that connects:
+ Current MST → Outside vertex
+
+Prim's Algorithm Using Min-Heap 
+ For efficient implementation, a min-priority queue / min-heap can be used
+ The smallest edge weight is kept at the top
+
+Concept:
+ Min Heap
+    ↓
+ Smallest edge
+    ↓
+ Check destination
+    ↓
+ If unvisited
+    ↓
+ Add to MST
+
+A common C++ representation is:
+ priority_queue<
+     pair<int, int>,
+     vector<pair<int, int>>,
+     greater<pair<int, int>>
+ > pq;
+
+Here the pair can represent:
+ (weight, vertex)
+
+Implementation Using Priority Queue 
+ #include <iostream>
+ #include <vector>
+ #include <queue>
+ using namespace std;
+
+ void prim(int n, vector<vector<pair<int, int>>>& graph)
+ {
+     // Min-heap: {weight, vertex}
+     priority_queue<
+         pair<int, int>,
+         vector<pair<int, int>>,
+         greater<pair<int, int>>
+     > pq;
+
+     // Keep track of vertices already included in MST
+     vector<bool> visited(n, false);
+
+     // Start from vertex 0
+     pq.push({0, 0});
+
+     int totalCost = 0;
+
+     while(!pq.empty())
+     {
+         // Get minimum weight edge
+         auto [weight, node] = pq.top();
+         pq.pop();
+
+         // Skip if already included
+         if(visited[node])
+         {
+             continue;
+         }
+
+         // Include vertex in MST
+         visited[node] = true;
+
+         // Add edge weight to total cost
+         totalCost += weight;
+
+         // Add all unvisited neighbours
+         for(auto [neighbour, edgeWeight] : graph[node])
+         {
+             if(!visited[neighbour])
+             {
+                 pq.push({edgeWeight, neighbour});
+             }
+         }
+     }
+
+     cout << "MST Cost = " << totalCost << endl;
+ }
+
+ int main()
+ {
+     int n = 5;
+
+     vector<vector<pair<int, int>>> graph(n);
+
+     graph[0].push_back({1, 2});
+     graph[1].push_back({0, 2});
+
+     graph[0].push_back({2, 6});
+     graph[2].push_back({0, 6});
+
+     graph[1].push_back({3, 3});
+     graph[3].push_back({1, 3});
+
+     graph[2].push_back({3, 4});
+     graph[3].push_back({2, 4});
+
+     prim(n, graph);
+
+     return 0;
+ }
+
+ For this example, the graph is not fully connected because vertex 4 has no edge. Therefore, a proper MST does not exist for all 5 vertices. For an MST, the input graph must be connected
+
+Time Complexity 
+ Using an adjacency list and a min-heap:
+ 
+ Time Complexity = O(E log V)
+where:
+ V = Number of vertices
+ E = Number of edges
+
+Space Complexity 
+ The graph and supporting data structures require:
+ Space Complexity = O(V + E)
+ The exact implementation can have additional heap entries, but the overall auxiliary/storage requirement is commonly expressed in terms of the graph plus the priority queue
+
+Prim's Algorithm vs Kruskal's Algorithm
+ Both algorithms find a Minimum Spanning Tree, but their approaches are different.
+
+ Prim's Algorithm	                     Kruskal's Algorithm
+ Starts from a vertex	               Starts from edges
+ Grows one tree	                     Builds components and merges them
+ Chooses minimum edge from	            Chooses globally smallest remaining edge
+ current MST to outside
+ Uses visited/set or priority queue	   Commonly uses Disjoint Set Union (DSU)
+ Greedy algorithm	                     Greedy algorithm
+
+
+
+
  */
